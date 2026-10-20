@@ -93,7 +93,7 @@ section{padding-block:22px}
 
 .month{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding-block:12px;border-top:1px solid var(--line)}
 @media (max-width:620px){.month{grid-template-columns:1fr;gap:8px}}
-.mlabel{font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--muted);text-transform:capitalize;padding-top:10px}
+.mlabel{font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--muted);padding-top:10px}
 .cards{display:grid;gap:10px;min-width:0}
 .card{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
 .card.pay{background:transparent;padding-block:8px}

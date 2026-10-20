@@ -108,6 +108,7 @@
   /* ---------- rendering ---------- */
   var U, L, CAL, A, R, isSample = true, today;
   function fmt(d, o) { return new Intl.DateTimeFormat(LOCALE[lang], o).format(d); }
+  function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
   function fd(d) { return fmt(d, { day: "numeric", month: "long", year: "numeric" }); }
   function plural(n) {
     var w = U.days; if (lang !== "ru") return n === 1 ? w[0] : w[1];
@@ -135,7 +136,7 @@
       g.items.push(e);
     });
     tl.innerHTML = groups.map(function (g) {
-      return '<div class="month"><div class="mlabel">' + esc(fmt(g.d, { month: "long", year: "numeric" })) + '</div><div class="cards">' + g.items.map(function (e) {
+      return '<div class="month"><div class="mlabel">' + esc(cap(fmt(g.d, { month: "long", year: "numeric" }))) + '</div><div class="cards">' + g.items.map(function (e) {
         var t = texts(e);
         return '<article class="card' + (e.light ? " pay" : "") + (e === firstMain ? " soon" : "") + '"><div class="date"><div class="dd">' + e.date.getDate() +
           '</div><div class="wd">' + esc(fmt(e.date, { weekday: "short" })) + "</div></div><div>" +
