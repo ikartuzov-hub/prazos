@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prazos</title>
+<meta name="description" content="">
+<link rel="canonical" href="https://prazos.seedwave.pt/flyer.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Prazos">
+<meta name="theme-color" content="#F1F3F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1524" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://prazos.seedwave.pt/og-image.png">
+<meta property="og:url" content="https://prazos.seedwave.pt/flyer.html">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="prazos.css">
+<style>
+.fhero{padding-block:28px 8px;max-width:760px}
+.kick{font:500 12px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 14px}
+.fhero h1{font-size:clamp(30px,6vw,50px);max-width:18ch}
+.lead{color:var(--muted);font-size:18px;max-width:58ch;margin:0 0 22px}
+.stack{display:grid;gap:8px;max-width:520px;margin:0 0 22px}
+.fs{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;animation:rise .5s ease-out both}
+.fs:nth-child(2){animation-delay:.12s}.fs:nth-child(3){animation-delay:.24s}
+.fs.soon{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:64px}
+@keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+.grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.grid3{grid-template-columns:1fr}}
+.fc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.fc b{display:block;font-size:16px;margin-bottom:4px}
+.fc p{margin:0;color:var(--muted);font-size:15px}
+.num{display:block;font:700 24px var(--f-display);color:var(--accent-ink);margin-bottom:6px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.free{font-family:var(--f-display);font-size:20px;margin:0 0 6px;font-weight:500}
+</style>
+</head>
+<body data-page="flyer">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="./" data-nav="app" aria-label="Prazos">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--accent)"/><path d="M24 46V16h11a9.5 9.5 0 0 1 0 19H24" fill="none" stroke="#1B1200" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 53c6.5-4 13-4 19.5 0s13 4 19.5 0" fill="none" stroke="#1B1200" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <b>Prazos</b>
+  </a>
+  <div class="tools">
+    <button class="rb" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">PT</button>
+    <button class="rb" id="themeBtn" type="button" aria-label="Theme">☾</button>
+    <div class="menu" id="langMenu" hidden></div>
+  </div>
+</header>
+<main>
+<div class="fhero">
+  <p class="kick" data-t="flyer.kick"></p>
+  <h1 data-t="flyer.h1"></h1>
+  <p class="lead" data-t="flyer.lead"></p>
+  <div class="stack" id="fSample"></div>
+  <div class="acts"><a class="btn primary" href="./" data-nav="app" data-t="flyer.open"></a><button class="btn js-share" type="button" data-t="ui.share"></button></div>
+</div>
+<section><div class="sh"><h2 data-t="flyer.howT"></h2></div><div class="grid3" id="fHow"></div></section>
+<section><div class="sh"><h2 data-t="flyer.whatT"></h2></div><div class="grid3" id="fWhat"></div></section>
+<section><div class="cta"><div><p class="free" data-t="flyer.ctaT"></p><p data-t="flyer.cta"></p></div><a class="btn" href="./" data-nav="app" data-t="flyer.open"></a></div></section>
+<section><p class="plaque" data-t="ui.plaque"></p></section>
+</main>
+<footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="registry.js"></script>
+<script src="prazos.js"></script>
+</body>
+</html>

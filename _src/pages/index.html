@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prazos — Nenhum prazo passa</title>
+<meta name="description" content="">
+<link rel="canonical" href="https://prazos.seedwave.pt/">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Prazos">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F1F3F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1524" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://prazos.seedwave.pt/og-image.png">
+<meta property="og:url" content="https://prazos.seedwave.pt/">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/unbounded-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="prazos.css">
+</head>
+<body data-page="index">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="./" data-nav="app" aria-label="Prazos">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--accent)"/><path d="M24 46V16h11a9.5 9.5 0 0 1 0 19H24" fill="none" stroke="#1B1200" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 53c6.5-4 13-4 19.5 0s13 4 19.5 0" fill="none" stroke="#1B1200" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <b>Prazos</b>
+  </a>
+  <div class="tools">
+    <button class="rb" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">PT</button>
+    <button class="rb" id="themeBtn" type="button" aria-label="Theme">☾</button>
+    <div class="menu" id="langMenu" hidden></div>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <h1 data-t="ui.h1"></h1>
+    <p class="lede" data-t="ui.lede"></p>
+    <a class="more" href="flyer.html" data-nav="flyer" data-t="ui.more"></a>
+    <div class="dialbox">
+      <svg class="dial" id="dial" viewBox="0 0 260 260" role="img" aria-label="Prazos"></svg>
+      <div class="next" id="next"></div>
+    </div>
+  </div>
+  <form class="form" id="form" autocomplete="off">
+    <h2 data-t="ui.fTitle"></h2>
+    <div class="sample" id="sample" data-t="ui.sample"></div>
+    <div class="q"><label class="ql" for="start" data-t="ui.q1"></label><div class="hint" data-t="ui.q1h"></div><input type="month" id="start" min="2015-01" required></div>
+    <div class="q" role="group" aria-labelledby="q2"><span class="ql" id="q2" data-t="ui.q2"></span><div class="hint" data-t="ui.q2h"></div><div class="opts" id="o2"></div></div>
+    <div class="q" role="radiogroup" aria-labelledby="q3"><span class="ql" id="q3" data-t="ui.q3"></span><div class="opts" id="o3"></div></div>
+    <div class="q" role="radiogroup" aria-labelledby="q4"><span class="ql" id="q4" data-t="ui.q4"></span><div class="hint" data-t="ui.q4h"></div><div class="opts" id="o4"></div></div>
+  </form>
+</div>
+
+<section>
+  <div class="sh"><h2 data-t="ui.tl"></h2>
+    <div class="btns"><button class="btn primary" id="icsBtn" type="button" data-t="ui.ics"></button><button class="btn" type="button" disabled data-t="ui.tg"></button><button class="btn js-share" type="button" data-t="ui.share"></button></div>
+  </div>
+  <p class="note" id="icsNote" data-t="ui.icsNote" hidden></p>
+  <div id="timeline"></div>
+</section>
+
+<section>
+  <div class="sh"><h2 data-t="ui.rules"></h2></div>
+  <div class="rules" id="rules"></div>
+</section>
+
+<section><p class="plaque" data-t="ui.plaque"></p></section>
+
+<section>
+  <div class="sh"><h2 data-t="ui.cTitle"></h2></div>
+  <div class="tiers" id="tiers"></div>
+</section>
+
+<section>
+  <div class="cta"><p data-t="ui.cta"></p><button class="btn js-share" type="button" data-t="ui.share"></button></div>
+</section>
+</main>
+
+<footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="registry.js"></script>
+<script src="prazos.js"></script>
+</body>
+</html>

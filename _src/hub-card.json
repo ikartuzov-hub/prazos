@@ -1,0 +1,16 @@
+{
+  "_note": "Карточка для seedwave-catalog/hub/projects.{lang}.json. id, name, icon одинаковые во всех языках; desc — по языку.",
+  "id": "prazos",
+  "name": "Prazos",
+  "icon": "<svg viewBox=\"0 0 64 64\"><rect width=\"64\" height=\"64\" rx=\"16\" fill=\"#D9890B\"/><path d=\"M24 46V16h11a9.5 9.5 0 0 1 0 19H24\" fill=\"none\" stroke=\"#1B1200\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12 53c6.5-4 13-4 19.5 0s13 4 19.5 0\" fill=\"none\" stroke=\"#1B1200\" stroke-width=\"3.5\" stroke-linecap=\"round\"/></svg>",
+  "demoLink": "https://prazos.seedwave.pt/",
+  "moreLink": "https://prazos.seedwave.pt/flyer.html",
+  "desc": {
+    "pt": "Calendário pessoal de prazos para recibos verdes: Segurança Social, IRS e IVA, com o que acontece se falhar. Quatro perguntas, grátis.",
+    "en": "Personal deadline calendar for the self-employed in Portugal: Social Security, IRS and VAT, with what happens if you miss one. Four questions, free.",
+    "ru": "Личный календарь сроков ИП в Португалии: Segurança Social, IRS и IVA, с тем, что будет, если пропустить. Четыре вопроса, бесплатно.",
+    "es": "Calendario personal de plazos para autónomos en Portugal: Segurança Social, IRS e IVA, con lo que pasa si falla uno. Cuatro preguntas, gratis.",
+    "de": "Persönlicher Fristenkalender für Selbstständige in Portugal: Segurança Social, IRS und Mehrwertsteuer, mit den Folgen eines Versäumnisses. Vier Fragen, kostenlos."
+  },
+  "related": ["painel", "nam"]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "prazos",
+  "name": "Prazos",
+  "defaultLang": "pt",
+  "langs": ["pt", "en", "ru", "es", "de"],
+  "site": "https://prazos.seedwave.pt/",
+  "hub": "https://seedwave.pt/hub/",
+  "linkedin": "https://www.linkedin.com/in/igor-kartuzov/",
+  "author": { "pt": "Igor Kartuzov", "ru": "Игорь Картузов" }
+}

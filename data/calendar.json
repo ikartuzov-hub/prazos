@@ -1,0 +1,30 @@
+{
+  "_note": "Слой 3 — контент. Каталог обязательств ИП на упрощёнке (regime simplificado, ≤15 000 €/год). Сверено по первоисточникам 20.10.2026: CRC (Diário da República, до DL 127/2025), Guia Prático ISS v1.09 (12.01.2026), FAQ ISS (14.01.2026), CIRS / CIVA / RITI, DL 159/99, календари AT-RAM. Тексты — в ui.*.json; даты считает движок prazos.js. Нет источника — нет в продукте.",
+  "verified": "2026-10-20",
+  "mention101B": "Sem retenção, nos termos do n.º 1 do artigo 101.º-B do Código do IRS",
+  "sample": { "start": "2025-03", "clients": ["comp", "eu"], "income": "low", "irs": "unk" },
+  "events": {
+    "ssDecl":    { "kind": "file", "conf": "ok", "src": "CRC art. 151.º-A, 233.º · Guia ISS 2026" },
+    "ssDeclJan": { "kind": "file", "conf": "ok", "src": "CRC art. 151.º-A n.º 5 · Guia ISS F4" },
+    "ssLate":    { "kind": "file", "conf": "ok", "src": "Guia ISS 2026, F" },
+    "ssPay":     { "kind": "pay",  "conf": "ok", "src": "CRC art. 155.º, 168.º" },
+    "ssTop":     { "kind": "pay",  "conf": "ok", "confAfter": 2026, "src": "Guia ISS 2026, F4" },
+    "ssStart":   { "kind": "act",  "conf": "ok", "src": "CRC art. 145.º" },
+    "efat":      { "kind": "act",  "conf": "ok", "src": "CIRS art. 31.º n.º 13–16 (DL 49/2025)" },
+    "irsOpen":   { "kind": "file", "conf": "ok", "src": "CIRS art. 60.º" },
+    "irsDecl":   { "kind": "file", "conf": "ok", "src": "CIRS art. 60.º · CRC art. 152.º" },
+    "irsPay":    { "kind": "pay",  "conf": "ok", "src": "CIRS art. 77.º, 97.º" },
+    "ppc":       { "kind": "pay",  "conf": "ok", "src": "CIRS art. 102.º" },
+    "ivaAlt":    { "kind": "file", "conf": "ok", "src": "CIVA art. 53.º, 58.º (DL 35/2025)" },
+    "ivaNow":    { "kind": "file", "conf": "ok", "src": "CIVA art. 53.º, 58.º (DL 35/2025)" }
+  },
+  "rules": {
+    "r101b":  { "conf": "ok",   "src": "CIRS art. 101.º-B" },
+    "rOver":  { "conf": "ok",   "src": "CIRS art. 101.º-B" },
+    "rFirst": { "conf": "wait", "src": "CRC art. 145.º" },
+    "rRecap": { "conf": "wait", "src": "RITI · DL 35/2025" },
+    "rInv":   { "conf": "ok",   "src": "CIRS art. 115.º · CIVA art. 36.º" },
+    "rIns":   { "conf": "ok",   "src": "DL 159/99" },
+    "rChg":   { "conf": "ok",   "src": "CIVA art. 32.º, 33.º" }
+  }
+}
