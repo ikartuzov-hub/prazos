@@ -3,7 +3,9 @@
   "title": "Prazos — Nenhum prazo passa",
   "desc": "Calendário pessoal de prazos para trabalhadores independentes em Portugal: declarações e contribuições da Segurança Social, IRS, IVA. Quatro perguntas, grátis.",
   "flyerTitle": "Prazos — o calendário de prazos dos recibos verdes",
-  "flyerDesc": "Quatro perguntas e recebe o seu ano de prazos da Segurança Social e das Finanças, com o que acontece se falhar cada um. Grátis, sem conta."
+  "flyerDesc": "Quatro perguntas e recebe o seu ano de prazos da Segurança Social e das Finanças, com o que acontece se falhar cada um. Grátis, sem conta.",
+  "liteTitle": "Prazos Lite — só o essencial",
+  "liteDesc": "A versão para o telemóvel: um prazo de cada vez, data, valor, onde — e dois botões. Explicações só quando toca."
  },
  "ui": {
   "h1": "Nenhum prazo passa.",
@@ -92,7 +94,8 @@
   "opens": "abre {d}",
   "until": "até {d}",
   "lastDay": "Último dia",
-  "openT": "Abre: {t}"
+  "openT": "Abre: {t}",
+  "liteLink": "Versão lite"
  },
  "ev": {
   "ssDecl": [
@@ -237,5 +240,52 @@
   ],
   "ctaT": "Grátis. Sem conta. Sem publicidade.",
   "cta": "As respostas ficam só no seu aparelho."
+ },
+ "lite": {
+  "h1": "Só o essencial.",
+  "short": {
+   "ssDecl": "Declaração trimestral",
+   "ssDeclJan": "Declaração + rendimento anual",
+   "ssLate": "Declaração fora de prazo",
+   "ssPay": "Contribuição SS",
+   "ssTop": "Acerto anual SS",
+   "ssStart": "Começam as contribuições",
+   "efat": "Despesas no e-fatura",
+   "irsDecl": "Entrega do IRS",
+   "irsPay": "Pagamento do IRS",
+   "ppc": "Pagamento por conta",
+   "ivaAlt": "Passagem ao IVA",
+   "ivaNow": "IVA imediato"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Portal das Finanças",
+   "efat": "e-fatura"
+  },
+  "amount": {
+   "min20": "mín. 20 €",
+   "ge50": "se ≥ 50 €",
+   "calc": "valor da nota",
+   "none": "sem pagamento",
+   "info": "—"
+  },
+  "when": "Quando",
+  "what": "O quê",
+  "whereL": "Onde",
+  "howMuch": "Quanto",
+  "done": "Feito",
+  "later": "Depois",
+  "why": "Porquê?",
+  "allDone": "Tudo em dia.",
+  "next": "Próximo:",
+  "left": "{n} por fazer",
+  "reset": "Repor «feitos»",
+  "full": "Versão completa",
+  "answers": "Alterar respostas",
+  "start": "Começar",
+  "cont": "Continuar",
+  "tap": "Toque no cartão para ver porquê",
+  "ob": "Quatro toques e pronto.",
+  "obSub": "As respostas ficam só neste telemóvel."
  }
 }

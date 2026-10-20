@@ -15,63 +15,87 @@
     "ssDecl": {
       "kind": "file",
       "conf": "ok",
-      "src": "CRC art. 151.º-A, 233.º · Guia ISS 2026"
+      "src": "CRC art. 151.º-A, 233.º · Guia ISS 2026",
+      "where": "ss",
+      "amount": "none"
     },
     "ssDeclJan": {
       "kind": "file",
       "conf": "ok",
-      "src": "CRC art. 151.º-A n.º 5 · Guia ISS F4"
+      "src": "CRC art. 151.º-A n.º 5 · Guia ISS F4",
+      "where": "ss",
+      "amount": "none"
     },
     "ssLate": {
       "kind": "file",
       "conf": "ok",
-      "src": "Guia ISS 2026, F"
+      "src": "Guia ISS 2026, F",
+      "where": "ss",
+      "amount": "none"
     },
     "ssPay": {
       "kind": "pay",
       "conf": "ok",
-      "src": "CRC art. 155.º, 168.º"
+      "src": "CRC art. 155.º, 168.º",
+      "where": "ss",
+      "amount": "min20"
     },
     "ssTop": {
       "kind": "pay",
       "conf": "ok",
       "confAfter": 2026,
-      "src": "Guia ISS 2026, F4"
+      "src": "Guia ISS 2026, F4",
+      "where": "ss",
+      "amount": "calc"
     },
     "ssStart": {
       "kind": "act",
       "conf": "ok",
-      "src": "CRC art. 145.º"
+      "src": "CRC art. 145.º",
+      "where": "ss",
+      "amount": "info"
     },
     "efat": {
       "kind": "act",
       "conf": "ok",
-      "src": "CIRS art. 31.º n.º 13–16 (DL 49/2025)"
+      "src": "CIRS art. 31.º n.º 13–16 (DL 49/2025)",
+      "where": "efat",
+      "amount": "none"
     },
     "irsDecl": {
       "kind": "file",
       "conf": "ok",
-      "src": "CIRS art. 60.º · CRC art. 152.º"
+      "src": "CIRS art. 60.º · CRC art. 152.º",
+      "where": "at",
+      "amount": "none"
     },
     "irsPay": {
       "kind": "pay",
       "conf": "ok",
-      "src": "CIRS art. 77.º, 97.º"
+      "src": "CIRS art. 77.º, 97.º",
+      "where": "at",
+      "amount": "calc"
     },
     "ppc": {
       "kind": "pay",
       "conf": "ok",
-      "src": "CIRS art. 102.º"
+      "src": "CIRS art. 102.º",
+      "where": "at",
+      "amount": "ge50"
     },
     "ivaAlt": {
       "kind": "file",
       "conf": "ok",
-      "src": "CIVA art. 53.º, 58.º (DL 35/2025)"
+      "src": "CIVA art. 53.º, 58.º (DL 35/2025)",
+      "where": "at",
+      "amount": "none"
     },
     "ivaNow": {
       "kind": "file",
       "conf": "ok",
-      "src": "CIVA art. 53.º, 58.º (DL 35/2025)"
+      "src": "CIVA art. 53.º, 58.º (DL 35/2025)",
+      "where": "at",
+      "amount": "none"
     }
   },
   "rules": {
@@ -104,5 +128,6 @@
       "src": "CIVA art. 32.º, 33.º"
     }
   },
-  "_windows": "Окна (с какого числа — по какое): ssDecl/ssDeclJan — 1-е … последний день месяца (CRC 151-A); ssPay — 10 … 20 (CRC 155); ssLate — 1-е следующего месяца … конец второго; irsDecl — 01.04 … 30.06 (CIRS 60). Остальное — одна дата."
+  "_windows": "Окна (с какого числа — по какое): ssDecl/ssDeclJan — 1-е … последний день месяца (CRC 151-A); ssPay — 10 … 20 (CRC 155); ssLate — 1-е следующего месяца … конец второго; irsDecl — 01.04 … 30.06 (CIRS 60). Остальное — одна дата.",
+  "_lite": "Поля lite: where — канал (ss = Segurança Social Direta, at = Portal das Finanças, efat = e-fatura); amount — min20 (взнос не меньше 20 €), ge50 (платится, если ≥ 50 €), calc (сумма из расчёта/уведомления), none (подача, без оплаты), info."
 }

@@ -12,7 +12,7 @@ REG = json.load(open(os.path.join(ROOT, "manifest.json"), encoding="utf-8"))
 SITE, LANGS = REG["site"], REG["langs"]
 HTML_LANG = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
 OG_LOCALE = {"pt": "pt_PT", "en": "en_GB", "ru": "ru_RU", "es": "es_ES", "de": "de_DE"}
-PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc")}
+PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc")}
 TODAY = datetime.date.today().isoformat()
 CAL = json.load(open(os.path.join(ROOT, "data/calendar.json"), encoding="utf-8"))
 
@@ -80,6 +80,7 @@ def head_fix(html, page, lang, ui):
 
 FLATTEN = """() => {
   document.querySelectorAll('.menu').forEach(e => e.hidden = true);
+  document.querySelectorAll('.sheet,.dim').forEach(e => e.hidden = true);
   document.querySelectorAll('#dial .dot').forEach(e => e.removeAttribute('opacity'));
   document.documentElement.removeAttribute('data-ready');
   document.documentElement.removeAttribute('data-theme');

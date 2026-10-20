@@ -3,7 +3,9 @@
   "title": "Prazos — Keine Frist rutscht durch",
   "desc": "Persönlicher Fristenkalender für Selbstständige in Portugal: Meldungen und Beiträge zur Segurança Social, IRS, Mehrwertsteuer. Vier Fragen, kostenlos.",
   "flyerTitle": "Prazos — der Fristenkalender für Recibos Verdes",
-  "flyerDesc": "Vier Fragen, und Sie erhalten Ihr Jahr mit allen Fristen der Segurança Social und des Finanzamts in Portugal – mit den Folgen eines Versäumnisses. Kostenlos, ohne Konto."
+  "flyerDesc": "Vier Fragen, und Sie erhalten Ihr Jahr mit allen Fristen der Segurança Social und des Finanzamts in Portugal – mit den Folgen eines Versäumnisses. Kostenlos, ohne Konto.",
+  "liteTitle": "Prazos Lite — nur das Wesentliche",
+  "liteDesc": "Die Handy-Version: eine Frist nach der anderen, Datum, Betrag, wo – und zwei Tasten. Erklärungen nur auf Tipp."
  },
  "ui": {
   "h1": "Keine Frist rutscht durch.",
@@ -92,7 +94,8 @@
   "opens": "öffnet am {d}",
   "until": "bis {d}",
   "lastDay": "Letzter Tag",
-  "openT": "Öffnet: {t}"
+  "openT": "Öffnet: {t}",
+  "liteLink": "Lite-Version"
  },
  "ev": {
   "ssDecl": [
@@ -237,5 +240,52 @@
   ],
   "ctaT": "Kostenlos. Ohne Konto. Ohne Werbung.",
   "cta": "Die Antworten bleiben nur auf Ihrem Gerät."
+ },
+ "lite": {
+  "h1": "Nur das Wesentliche.",
+  "short": {
+   "ssDecl": "Quartalsmeldung",
+   "ssDeclJan": "Meldung + Jahreseinkommen",
+   "ssLate": "Verspätete Meldung",
+   "ssPay": "SS-Beitrag",
+   "ssTop": "SS-Jahresausgleich",
+   "ssStart": "Beiträge beginnen",
+   "efat": "Ausgaben in e-fatura",
+   "irsDecl": "IRS-Abgabe",
+   "irsPay": "IRS-Zahlung",
+   "ppc": "Vorauszahlung",
+   "ivaAlt": "Wechsel zur MwSt.",
+   "ivaNow": "MwSt. sofort"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Portal das Finanças",
+   "efat": "e-fatura"
+  },
+  "amount": {
+   "min20": "mind. 20 €",
+   "ge50": "falls ≥ 50 €",
+   "calc": "laut Bescheid",
+   "none": "keine Zahlung",
+   "info": "—"
+  },
+  "when": "Wann",
+  "what": "Was",
+  "whereL": "Wo",
+  "howMuch": "Wie viel",
+  "done": "Erledigt",
+  "later": "Später",
+  "why": "Warum?",
+  "allDone": "Alles erledigt.",
+  "next": "Nächste:",
+  "left": "{n} offen",
+  "reset": "„Erledigt“ zurücksetzen",
+  "full": "Vollversion",
+  "answers": "Antworten ändern",
+  "start": "Los",
+  "cont": "Weiter",
+  "tap": "Karte antippen, um zu sehen, warum",
+  "ob": "Vier Tipps, fertig.",
+  "obSub": "Die Antworten bleiben nur auf diesem Handy."
  }
 }

@@ -3,7 +3,9 @@
   "title": "Prazos — Ningún plazo se escapa",
   "desc": "Calendario personal de plazos para autónomos en Portugal: declaraciones y cotizaciones de la Segurança Social, IRS, IVA. Cuatro preguntas, gratis.",
   "flyerTitle": "Prazos — el calendario de plazos de los recibos verdes",
-  "flyerDesc": "Cuatro preguntas y recibe su año de plazos de la Segurança Social y de Hacienda en Portugal, con lo que pasa si falla cada uno. Gratis, sin cuenta."
+  "flyerDesc": "Cuatro preguntas y recibe su año de plazos de la Segurança Social y de Hacienda en Portugal, con lo que pasa si falla cada uno. Gratis, sin cuenta.",
+  "liteTitle": "Prazos Lite — solo lo esencial",
+  "liteDesc": "La versión para el móvil: un plazo cada vez, fecha, importe, dónde — y dos botones. Explicaciones solo al tocar."
  },
  "ui": {
   "h1": "Ningún plazo se escapa.",
@@ -92,7 +94,8 @@
   "opens": "abre el {d}",
   "until": "hasta el {d}",
   "lastDay": "Último día",
-  "openT": "Abre: {t}"
+  "openT": "Abre: {t}",
+  "liteLink": "Versión lite"
  },
  "ev": {
   "ssDecl": [
@@ -237,5 +240,52 @@
   ],
   "ctaT": "Gratis. Sin cuenta. Sin publicidad.",
   "cta": "Las respuestas se quedan solo en su dispositivo."
+ },
+ "lite": {
+  "h1": "Solo lo esencial.",
+  "short": {
+   "ssDecl": "Declaración trimestral",
+   "ssDeclJan": "Declaración + ingresos anuales",
+   "ssLate": "Declaración fuera de plazo",
+   "ssPay": "Cotización SS",
+   "ssTop": "Ajuste anual SS",
+   "ssStart": "Empiezan las cotizaciones",
+   "efat": "Gastos en e-fatura",
+   "irsDecl": "Presentación del IRS",
+   "irsPay": "Pago del IRS",
+   "ppc": "Pago a cuenta",
+   "ivaAlt": "Paso al IVA",
+   "ivaNow": "IVA inmediato"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Portal das Finanças",
+   "efat": "e-fatura"
+  },
+  "amount": {
+   "min20": "mín. 20 €",
+   "ge50": "si ≥ 50 €",
+   "calc": "según la liquidación",
+   "none": "sin pago",
+   "info": "—"
+  },
+  "when": "Cuándo",
+  "what": "Qué",
+  "whereL": "Dónde",
+  "howMuch": "Cuánto",
+  "done": "Hecho",
+  "later": "Luego",
+  "why": "¿Por qué?",
+  "allDone": "Todo al día.",
+  "next": "Siguiente:",
+  "left": "{n} por hacer",
+  "reset": "Reiniciar «hechos»",
+  "full": "Versión completa",
+  "answers": "Cambiar respuestas",
+  "start": "Empezar",
+  "cont": "Continuar",
+  "tap": "Toque la tarjeta para ver por qué",
+  "ob": "Cuatro toques y listo.",
+  "obSub": "Las respuestas se quedan solo en este móvil."
  }
 }

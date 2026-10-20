@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prazos Lite</title>
+<meta name="description" content="">
+<link rel="canonical" href="https://prazos.seedwave.pt/lite.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Prazos">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F1F3F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1524" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://prazos.seedwave.pt/og-image.png">
+<meta property="og:url" content="https://prazos.seedwave.pt/lite.html">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/unbounded-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="prazos.css">
+<link rel="stylesheet" href="lite.css">
+</head>
+<body data-page="lite">
+<div class="wrap lite">
+<header class="top">
+  <a class="brand" href="./" data-nav="app" aria-label="Prazos">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--accent)"/><path d="M24 46V16h11a9.5 9.5 0 0 1 0 19H24" fill="none" stroke="#1B1200" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 53c6.5-4 13-4 19.5 0s13 4 19.5 0" fill="none" stroke="#1B1200" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <b>Prazos <span class="lt">Lite</span></b>
+  </a>
+  <div class="tools">
+    <button class="rb" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">PT</button>
+    <button class="rb" id="themeBtn" type="button" aria-label="Theme">☾</button>
+    <div class="menu" id="langMenu" hidden></div>
+  </div>
+</header>
+
+<main class="stage">
+  <div class="status">
+    <h1 data-t="lite.h1"></h1>
+    <div class="left" id="left"></div>
+  </div>
+
+  <div class="deck" id="deck" aria-live="polite"></div>
+
+  <div class="acts" id="acts">
+    <button class="act later" id="laterBtn" type="button"></button>
+    <button class="act done" id="doneBtn" type="button"></button>
+  </div>
+  <p class="hint" id="tapHint" data-t="lite.tap"></p>
+
+  <nav class="more">
+    <a href="./" data-nav="app" data-t="lite.full"></a>
+    <button type="button" id="answersBtn" data-t="lite.answers"></button>
+    <button type="button" id="icsBtn" data-t="ui.ics"></button>
+    <button type="button" id="resetBtn" data-t="lite.reset"></button>
+  </nav>
+</main>
+
+<div class="dim" id="dim" hidden></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden>
+  <div class="grip"></div>
+  <div id="sheetBody"></div>
+</section>
+
+<section class="ob" id="ob" hidden>
+  <div class="obCard" id="obCard"></div>
+</section>
+
+<footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="registry.js"></script>
+<script src="lite.js"></script>
+<script src="prazos.js"></script>
+</body>
+</html>

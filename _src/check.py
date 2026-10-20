@@ -6,7 +6,7 @@ import json, os, re, sys, glob, html as H
 REG = json.load(open("manifest.json", encoding="utf-8"))
 SITE, LANGS = REG["site"], REG["langs"]
 HL = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
-PAGES = {"": ("ui.h1", "meta.title"), "flyer.html": ("flyer.h1", "meta.flyerTitle")}
+PAGES = {"": ("ui.h1", "meta.title"), "flyer.html": ("flyer.h1", "meta.flyerTitle"), "lite.html": ("lite.h1", "meta.liteTitle")}
 UI = {l: json.load(open("ui.%s.json" % l, encoding="utf-8")) for l in LANGS}
 CAL = json.load(open("data/calendar.json", encoding="utf-8"))
 bad = []
@@ -45,7 +45,7 @@ for page, (h1key, tkey) in PAGES.items():
         if sorted(hre) != sorted([HL[x] for x in LANGS] + ["x-default"]): bad.append("%s: hreflang %s" % (tag, hre))
         for img in re.findall(r"<img[^>]*>", h):
             if not re.search(r'alt="[^"]+"', img): bad.append("%s: img без alt" % tag)
-        if len(text_of(h)) < 1000: bad.append("%s: текста без JS мало (%d)" % (tag, len(text_of(h))))
+        if len(text_of(h)) < (600 if page == "lite.html" else 1000): bad.append("%s: текста без JS мало (%d)" % (tag, len(text_of(h))))
         if re.search(r'<meta property="og:url" content="([^"]*)"', h).group(1) != url: bad.append("%s: og:url" % tag)
         if "PRAZOS_PRERENDER" in h: bad.append("%s: флаг пререндера попал в страницу" % tag)
         if l != "pt" and '<base href="../">' not in h: bad.append("%s: нет base" % tag)

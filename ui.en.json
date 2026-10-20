@@ -3,7 +3,9 @@
   "title": "Prazos — No deadline slips by",
   "desc": "Personal deadline calendar for self-employed workers in Portugal: Social Security declarations and contributions, IRS, VAT. Four questions, free.",
   "flyerTitle": "Prazos — the deadline calendar for recibos verdes",
-  "flyerDesc": "Four questions and you get your year of Social Security and tax deadlines in Portugal, with what happens if you miss each one. Free, no account."
+  "flyerDesc": "Four questions and you get your year of Social Security and tax deadlines in Portugal, with what happens if you miss each one. Free, no account.",
+  "liteTitle": "Prazos Lite — just the essentials",
+  "liteDesc": "The phone version: one deadline at a time, date, amount, where — and two buttons. Explanations only when you tap."
  },
  "ui": {
   "h1": "No deadline slips by.",
@@ -92,7 +94,8 @@
   "opens": "opens {d}",
   "until": "until {d}",
   "lastDay": "Last day",
-  "openT": "Opens: {t}"
+  "openT": "Opens: {t}",
+  "liteLink": "Lite version"
  },
  "ev": {
   "ssDecl": [
@@ -237,5 +240,52 @@
   ],
   "ctaT": "Free. No account. No ads.",
   "cta": "Your answers stay on your device only."
+ },
+ "lite": {
+  "h1": "Just the essentials.",
+  "short": {
+   "ssDecl": "Quarterly declaration",
+   "ssDeclJan": "Declaration + annual income",
+   "ssLate": "Late declaration",
+   "ssPay": "SS contribution",
+   "ssTop": "Annual SS adjustment",
+   "ssStart": "Contributions start",
+   "efat": "Expenses in e-fatura",
+   "irsDecl": "IRS filing",
+   "irsPay": "IRS payment",
+   "ppc": "Advance payment",
+   "ivaAlt": "Switch to VAT",
+   "ivaNow": "VAT immediately"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Portal das Finanças",
+   "efat": "e-fatura"
+  },
+  "amount": {
+   "min20": "min. €20",
+   "ge50": "if ≥ €50",
+   "calc": "per assessment",
+   "none": "no payment",
+   "info": "—"
+  },
+  "when": "When",
+  "what": "What",
+  "whereL": "Where",
+  "howMuch": "How much",
+  "done": "Done",
+  "later": "Later",
+  "why": "Why?",
+  "allDone": "All clear.",
+  "next": "Next:",
+  "left": "{n} to do",
+  "reset": "Reset “done”",
+  "full": "Full version",
+  "answers": "Change answers",
+  "start": "Start",
+  "cont": "Continue",
+  "tap": "Tap the card to see why",
+  "ob": "Four taps and you're set.",
+  "obSub": "Your answers stay on this phone only."
  }
 }

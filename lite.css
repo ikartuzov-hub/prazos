@@ -1,0 +1,83 @@
+/* Prazos Lite — one card, two buttons. A deck of deadlines in real 3D space; the top card is the only thing to read. */
+.lite{display:flex;flex-direction:column;min-height:calc(100vh - env(safe-area-inset-top,0px));max-width:560px}
+.lite .brand .lt{font-weight:500;color:var(--accent-ink)}
+.stage{flex:1;display:flex;flex-direction:column;gap:14px}
+.status{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.status h1{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0;color:var(--muted)}
+.left{font-family:var(--f-mono);font-size:13px;color:var(--muted);white-space:nowrap}
+
+/* deck */
+.deck{position:relative;height:min(400px,58vh);margin-bottom:34px;perspective:1100px;perspective-origin:50% 30%;touch-action:pan-y}
+.cardL{position:absolute;inset:0;margin:auto;max-width:100%;height:100%;border-radius:26px;background:
+  radial-gradient(120% 90% at 20% 0%,rgba(255,255,255,.22),transparent 55%),linear-gradient(160deg,var(--surface),color-mix(in srgb,var(--surface) 86%,var(--accent)));
+  border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.08) inset;
+  z-index:calc(10 - var(--k));transform-style:preserve-3d;transform:translate3d(0,calc(var(--k)*26px),calc(var(--k)*-70px)) scale(calc(1 - var(--k)*.035));
+  opacity:calc(1 - var(--k)*.22);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .35s;will-change:transform;cursor:pointer;
+  display:flex;flex-direction:column;align-items:stretch;padding:22px 22px 18px;gap:8px;color:var(--ink);text-align:left;font:inherit;border-style:solid}
+.cardL[style*="--k:0"]{cursor:pointer}
+.cardL:not(.top){pointer-events:none}
+.cardL.top{transform:translate3d(0,0,0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.cardL::after{content:"";position:absolute;inset:0;border-radius:26px;pointer-events:none;
+  background:linear-gradient(calc(115deg + var(--ry,0deg)*2),transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);opacity:.9}
+.cardL.out{transform:translate3d(130%,-8%,80px) rotateZ(14deg);opacity:0;z-index:20}
+.cardL.snooze{transform:translate3d(0,60px,-260px) scale(.9);opacity:0;z-index:1}
+.cardL .row1{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.cardL .live{display:inline-flex;align-items:center;gap:6px;color:var(--accent-ink);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.cardL .live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+.cardL .big{font-family:var(--f-display);font-weight:700;font-size:clamp(40px,13vw,64px);line-height:1;letter-spacing:-.02em;margin-top:4px}
+.cardL .big small{font-size:.42em;font-weight:500;color:var(--accent-ink);margin-left:.15em;letter-spacing:0}
+.cardL .mon{font-family:var(--f-mono);font-size:14px;color:var(--muted)}
+.cardL .what{font-weight:600;font-size:20px;line-height:1.2;margin-top:6px;text-wrap:balance}
+.cardL .facts{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cardL .f{background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--line);border-radius:14px;padding:10px 12px;min-width:0}
+.cardL .f b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+.cardL .f span{display:block;font-size:15px;font-weight:600;overflow-wrap:anywhere}
+.cardL .f.amt span{font-family:var(--f-mono);font-weight:500}
+.cardL .shiftL{font-size:12px;color:var(--accent-ink)}
+
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;
+  border:1px dashed var(--line);border-radius:26px;padding:24px}
+.empty b{font-family:var(--f-display);font-size:26px;font-weight:700}
+.empty span{color:var(--muted);max-width:30ch}
+
+/* two buttons */
+.acts{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}
+.act{height:60px;border-radius:20px;border:1px solid var(--line);background:var(--surface);font-size:17px;font-weight:600;cursor:pointer;
+  box-shadow:0 10px 24px -14px rgba(0,0,0,.4);transition:transform .12s}
+.act:active{transform:scale(.97)}
+.act.done{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-size:19px}
+.act:disabled{opacity:.4;cursor:default;box-shadow:none}
+.hint{margin:-4px 0 0;text-align:center;font-size:12px;color:var(--muted)}
+.more{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:13px;color:var(--muted);padding-block:6px}
+.more a,.more button{border:0;background:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:8px 2px;cursor:pointer;font:inherit;font-size:13px}
+
+/* sheet */
+.dim{position:fixed;inset:0;background:rgba(5,10,24,.55);z-index:30;backdrop-filter:blur(2px)}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--surface);color:var(--ink);border-radius:26px 26px 0 0;
+  padding:10px max(18px,env(safe-area-inset-left,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-right,0px));
+  max-height:86vh;overflow:auto;box-shadow:0 -20px 60px rgba(0,0,0,.35);animation:up .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .grip{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.sheet h2{font-family:var(--f-display);font-weight:500;font-size:20px;margin:0 0 4px;text-wrap:balance}
+.sheet .win{margin-bottom:10px}
+.sheet p{margin:8px 0;font-size:16px}
+.sheet .miss b{color:var(--warn)}
+.sheet .meta{margin-top:10px}
+.sheet .sb{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.sheet .btn.primary{flex:1;justify-content:center}
+
+/* onboarding */
+.ob{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;align-items:center;justify-content:center;
+  padding:max(16px,env(safe-area-inset-left,0px));perspective:1000px}
+.obCard{width:min(100%,460px);background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+  display:grid;gap:14px;animation:flip .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes flip{from{transform:rotateY(-18deg) translateX(30px);opacity:0}}
+.obCard .step{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.obCard h2{font-family:var(--f-display);font-weight:500;font-size:22px;margin:0;text-wrap:balance}
+.obCard .sub{color:var(--muted);font-size:14px;margin:-6px 0 0}
+.obCard .opts{display:grid;gap:8px}
+.obCard .opt span{display:block;padding:14px 16px;border-radius:16px;font-size:17px;border:1px solid var(--line);background:var(--bg)}
+.obCard input[type=month]{font-size:18px;padding:12px 14px;width:100%}
+.obCard .btn.primary{justify-content:center;height:52px;font-size:17px}
+
+@media (prefers-reduced-motion:reduce){.cardL,.sheet,.obCard{animation:none;transition:none}.cardL.top{transform:none}}

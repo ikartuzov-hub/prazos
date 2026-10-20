@@ -80,4 +80,44 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/flyer.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/flyer.html"/>
   </url>
+  <url><loc>https://prazos.seedwave.pt/lite.html</loc><lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/lite.html"/>
+  </url>
+  <url><loc>https://prazos.seedwave.pt/en/lite.html</loc><lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/lite.html"/>
+  </url>
+  <url><loc>https://prazos.seedwave.pt/ru/lite.html</loc><lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/lite.html"/>
+  </url>
+  <url><loc>https://prazos.seedwave.pt/es/lite.html</loc><lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/lite.html"/>
+  </url>
+  <url><loc>https://prazos.seedwave.pt/de/lite.html</loc><lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/lite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/lite.html"/>
+  </url>
 </urlset>
