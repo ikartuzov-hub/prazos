@@ -35,7 +35,7 @@
 .fs{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;animation:rise .5s ease-out both}
 .fs:nth-child(2){animation-delay:.12s}.fs:nth-child(3){animation-delay:.24s}
 .fs.soon{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:64px}
+.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:118px;white-space:nowrap}
 @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
 .grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.grid3{grid-template-columns:1fr}}
@@ -66,10 +66,10 @@
   <p class="kick" data-t="flyer.kick">Recibos verdes · régimen simplificado</p>
   <h1 data-t="flyer.h1">El calendario que no deja escapar ningún plazo</h1>
   <p class="lead" data-t="flyer.lead">La Segurança Social y Hacienda no avisan. Una declaración olvidada se convierte en cotización mínima, multa e intereses — y se descubre meses después. Prazos le muestra su año entero en cuatro preguntas.</p>
-  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">31 OCT</span><span>Declaración trimestral a la SS</span></div><div class="fs"><span class="fd">21 DIC</span><span>Pago a cuenta del IRS</span></div><div class="fs"><span class="fd">30 JUN</span><span>IRS: último día</span></div></div>
+  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">1–31 OCT</span><span>Declaración trimestral a la SS</span></div><div class="fs"><span class="fd">10–20 NOV</span><span>Cotización SS</span></div><div class="fs"><span class="fd">1 ABR–30 JUN</span><span>Presentación del IRS</span></div></div>
   <div class="acts"><a class="btn primary" href="es/" data-nav="app" data-t="flyer.open">Abrir Prazos</a><button class="btn js-share" type="button" data-t="ui.share">Enviar a un amigo</button></div>
 </div>
-<section><div class="sh"><h2 data-t="flyer.howT">Cómo funciona</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Responda 4 preguntas</b><p>Inicio de actividad, clientes, ingresos previstos, último IRS.</p></div><div class="fc"><span class="num">2</span><b>Vea su año</b><p>Cada fecha con qué hacer, qué pasa si la falla y la base legal.</p></div><div class="fc"><span class="num">3</span><b>Llévelo al calendario</b><p>Un toque y todo el año queda en el móvil, con aviso 3 días antes.</p></div></div></section>
+<section><div class="sh"><h2 data-t="flyer.howT">Cómo funciona</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Responda 4 preguntas</b><p>Inicio de actividad, clientes, ingresos previstos, último IRS.</p></div><div class="fc"><span class="num">2</span><b>Vea su año</b><p>Cada fecha con qué hacer, qué pasa si la falla y la base legal.</p></div><div class="fc"><span class="num">3</span><b>Llévelo al calendario</b><p>Un toque y todo el año queda en el móvil: aviso el día en que se abre el plazo y el último día.</p></div></div></section>
 <section><div class="sh"><h2 data-t="flyer.whatT">Qué encontrará</h2></div><div class="grid3" id="fWhat"><div class="fc"><b>«Aún está a tiempo»</b><p>¿Se le pasó una declaración? Prazos le muestra hasta cuándo puede presentarla fuera de plazo.</p></div><div class="fc"><b>Días no laborables</b><p>¿Plazo en sábado? Se lo recuerda el viernes. El IRS del 30 de junio no se mueve — y Prazos lo dice.</p></div><div class="fc"><b>Solo fuentes oficiales</b><p>Cada fecha verificada en el CRC, la Guía Práctica de la SS, el CIRS y el CIVA. Sin fuente, no entra.</p></div></div></section>
 <section><div class="cta"><div><p class="free" data-t="flyer.ctaT">Gratis. Sin cuenta. Sin publicidad.</p><p data-t="flyer.cta">Las respuestas se quedan solo en su dispositivo.</p></div><a class="btn" href="es/" data-nav="app" data-t="flyer.open">Abrir Prazos</a></div></section>
 <section><p class="plaque" data-t="ui.plaque">Prazos recuerda y explica; no asesora. La decisión es suya. Fechas verificadas el 20 de octubre de 2026 en fuentes oficiales (CRC, Guía Práctica ISS, CIRS, CIVA). Sin cuenta ni publicidad: sus respuestas se quedan solo en este dispositivo.</p></section>

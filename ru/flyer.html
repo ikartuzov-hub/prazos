@@ -35,7 +35,7 @@
 .fs{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;animation:rise .5s ease-out both}
 .fs:nth-child(2){animation-delay:.12s}.fs:nth-child(3){animation-delay:.24s}
 .fs.soon{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:64px}
+.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:118px;white-space:nowrap}
 @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
 .grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.grid3{grid-template-columns:1fr}}
@@ -66,10 +66,10 @@
   <p class="kick" data-t="flyer.kick">Recibos verdes · упрощённый режим</p>
   <h1 data-t="flyer.h1">Календарь, в котором не проскочит ни один срок</h1>
   <p class="lead" data-t="flyer.lead">Segurança Social и Finanças не напоминают. Забытая декларация превращается в минимальный взнос, штраф и пени — и выясняется это через месяцы. Prazos показывает весь ваш год за четыре вопроса.</p>
-  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">31 ОКТ</span><span>Квартальная декларация SS</span></div><div class="fs"><span class="fd">21 ДЕК</span><span>Авансовый платёж IRS</span></div><div class="fs"><span class="fd">30 ИЮН</span><span>IRS: последний день</span></div></div>
+  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">1–31 ОКТ</span><span>Квартальная декларация SS</span></div><div class="fs"><span class="fd">10–20 НОЯ</span><span>Взнос SS</span></div><div class="fs"><span class="fd">1 АПР–30 ИЮН</span><span>Подача IRS</span></div></div>
   <div class="acts"><a class="btn primary" href="ru/" data-nav="app" data-t="flyer.open">Открыть Prazos</a><button class="btn js-share" type="button" data-t="ui.share">Переслать другу</button></div>
 </div>
-<section><div class="sh"><h2 data-t="flyer.howT">Как это работает</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Ответьте на 4 вопроса</b><p>Начало деятельности, клиенты, ожидаемый доход, прошлый IRS.</p></div><div class="fc"><span class="num">2</span><b>Увидьте свой год</b><p>У каждой даты — что сделать, что будет, если пропустить, и основание в законе.</p></div><div class="fc"><span class="num">3</span><b>Заберите в календарь</b><p>Одно касание — и весь год в телефоне, с напоминанием за 3 дня.</p></div></div></section>
+<section><div class="sh"><h2 data-t="flyer.howT">Как это работает</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Ответьте на 4 вопроса</b><p>Начало деятельности, клиенты, ожидаемый доход, прошлый IRS.</p></div><div class="fc"><span class="num">2</span><b>Увидьте свой год</b><p>У каждой даты — что сделать, что будет, если пропустить, и основание в законе.</p></div><div class="fc"><span class="num">3</span><b>Заберите в календарь</b><p>Одно касание — и весь год в телефоне: напоминание в день, когда окно открывается, и в последний день.</p></div></div></section>
 <section><div class="sh"><h2 data-t="flyer.whatT">Что внутри</h2></div><div class="grid3" id="fWhat"><div class="fc"><b>«Ещё не поздно»</b><p>Пропустили декларацию? Prazos покажет, до какого числа её ещё можно подать с опозданием.</p></div><div class="fc"><b>Нерабочие дни</b><p>Срок в субботу? Напомнит в пятницу. IRS 30 июня с выходного не переносится — Prazos так и скажет.</p></div><div class="fc"><b>Только официальные источники</b><p>Каждая дата сверена с CRC, гайдом SS, CIRS и CIVA. Нет источника — нет даты.</p></div></div></section>
 <section><div class="cta"><div><p class="free" data-t="flyer.ctaT">Бесплатно. Без регистрации. Без рекламы.</p><p data-t="flyer.cta">Ответы остаются только на вашем устройстве.</p></div><a class="btn" href="ru/" data-nav="app" data-t="flyer.open">Открыть Prazos</a></div></section>
 <section><p class="plaque" data-t="ui.plaque">Prazos напоминает и объясняет, но не консультирует. Решение за вами. Даты сверены 20 октября 2026 г. по официальным источникам (CRC, Guia Prático ISS, CIRS, CIVA). Без регистрации и рекламы: ваши ответы остаются только на этом устройстве.</p></section>

@@ -74,14 +74,13 @@
       [0, 3, 6, 9].forEach(function (m, qi) {
         var legal = lastDay(y, m); if (legal < ssFrom) return;
         var late = lastDay(y, m + 2);
-        push({ id: m === 0 ? "ssDeclJan" : "ssDecl", date: legal, shift: true, v: { q: qi, y: m === 0 ? y - 1 : y, late: late } });
-        if (legal < today && late >= today) push({ id: "ssLate", date: late, shift: true, v: { mDate: legal } });
+        push({ id: m === 0 ? "ssDeclJan" : "ssDecl", open: D(y, m, 1), date: legal, shift: true, v: { q: qi, y: m === 0 ? y - 1 : y, late: late } });
+        if (legal < today && late >= today) push({ id: "ssLate", open: D(y, m + 1, 1), date: late, shift: true, v: { mDate: legal } });
         if (m === 0) push({ id: "ssTop", date: D(y, 1, 20), shift: true, v: {} });
       });
       if (y - 1 >= sy) {
         push({ id: "efat", date: lastDay(y, 1), shift: true, v: { y: y - 1 } });
-        push({ id: "irsOpen", date: D(y, 3, 1), v: { y: y - 1 } });
-        push({ id: "irsDecl", date: D(y, 5, 30), v: { y: y - 1 } }); /* no shift: CIRS art. 60 */
+        push({ id: "irsDecl", open: D(y, 3, 1), date: D(y, 5, 30), v: { y: y - 1 } }); /* no shift: CIRS art. 60 */
         push({ id: "irsPay", date: D(y, 7, 31), v: { y: y - 1 } });
         if (a.irs !== "no") [[6, 20], [8, 20], [11, 20]].forEach(function (q) { push({ id: "ppc", date: nextW(D(y, q[0], q[1])), v: {} }); });
       }
@@ -89,13 +88,19 @@
     /* monthly contribution for month k is paid on the 10th–20th of month k+1 */
     var k = new Date(Math.max(ssFrom, D(today.getFullYear(), today.getMonth() - 1, 1)));
     for (; k <= end; k = D(k.getFullYear(), k.getMonth() + 1, 1))
-      push({ id: "ssPay", date: D(k.getFullYear(), k.getMonth() + 1, 20), shift: true, light: true, v: { mDate: k } });
+      push({ id: "ssPay", open: D(k.getFullYear(), k.getMonth() + 1, 10), date: D(k.getFullYear(), k.getMonth() + 1, 20), shift: true, light: true, v: { mDate: k } });
     if (ssFrom > today) push({ id: "ssStart", date: ssFrom, v: {} });
     if (a.income === "mid") push({ id: "ivaAlt", date: addWD(D(today.getFullYear(), 11, 31), 15), v: {} });
     if (a.income === "high") push({ id: "ivaNow", date: addWD(today, 15), v: {} });
     /* product rule: when the legal date falls on a non-working day, remind for the previous working day */
-    ev.forEach(function (e) { e.remind = e.shift && !working(e.date) ? prevW(e.date) : null; });
-    ev.sort(function (x, z) { return x.date - z.date || (x.light ? 1 : 0) - (z.light ? 1 : 0); });
+    /* a window is placed where it opens (or today, if it is already open); a single date — on its day */
+    ev.forEach(function (e) {
+      e.remind = e.shift && !working(e.date) ? prevW(e.date) : null;
+      e.last = e.remind || e.date;
+      e.isOpen = !!e.open && e.open <= today;
+      e.at = e.open ? (e.isOpen ? today : e.open) : e.date;
+    });
+    ev.sort(function (x, z) { return x.at - z.at || (x.light ? 1 : 0) - (z.light ? 1 : 0) || x.date - z.date; });
     var r = [];
     if (a.clients.indexOf("comp") >= 0) r.push({ id: a.income === "low" ? "r101b" : "rOver" });
     if (ssFrom > today) r.push({ id: "rFirst", v: { d: ssFrom } });
@@ -120,9 +125,13 @@
   }
   function texts(e) { var t = L.ev[e.id]; return { title: fill(t[0], e.v), doo: fill(t[1], e.v), miss: fill(t[2], e.v) }; }
   function ymd(x) { return x.getFullYear() + String(x.getMonth() + 1).padStart(2, "0") + String(x.getDate()).padStart(2, "0"); }
+  function span(a, b) { return Math.round((b - a) / 864e5); }
+  /* windows up to a month become one calendar block from the opening day; longer ones (IRS) — opening reminder + last day */
+  function blockStart(e) { return e.open && span(e.open, e.last) <= 31 ? e.open : null; }
+  function dshort(d) { return fmt(d, { day: "numeric", month: "short" }).replace(".", ""); }
   function gcal(e) {
-    var t = texts(e), d = e.remind || e.date;
-    return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("⏰ " + t.title) + "&dates=" + ymd(d) + "/" + ymd(addD(d, 1)) +
+    var t = texts(e), d = e.last, s0 = blockStart(e) || d;
+    return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("⏰ " + t.title) + "&dates=" + ymd(s0) + "/" + ymd(addD(d, 1)) +
       "&details=" + encodeURIComponent(t.doo + "\n\n" + U.miss + " " + t.miss + "\n\n" + REG.site);
   }
 
@@ -131,16 +140,23 @@
     if (!R.ev.length) { tl.innerHTML = '<p class="note">' + esc(U.none) + "</p>"; return; }
     var firstMain = R.ev.filter(function (e) { return !e.light; })[0], groups = [];
     R.ev.forEach(function (e) {
-      var k = e.date.getFullYear() * 12 + e.date.getMonth(), g = groups[groups.length - 1];
-      if (!g || g.k !== k) { g = { k: k, d: e.date, items: [] }; groups.push(g); }
+      var k = e.at.getFullYear() * 12 + e.at.getMonth(), g = groups[groups.length - 1];
+      if (!g || g.k !== k) { g = { k: k, d: e.at, items: [] }; groups.push(g); }
       g.items.push(e);
     });
     tl.innerHTML = groups.map(function (g) {
       return '<div class="month"><div class="mlabel">' + esc(cap(fmt(g.d, { month: "long", year: "numeric" }))) + '</div><div class="cards">' + g.items.map(function (e) {
         var t = texts(e);
-        return '<article class="card' + (e.light ? " pay" : "") + (e === firstMain ? " soon" : "") + '"><div class="date"><div class="dd">' + e.date.getDate() +
-          '</div><div class="wd">' + esc(fmt(e.date, { weekday: "short" })) + "</div></div><div>" +
-          '<div class="title">' + esc(t.title) + ' <span class="chip k-' + e.kind + '">' + esc(U.kind[e.kind]) + "</span></div>" +
+        var sameM = e.open && e.open.getMonth() === e.date.getMonth();
+        var col = e.open
+          ? '<div class="dd">' + e.open.getDate() + '</div><div class="to">→ ' + esc(sameM ? String(e.date.getDate()) : dshort(e.date)) + "</div>"
+          : '<div class="dd">' + e.date.getDate() + '</div><div class="wd">' + esc(fmt(e.date, { weekday: "short" })) + "</div>";
+        var when = e.open
+          ? '<div class="win">' + esc(U.window.replace("{a}", fmt(e.open, { day: "numeric", month: "long" })).replace("{b}", fmt(e.date, { day: "numeric", month: "long" }))) + "</div>"
+          : "";
+        return '<article class="card' + (e.light ? " pay" : "") + (e === firstMain ? " soon" : "") + '"><div class="date">' + col + "</div><div>" +
+          '<div class="title">' + esc(t.title) + ' <span class="chip k-' + e.kind + '">' + esc(U.kind[e.kind]) + "</span>" +
+          (e.isOpen ? ' <span class="chip live">' + esc(U.openNow) + "</span>" : "") + "</div>" + when +
           (e.remind ? '<div class="shift">' + esc(U.shift.replace("{d}", fmt(e.remind, { weekday: "long", day: "numeric", month: "long" }))) + "</div>" : "") +
           '<p class="do">' + esc(t.doo) + "</p>" + (t.miss !== "—" ? '<p class="miss"><b>' + esc(U.miss) + "</b> " + esc(t.miss) + "</p>" : "") +
           '<div class="meta"><span>' + esc(U.src) + ": " + esc(e.src) + '</span><span class="chip ' + e.conf + '">' + esc(e.conf === "ok" ? U.ok : U.wait) +
@@ -159,8 +175,11 @@
   function renderNext() {
     var n = R.ev.filter(function (e) { return !e.light; })[0] || R.ev[0];
     if (!n) { $("next").innerHTML = '<div class="k">' + esc(U.next) + '</div><div class="t">' + esc(U.none) + "</div>"; return null; }
-    var d = n.remind || n.date, days = Math.round((d - today) / 864e5), t = texts(n);
-    $("next").innerHTML = '<div class="k">' + esc(U.next) + '</div><div class="t">' + esc(t.title) + '</div><div class="d">' + esc(fmt(d, { weekday: "long", day: "numeric", month: "long" })) + "</div>";
+    var t = texts(n), lg = { weekday: "short", day: "numeric", month: "long" }, line, d;
+    if (n.open && !n.isOpen) { d = n.open; line = U.opens.replace("{d}", fmt(n.open, lg)) + " · " + U.until.replace("{d}", fmt(n.last, { day: "numeric", month: "long" })); }
+    else { d = n.last; line = (n.isOpen ? U.openNow + " · " : "") + U.until.replace("{d}", fmt(n.last, lg)); }
+    var days = span(today, d);
+    $("next").innerHTML = '<div class="k">' + esc(U.next) + '</div><div class="t">' + esc(t.title) + '</div><div class="d">' + esc(line) + "</div>";
     return { n: n, days: days };
   }
 
@@ -177,8 +196,13 @@
         '<text x="' + tp[0] + '" y="' + (tp[1] + 4) + '" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">' + esc(fmt(D(2026, m, 1), { month: "narrow" })) + "</text>";
     }
     R.ev.filter(function (e) { return !e.light; }).forEach(function (e) {
-      var a2 = ang(e.date), q = pt(a2, 104), nx = info && e === info.n;
-      h += '<circle class="dot" data-a="' + a2 + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (nx ? 7 : 5) + '" fill="' + (nx ? "var(--accent)" : "var(--ink)") + '"/>';
+      var a2 = ang(e.date), q = pt(a2, 104), nx = info && e === info.n, col = nx ? "var(--accent)" : "var(--ink)";
+      if (e.open) {
+        var a1 = ang(e.open), p0 = pt(a1, 104); if (a2 < a1) a2 += 360;
+        h += '<path class="dot" data-a="' + ang(e.date) + '" d="M' + p0[0] + " " + p0[1] + " A104 104 0 " + (a2 - a1 > 180 ? 1 : 0) + " 1 " + q[0] + " " + q[1] +
+          '" fill="none" stroke="' + col + '" stroke-width="' + (nx ? 6 : 4) + '" stroke-linecap="round"/>';
+      }
+      h += '<circle class="dot" data-a="' + ang(e.date) + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (nx ? 7 : 5) + '" fill="' + col + '"/>';
     });
     var days = info ? info.days : 0;
     h += '<g id="hand"><line x1="130" y1="130" x2="130" y2="34" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/><circle cx="130" cy="130" r="5" fill="var(--accent)"/></g>' +
@@ -247,11 +271,28 @@
   function ics() {
     var cl = function (s) { return s.replace(/[\\;,]/g, function (m) { return "\\" + m; }).replace(/\n/g, "\\n"); };
     var Ls = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//SeedWave//Prazos//" + lang.toUpperCase(), "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:Prazos"];
+    /* alarms at 09:00 local: on the opening day and on the last (working) day of the window;
+       a single date gets 3 days before and the day itself */
+    function alarm(title, trig) { return ["BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + cl(title), "TRIGGER;RELATED=START:" + trig, "END:VALARM"]; }
+    function vevent(uid, start, endIncl, title, desc, alarms) {
+      Ls.push("BEGIN:VEVENT", "UID:" + uid + "@seedwave.pt", "DTSTAMP:" + ymd(today) + "T000000Z",
+        "DTSTART;VALUE=DATE:" + ymd(start), "DTEND;VALUE=DATE:" + ymd(addD(endIncl, 1)), "SUMMARY:" + cl(title), "DESCRIPTION:" + cl(desc), "TRANSP:TRANSPARENT");
+      alarms.forEach(function (a) { Ls.push.apply(Ls, a); });
+      Ls.push("END:VEVENT");
+    }
     R.ev.forEach(function (e, i) {
-      var t = texts(e), d = e.remind || e.date;
-      Ls.push("BEGIN:VEVENT", "UID:prazos-" + e.id + "-" + ymd(e.date) + "-" + i + "@seedwave.pt", "DTSTAMP:" + ymd(today) + "T000000Z",
-        "DTSTART;VALUE=DATE:" + ymd(d), "DTEND;VALUE=DATE:" + ymd(addD(d, 1)), "SUMMARY:" + cl("⏰ " + t.title),
-        "DESCRIPTION:" + cl(t.doo + "\n" + U.miss + " " + t.miss + "\n" + REG.site), "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + cl(t.title), "TRIGGER:-P3D", "END:VALARM", "END:VEVENT");
+      var t = texts(e), last = e.last, desc = t.doo + "\n" + U.miss + " " + t.miss + "\n" + REG.site, uid = "prazos-" + e.id + "-" + ymd(e.date) + "-" + i;
+      var b = blockStart(e);
+      if (b) {
+        var al = [alarm(t.title, "PT9H")];
+        if (span(b, last) > 0) al.push(alarm(U.lastDay + ": " + t.title, "P" + span(b, last) + "DT9H"));
+        vevent(uid, b, last, "⏰ " + t.title, desc, al);
+      } else if (e.open) {
+        if (e.open >= today) vevent(uid + "-open", e.open, e.open, U.openT.replace("{t}", t.title), desc, [alarm(t.title, "PT9H")]);
+        vevent(uid, last, last, "⏰ " + U.lastDay + ": " + t.title, desc, [alarm(t.title, "-P6DT15H"), alarm(U.lastDay + ": " + t.title, "PT9H")]);
+      } else {
+        vevent(uid, last, last, "⏰ " + t.title, desc, [alarm(t.title, "-P2DT15H"), alarm(t.title, "PT9H")]);
+      }
     });
     Ls.push("END:VCALENDAR");
     return Ls.join("\r\n");

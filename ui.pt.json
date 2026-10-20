@@ -1,47 +1,241 @@
 {
- "meta":{"title":"Prazos — Nenhum prazo passa","desc":"Calendário pessoal de prazos para trabalhadores independentes em Portugal: declarações e contribuições da Segurança Social, IRS, IVA. Quatro perguntas, grátis.",
-  "flyerTitle":"Prazos — o calendário de prazos dos recibos verdes","flyerDesc":"Quatro perguntas e recebe o seu ano de prazos da Segurança Social e das Finanças, com o que acontece se falhar cada um. Grátis, sem conta."},
- "ui":{"h1":"Nenhum prazo passa.","lede":"O seu calendário pessoal de prazos da Segurança Social e das Finanças. Quatro perguntas, um ano inteiro de datas — e o que acontece se falhar alguma.","more":"Como funciona",
-  "fTitle":"As suas respostas","sample":"Exemplo preenchido — altere as respostas e o calendário muda.",
-  "q1":"Quando iniciou a atividade?","q1h":"Mês da abertura de atividade nas Finanças.",
-  "q2":"Quem são os seus clientes?","q2h":"Pode escolher vários.","o2":{"priv":"Particulares em PT","comp":"Empresas em PT","eu":"Clientes na UE","out":"Fora da UE"},
-  "q3":"Rendimento esperado este ano","o3":{"low":"até 15 000 €","mid":"15 000–18 750 €","high":"mais de 18 750 €"},
-  "q4":"No último IRS teve imposto a pagar?","q4h":"Daí dependem os pagamentos por conta.","o4":{"yes":"Sim","no":"Não","unk":"Não sei"},
-  "tl":"O seu ano de prazos","ics":"Todo o ano no calendário","tg":"Lembretes no Telegram · em breve","share":"Enviar a um amigo",
-  "icsNote":"Não foi possível descarregar o ficheiro aqui. Abra prazos.seedwave.pt ou adicione cada data com «Google Calendar».",
-  "next":"Próximo prazo","days":["dia","dias"],"today":"hoje","none":"Sem prazos nos próximos 12 meses.",
-  "miss":"Se falhar:","src":"Base","ok":"verificado","wait":"a confirmar","gcal":"Google Calendar",
-  "kind":{"file":"entregar","pay":"pagar","act":"fazer"},"shift":"Cai em dia não útil — trate até {d}.",
-  "rules":"Regras sempre em vigor","plaque":"O Prazos lembra e explica; não presta consultoria. A decisão é sua. Datas verificadas em {v} nas fontes oficiais (CRC, Guia Prático ISS, CIRS, CIVA). Sem conta, sem publicidade: as suas respostas ficam só neste aparelho.",
-  "cTitle":"O que vem a seguir: Contorno IP","tiers":[["Vigia","agora · grátis","Calendário pessoal, lembretes e «o que acontece se falhar»."],["Lite","em breve","Acesso de leitura ao Portal e ao banco: conferência, alertas, rascunhos de declarações."],["Full","em breve","Entrega nas Finanças e na SS e pagamentos após a sua confirmação. Contabilista incluído."]],
-  "cta":"Conhece alguém com recibos verdes? Uma declaração esquecida custa, no mínimo, 20 € por mês sem aviso. Envie-lhe o Prazos.",
-  "copied":"Ligação copiada ✓","shareText":"Prazos — Nenhum prazo passa. O meu calendário de prazos da SS e das Finanças em 4 perguntas:",
-  "q":["4.º trimestre","1.º trimestre","2.º trimestre","3.º trimestre"],"langSoon":"em breve"},
- "ev":{
-  "ssDecl":["Declaração trimestral à Segurança Social","Declarar os rendimentos do {q} de {y} na Segurança Social Direta.","coima de 50–250 € e a SS fixa a contribuição mínima de 20 €. Ainda pode entregar fora de prazo até {late}."],
-  "ssDeclJan":["Declaração trimestral + rendimento anual","Declarar o {q} de {y} e confirmar o rendimento anual de {y}.","coima de 50–250 €; entrega fora de prazo até {late}."],
-  "ssLate":["Ainda vai a tempo: declaração fora de prazo","Se falhou a declaração de {m}, entregue-a com a marca «Fora de Prazo».","depois desta data a janela fecha até à próxima declaração."],
-  "ssPay":["Contribuição SS de {m}","Pagar entre os dias 10 e 20. Valor na Segurança Social Direta.","juros de mora; após 30 dias, contraordenação grave (300–1 200 €)."],
-  "ssTop":["Acerto anual da SS","Se a confirmação de janeiro gerou valor a pagar, pague até esta data.","juros de mora."],
-  "ssStart":["Fim da isenção do 1.º ano","A partir de hoje passa a contribuir para a Segurança Social.","—"],
-  "efat":["Despesas no e-fatura","Atribuir as faturas de {y} à atividade no Portal das Finanças.","as despesas em falta até aos 15 % são somadas ao rendimento tributável."],
-  "irsOpen":["Abre o IRS de {y}","Pode entregar a Modelo 3 com Anexo B a partir de hoje.","—"],
-  "irsDecl":["IRS de {y}: último dia","Entregar a Modelo 3 com Anexo B (e o Anexo SS anual).","coima pelo RGIT. Este prazo não passa para o dia útil seguinte."],
-  "irsPay":["Pagamento do IRS de {y}","Se a liquidação deu imposto a pagar, pague até esta data.","juros e cobrança coerciva."],
-  "ppc":["Pagamento por conta do IRS","Só se a AT enviar o documento (cerca de um mês antes). Abaixo de 50 € não se paga.","juros."],
-  "ivaAlt":["Passagem ao IVA","Rendimento acima de 15 000 € → IVA desde 1 de janeiro. Entregar a declaração de alterações.","IVA devido desde o momento da ultrapassagem."],
-  "ivaNow":["IVA imediato","Acima de 18 750 € no ano: IVA a partir desse momento; declaração de alterações em 15 dias úteis (data indicativa).","IVA e coima."]},
- "rl":{
-  "r101b":["Menção no recibo","Enquanto o rendimento não passar 15 000 €, escreva no recibo: {m}. Sem ela, a empresa retém 23 %."],
-  "rOver":["Isenção de retenção perdida","Acima de 15 000 € a dispensa de retenção termina no mês seguinte."],
-  "rFirst":["1.º ano de atividade","Isenção de contribuições até {d}. Confirme na Segurança Social Direta se as declarações trimestrais são dispensadas."],
-  "rRecap":["Clientes na UE: declaração recapitulativa","Após as alterações de 2025 a norma é ambígua para o regime do art. 53.º. Confirme com contabilista ou na AT."],
-  "rInv":["Fatura para tudo","Fatura-recibo no dia do pagamento; fatura até ao 5.º dia útil; serviços na UE até dia 15 do mês seguinte. Inclui adiantamentos."],
-  "rIns":["Seguro de acidentes de trabalho","Obrigatório enquanto a atividade estiver aberta."],
-  "rChg":["Alterações e cessação","Alterações: 15 dias. Cessação de atividade: 30 dias."]},
- "flyer":{"kick":"Recibos verdes · regime simplificado","h1":"O calendário que não deixa passar nenhum prazo","lead":"A Segurança Social e as Finanças não avisam. Uma declaração esquecida vira contribuição mínima, coima e juros — e só se descobre meses depois. O Prazos mostra o seu ano inteiro em quatro perguntas.",
-  "open":"Abrir o Prazos","sample":[["31 OUT","Declaração trimestral à SS"],["21 DEZ","Pagamento por conta do IRS"],["30 JUN","IRS: último dia"]],
-  "howT":"Como funciona","how":[["Responda a 4 perguntas","Início de atividade, clientes, rendimento esperado, último IRS."],["Veja o seu ano","Cada data com o que fazer, o que acontece se falhar e a base legal."],["Leve para o calendário","Um toque e o ano inteiro fica no telemóvel, com aviso 3 dias antes."]],
-  "whatT":"O que encontra","what":[["«Ainda vai a tempo»","Falhou uma declaração? O Prazos mostra até quando a pode entregar fora de prazo."],["Dias não úteis","Prazo ao sábado? Lembra-o na sexta. O IRS de 30 de junho não muda — e o Prazos diz isso."],["Só fontes oficiais","Cada data verificada no CRC, no Guia Prático da SS, no CIRS e no CIVA. Sem fonte, não entra."]],
-  "ctaT":"Grátis. Sem conta. Sem publicidade.","cta":"As respostas ficam só no seu aparelho."}
+ "meta": {
+  "title": "Prazos — Nenhum prazo passa",
+  "desc": "Calendário pessoal de prazos para trabalhadores independentes em Portugal: declarações e contribuições da Segurança Social, IRS, IVA. Quatro perguntas, grátis.",
+  "flyerTitle": "Prazos — o calendário de prazos dos recibos verdes",
+  "flyerDesc": "Quatro perguntas e recebe o seu ano de prazos da Segurança Social e das Finanças, com o que acontece se falhar cada um. Grátis, sem conta."
+ },
+ "ui": {
+  "h1": "Nenhum prazo passa.",
+  "lede": "O seu calendário pessoal de prazos da Segurança Social e das Finanças. Quatro perguntas, um ano inteiro de datas — e o que acontece se falhar alguma.",
+  "more": "Como funciona",
+  "fTitle": "As suas respostas",
+  "sample": "Exemplo preenchido — altere as respostas e o calendário muda.",
+  "q1": "Quando iniciou a atividade?",
+  "q1h": "Mês da abertura de atividade nas Finanças.",
+  "q2": "Quem são os seus clientes?",
+  "q2h": "Pode escolher vários.",
+  "o2": {
+   "priv": "Particulares em PT",
+   "comp": "Empresas em PT",
+   "eu": "Clientes na UE",
+   "out": "Fora da UE"
+  },
+  "q3": "Rendimento esperado este ano",
+  "o3": {
+   "low": "até 15 000 €",
+   "mid": "15 000–18 750 €",
+   "high": "mais de 18 750 €"
+  },
+  "q4": "No último IRS teve imposto a pagar?",
+  "q4h": "Daí dependem os pagamentos por conta.",
+  "o4": {
+   "yes": "Sim",
+   "no": "Não",
+   "unk": "Não sei"
+  },
+  "tl": "O seu ano de prazos",
+  "ics": "Todo o ano no calendário",
+  "tg": "Lembretes no Telegram · em breve",
+  "share": "Enviar a um amigo",
+  "icsNote": "Não foi possível descarregar o ficheiro aqui. Abra prazos.seedwave.pt ou adicione cada data com «Google Calendar».",
+  "next": "Próximo prazo",
+  "days": [
+   "dia",
+   "dias"
+  ],
+  "today": "hoje",
+  "none": "Sem prazos nos próximos 12 meses.",
+  "miss": "Se falhar:",
+  "src": "Base",
+  "ok": "verificado",
+  "wait": "a confirmar",
+  "gcal": "Google Calendar",
+  "kind": {
+   "file": "entregar",
+   "pay": "pagar",
+   "act": "fazer"
+  },
+  "shift": "Cai em dia não útil — trate até {d}.",
+  "rules": "Regras sempre em vigor",
+  "plaque": "O Prazos lembra e explica; não presta consultoria. A decisão é sua. Datas verificadas em {v} nas fontes oficiais (CRC, Guia Prático ISS, CIRS, CIVA). Sem conta, sem publicidade: as suas respostas ficam só neste aparelho.",
+  "cTitle": "O que vem a seguir: Contorno IP",
+  "tiers": [
+   [
+    "Vigia",
+    "agora · grátis",
+    "Calendário pessoal, lembretes e «o que acontece se falhar»."
+   ],
+   [
+    "Lite",
+    "em breve",
+    "Acesso de leitura ao Portal e ao banco: conferência, alertas, rascunhos de declarações."
+   ],
+   [
+    "Full",
+    "em breve",
+    "Entrega nas Finanças e na SS e pagamentos após a sua confirmação. Contabilista incluído."
+   ]
+  ],
+  "cta": "Conhece alguém com recibos verdes? Uma declaração esquecida custa, no mínimo, 20 € por mês sem aviso. Envie-lhe o Prazos.",
+  "copied": "Ligação copiada ✓",
+  "shareText": "Prazos — Nenhum prazo passa. O meu calendário de prazos da SS e das Finanças em 4 perguntas:",
+  "q": [
+   "4.º trimestre",
+   "1.º trimestre",
+   "2.º trimestre",
+   "3.º trimestre"
+  ],
+  "langSoon": "em breve",
+  "window": "Janela: de {a} a {b}",
+  "openNow": "aberto",
+  "opens": "abre {d}",
+  "until": "até {d}",
+  "lastDay": "Último dia",
+  "openT": "Abre: {t}"
+ },
+ "ev": {
+  "ssDecl": [
+   "Declaração trimestral à Segurança Social",
+   "Declarar os rendimentos do {q} de {y} na Segurança Social Direta.",
+   "coima de 50–250 € e a SS fixa a contribuição mínima de 20 €. Ainda pode entregar fora de prazo até {late}."
+  ],
+  "ssDeclJan": [
+   "Declaração trimestral + rendimento anual",
+   "Declarar o {q} de {y} e confirmar o rendimento anual de {y}.",
+   "coima de 50–250 €; entrega fora de prazo até {late}."
+  ],
+  "ssLate": [
+   "Ainda vai a tempo: declaração fora de prazo",
+   "Se falhou a declaração de {m}, entregue-a com a marca «Fora de Prazo».",
+   "depois desta data a janela fecha até à próxima declaração."
+  ],
+  "ssPay": [
+   "Contribuição SS de {m}",
+   "Pagar entre os dias 10 e 20. Valor na Segurança Social Direta.",
+   "juros de mora; após 30 dias, contraordenação grave (300–1 200 €)."
+  ],
+  "ssTop": [
+   "Acerto anual da SS",
+   "Se a confirmação de janeiro gerou valor a pagar, pague até esta data.",
+   "juros de mora."
+  ],
+  "ssStart": [
+   "Fim da isenção do 1.º ano",
+   "A partir de hoje passa a contribuir para a Segurança Social.",
+   "—"
+  ],
+  "efat": [
+   "Despesas no e-fatura",
+   "Atribuir as faturas de {y} à atividade no Portal das Finanças.",
+   "as despesas em falta até aos 15 % são somadas ao rendimento tributável."
+  ],
+  "irsDecl": [
+   "IRS de {y}: entrega",
+   "Entregar a Modelo 3 com Anexo B (e o Anexo SS anual) entre 1 de abril e 30 de junho.",
+   "coima pelo RGIT. Este prazo não passa para o dia útil seguinte."
+  ],
+  "irsPay": [
+   "Pagamento do IRS de {y}",
+   "Se a liquidação deu imposto a pagar, pague até esta data.",
+   "juros e cobrança coerciva."
+  ],
+  "ppc": [
+   "Pagamento por conta do IRS",
+   "Só se a AT enviar o documento (cerca de um mês antes). Abaixo de 50 € não se paga.",
+   "juros."
+  ],
+  "ivaAlt": [
+   "Passagem ao IVA",
+   "Rendimento acima de 15 000 € → IVA desde 1 de janeiro. Entregar a declaração de alterações.",
+   "IVA devido desde o momento da ultrapassagem."
+  ],
+  "ivaNow": [
+   "IVA imediato",
+   "Acima de 18 750 € no ano: IVA a partir desse momento; declaração de alterações em 15 dias úteis (data indicativa).",
+   "IVA e coima."
+  ]
+ },
+ "rl": {
+  "r101b": [
+   "Menção no recibo",
+   "Enquanto o rendimento não passar 15 000 €, escreva no recibo: {m}. Sem ela, a empresa retém 23 %."
+  ],
+  "rOver": [
+   "Isenção de retenção perdida",
+   "Acima de 15 000 € a dispensa de retenção termina no mês seguinte."
+  ],
+  "rFirst": [
+   "1.º ano de atividade",
+   "Isenção de contribuições até {d}. Confirme na Segurança Social Direta se as declarações trimestrais são dispensadas."
+  ],
+  "rRecap": [
+   "Clientes na UE: declaração recapitulativa",
+   "Após as alterações de 2025 a norma é ambígua para o regime do art. 53.º. Confirme com contabilista ou na AT."
+  ],
+  "rInv": [
+   "Fatura para tudo",
+   "Fatura-recibo no dia do pagamento; fatura até ao 5.º dia útil; serviços na UE até dia 15 do mês seguinte. Inclui adiantamentos."
+  ],
+  "rIns": [
+   "Seguro de acidentes de trabalho",
+   "Obrigatório enquanto a atividade estiver aberta."
+  ],
+  "rChg": [
+   "Alterações e cessação",
+   "Alterações: 15 dias. Cessação de atividade: 30 dias."
+  ]
+ },
+ "flyer": {
+  "kick": "Recibos verdes · regime simplificado",
+  "h1": "O calendário que não deixa passar nenhum prazo",
+  "lead": "A Segurança Social e as Finanças não avisam. Uma declaração esquecida vira contribuição mínima, coima e juros — e só se descobre meses depois. O Prazos mostra o seu ano inteiro em quatro perguntas.",
+  "open": "Abrir o Prazos",
+  "sample": [
+   [
+    "1–31 OUT",
+    "Declaração trimestral à SS"
+   ],
+   [
+    "10–20 NOV",
+    "Contribuição SS"
+   ],
+   [
+    "1 ABR–30 JUN",
+    "IRS: entrega"
+   ]
+  ],
+  "howT": "Como funciona",
+  "how": [
+   [
+    "Responda a 4 perguntas",
+    "Início de atividade, clientes, rendimento esperado, último IRS."
+   ],
+   [
+    "Veja o seu ano",
+    "Cada data com o que fazer, o que acontece se falhar e a base legal."
+   ],
+   [
+    "Leve para o calendário",
+    "Um toque e o ano inteiro fica no telemóvel: aviso no dia em que o prazo abre e no último dia."
+   ]
+  ],
+  "whatT": "O que encontra",
+  "what": [
+   [
+    "«Ainda vai a tempo»",
+    "Falhou uma declaração? O Prazos mostra até quando a pode entregar fora de prazo."
+   ],
+   [
+    "Dias não úteis",
+    "Prazo ao sábado? Lembra-o na sexta. O IRS de 30 de junho não muda — e o Prazos diz isso."
+   ],
+   [
+    "Só fontes oficiais",
+    "Cada data verificada no CRC, no Guia Prático da SS, no CIRS e no CIVA. Sem fonte, não entra."
+   ]
+  ],
+  "ctaT": "Grátis. Sem conta. Sem publicidade.",
+  "cta": "As respostas ficam só no seu aparelho."
+ }
 }

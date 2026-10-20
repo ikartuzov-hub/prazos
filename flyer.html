@@ -35,7 +35,7 @@
 .fs{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;animation:rise .5s ease-out both}
 .fs:nth-child(2){animation-delay:.12s}.fs:nth-child(3){animation-delay:.24s}
 .fs.soon{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:64px}
+.fd{font-family:var(--f-mono);font-weight:500;color:var(--accent-ink);min-width:118px;white-space:nowrap}
 @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
 .grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.grid3{grid-template-columns:1fr}}
@@ -66,10 +66,10 @@
   <p class="kick" data-t="flyer.kick">Recibos verdes · regime simplificado</p>
   <h1 data-t="flyer.h1">O calendário que não deixa passar nenhum prazo</h1>
   <p class="lead" data-t="flyer.lead">A Segurança Social e as Finanças não avisam. Uma declaração esquecida vira contribuição mínima, coima e juros — e só se descobre meses depois. O Prazos mostra o seu ano inteiro em quatro perguntas.</p>
-  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">31 OUT</span><span>Declaração trimestral à SS</span></div><div class="fs"><span class="fd">21 DEZ</span><span>Pagamento por conta do IRS</span></div><div class="fs"><span class="fd">30 JUN</span><span>IRS: último dia</span></div></div>
+  <div class="stack" id="fSample"><div class="fs soon"><span class="fd">1–31 OUT</span><span>Declaração trimestral à SS</span></div><div class="fs"><span class="fd">10–20 NOV</span><span>Contribuição SS</span></div><div class="fs"><span class="fd">1 ABR–30 JUN</span><span>IRS: entrega</span></div></div>
   <div class="acts"><a class="btn primary" href="./" data-nav="app" data-t="flyer.open">Abrir o Prazos</a><button class="btn js-share" type="button" data-t="ui.share">Enviar a um amigo</button></div>
 </div>
-<section><div class="sh"><h2 data-t="flyer.howT">Como funciona</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Responda a 4 perguntas</b><p>Início de atividade, clientes, rendimento esperado, último IRS.</p></div><div class="fc"><span class="num">2</span><b>Veja o seu ano</b><p>Cada data com o que fazer, o que acontece se falhar e a base legal.</p></div><div class="fc"><span class="num">3</span><b>Leve para o calendário</b><p>Um toque e o ano inteiro fica no telemóvel, com aviso 3 dias antes.</p></div></div></section>
+<section><div class="sh"><h2 data-t="flyer.howT">Como funciona</h2></div><div class="grid3" id="fHow"><div class="fc"><span class="num">1</span><b>Responda a 4 perguntas</b><p>Início de atividade, clientes, rendimento esperado, último IRS.</p></div><div class="fc"><span class="num">2</span><b>Veja o seu ano</b><p>Cada data com o que fazer, o que acontece se falhar e a base legal.</p></div><div class="fc"><span class="num">3</span><b>Leve para o calendário</b><p>Um toque e o ano inteiro fica no telemóvel: aviso no dia em que o prazo abre e no último dia.</p></div></div></section>
 <section><div class="sh"><h2 data-t="flyer.whatT">O que encontra</h2></div><div class="grid3" id="fWhat"><div class="fc"><b>«Ainda vai a tempo»</b><p>Falhou uma declaração? O Prazos mostra até quando a pode entregar fora de prazo.</p></div><div class="fc"><b>Dias não úteis</b><p>Prazo ao sábado? Lembra-o na sexta. O IRS de 30 de junho não muda — e o Prazos diz isso.</p></div><div class="fc"><b>Só fontes oficiais</b><p>Cada data verificada no CRC, no Guia Prático da SS, no CIRS e no CIVA. Sem fonte, não entra.</p></div></div></section>
 <section><div class="cta"><div><p class="free" data-t="flyer.ctaT">Grátis. Sem conta. Sem publicidade.</p><p data-t="flyer.cta">As respostas ficam só no seu aparelho.</p></div><a class="btn" href="./" data-nav="app" data-t="flyer.open">Abrir o Prazos</a></div></section>
 <section><p class="plaque" data-t="ui.plaque">O Prazos lembra e explica; não presta consultoria. A decisão é sua. Datas verificadas em 20 de outubro de 2026 nas fontes oficiais (CRC, Guia Prático ISS, CIRS, CIVA). Sem conta, sem publicidade: as suas respostas ficam só neste aparelho.</p></section>

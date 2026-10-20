@@ -102,6 +102,9 @@ section{padding-block:22px}
 .date{font-family:var(--f-mono);text-align:center;line-height:1.1}
 .date .dd{font-size:24px;font-weight:500}
 .date .wd{font-size:12px;color:var(--muted);text-transform:uppercase}
+.date .to{font-size:13px;color:var(--accent-ink);white-space:nowrap}
+.win{font-size:13px;color:var(--muted);margin-top:2px}
+.chip.live{color:var(--on-accent);background:var(--accent)}
 .title{font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .do{margin:4px 0 0}
 .miss{margin:6px 0 0;font-size:14px;color:var(--muted)}

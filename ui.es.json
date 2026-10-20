@@ -1,47 +1,241 @@
 {
- "meta":{"title":"Prazos — Ningún plazo se escapa","desc":"Calendario personal de plazos para autónomos en Portugal: declaraciones y cotizaciones de la Segurança Social, IRS, IVA. Cuatro preguntas, gratis.",
-  "flyerTitle":"Prazos — el calendario de plazos de los recibos verdes","flyerDesc":"Cuatro preguntas y recibe su año de plazos de la Segurança Social y de Hacienda en Portugal, con lo que pasa si falla cada uno. Gratis, sin cuenta."},
- "ui":{"h1":"Ningún plazo se escapa.","lede":"Su calendario personal de plazos de la Segurança Social y de Hacienda en Portugal. Cuatro preguntas, un año entero de fechas — y lo que pasa si falla alguna.","more":"Cómo funciona",
-  "fTitle":"Sus respuestas","sample":"Ejemplo rellenado — cambie las respuestas y el calendario se actualiza.",
-  "q1":"¿Cuándo inició la actividad?","q1h":"Mes de alta de la actividad en Finanças.",
-  "q2":"¿Quiénes son sus clientes?","q2h":"Puede elegir varios.","o2":{"priv":"Particulares en PT","comp":"Empresas en PT","eu":"Clientes en la UE","out":"Fuera de la UE"},
-  "q3":"Ingresos previstos este año","o3":{"low":"hasta 15 000 €","mid":"15 000–18 750 €","high":"más de 18 750 €"},
-  "q4":"¿En el último IRS tuvo impuesto a pagar?","q4h":"De esto dependen los pagos a cuenta.","o4":{"yes":"Sí","no":"No","unk":"No sé"},
-  "tl":"Su año de plazos","ics":"Todo el año al calendario","tg":"Avisos en Telegram · pronto","share":"Enviar a un amigo",
-  "icsNote":"Aquí no se pudo descargar el archivo. Abra prazos.seedwave.pt o añada cada fecha con «Google Calendar».",
-  "next":"Próximo plazo","days":["día","días"],"today":"hoy","none":"Sin plazos en los próximos 12 meses.",
-  "miss":"Si lo falla:","src":"Base","ok":"verificado","wait":"por confirmar","gcal":"Google Calendar",
-  "kind":{"file":"presentar","pay":"pagar","act":"hacer"},"shift":"Cae en día no laborable — hágalo antes del {d}.",
-  "rules":"Reglas siempre vigentes","plaque":"Prazos recuerda y explica; no asesora. La decisión es suya. Fechas verificadas el {v} en fuentes oficiales (CRC, Guía Práctica ISS, CIRS, CIVA). Sin cuenta ni publicidad: sus respuestas se quedan solo en este dispositivo.",
-  "cTitle":"Lo que viene: Contorno IP","tiers":[["Vigía","ahora · gratis","Calendario personal, avisos y «qué pasa si lo falla»."],["Lite","pronto","Acceso de lectura al Portal y al banco: conciliación, alertas, borradores de declaraciones."],["Full","pronto","Presentación en Finanças y en la SS y pagos tras su confirmación. Contable incluido."]],
-  "cta":"¿Conoce a alguien con recibos verdes? Una declaración olvidada cuesta en silencio al menos 20 € al mes. Envíele Prazos.",
-  "copied":"Enlace copiado ✓","shareText":"Prazos — Ningún plazo se escapa. Mi calendario de plazos de la SS y de Hacienda en 4 preguntas:",
-  "q":["4.º trimestre","1.er trimestre","2.º trimestre","3.er trimestre"],"langSoon":"pronto"},
- "ev":{
-  "ssDecl":["Declaración trimestral a la Segurança Social","Declarar los ingresos del {q} de {y} en Segurança Social Direta.","multa de 50–250 € y la SS fija la cotización mínima de 20 €. Aún puede presentarla fuera de plazo hasta el {late}."],
-  "ssDeclJan":["Declaración trimestral + ingresos anuales","Declarar el {q} de {y} y confirmar los ingresos anuales de {y}.","multa de 50–250 €; presentación fuera de plazo hasta el {late}."],
-  "ssLate":["Aún está a tiempo: declaración fuera de plazo","Si se le pasó la declaración de {m}, preséntela con la marca «Fora de Prazo».","después de esta fecha la ventana se cierra hasta la próxima declaración."],
-  "ssPay":["Cotización SS de {m}","Pagar entre los días 10 y 20. Importe en Segurança Social Direta.","intereses de demora; tras 30 días, infracción grave (300–1 200 €)."],
-  "ssTop":["Ajuste anual de la SS","Si la confirmación de enero generó un importe a pagar, páguelo antes de esta fecha.","intereses de demora."],
-  "ssStart":["Fin de la exención del primer año","Desde hoy cotiza a la Segurança Social.","—"],
-  "efat":["Gastos en e-fatura","Asignar las facturas de {y} a la actividad en el Portal das Finanças.","los gastos que falten hasta el 15 % se suman a la base imponible."],
-  "irsOpen":["Se abre el IRS de {y}","Desde hoy puede presentar el Modelo 3 con el Anexo B.","—"],
-  "irsDecl":["IRS de {y}: último día","Presentar el Modelo 3 con el Anexo B (y el Anexo SS anual).","multa según el RGIT. Este plazo no se traslada al siguiente día hábil."],
-  "irsPay":["Pago del IRS de {y}","Si la liquidación salió a pagar, pague antes de esta fecha.","intereses y cobro ejecutivo."],
-  "ppc":["Pago a cuenta del IRS","Solo si la AT le envía el documento (aprox. un mes antes). Por debajo de 50 € no se paga.","intereses."],
-  "ivaAlt":["Paso al IVA","Ingresos por encima de 15 000 € → IVA desde el 1 de enero. Presentar la declaração de alterações.","IVA debido desde el momento en que se superó el límite."],
-  "ivaNow":["IVA inmediato","Más de 18 750 € en el año: IVA desde ese momento; declaración de alteraciones en 15 días hábiles (fecha orientativa).","IVA y multa."]},
- "rl":{
-  "r101b":["Mención en el recibo","Mientras los ingresos no pasen de 15 000 €, escriba en el recibo: {m}. Sin ella, la empresa retiene el 23 %."],
-  "rOver":["Se pierde la exención de retención","Por encima de 15 000 € la exención termina el mes siguiente."],
-  "rFirst":["Primer año de actividad","Exención de cotizaciones hasta el {d}. Compruebe en Segurança Social Direta si está dispensado de las declaraciones trimestrales."],
-  "rRecap":["Clientes en la UE: declaración recapitulativa","Tras los cambios de 2025 la norma es ambigua para el régimen del art. 53. Confírmelo con un contable o con la AT."],
-  "rInv":["Factura para todo","Fatura-recibo el día del pago; fatura hasta el 5.º día hábil; servicios en la UE hasta el día 15 del mes siguiente. Incluye anticipos."],
-  "rIns":["Seguro de accidentes de trabajo","Obligatorio mientras la actividad esté abierta."],
-  "rChg":["Cambios y cese","Cambios: 15 días. Cese de actividad: 30 días."]},
- "flyer":{"kick":"Recibos verdes · régimen simplificado","h1":"El calendario que no deja escapar ningún plazo","lead":"La Segurança Social y Hacienda no avisan. Una declaración olvidada se convierte en cotización mínima, multa e intereses — y se descubre meses después. Prazos le muestra su año entero en cuatro preguntas.",
-  "open":"Abrir Prazos","sample":[["31 OCT","Declaración trimestral a la SS"],["21 DIC","Pago a cuenta del IRS"],["30 JUN","IRS: último día"]],
-  "howT":"Cómo funciona","how":[["Responda 4 preguntas","Inicio de actividad, clientes, ingresos previstos, último IRS."],["Vea su año","Cada fecha con qué hacer, qué pasa si la falla y la base legal."],["Llévelo al calendario","Un toque y todo el año queda en el móvil, con aviso 3 días antes."]],
-  "whatT":"Qué encontrará","what":[["«Aún está a tiempo»","¿Se le pasó una declaración? Prazos le muestra hasta cuándo puede presentarla fuera de plazo."],["Días no laborables","¿Plazo en sábado? Se lo recuerda el viernes. El IRS del 30 de junio no se mueve — y Prazos lo dice."],["Solo fuentes oficiales","Cada fecha verificada en el CRC, la Guía Práctica de la SS, el CIRS y el CIVA. Sin fuente, no entra."]],
-  "ctaT":"Gratis. Sin cuenta. Sin publicidad.","cta":"Las respuestas se quedan solo en su dispositivo."}
+ "meta": {
+  "title": "Prazos — Ningún plazo se escapa",
+  "desc": "Calendario personal de plazos para autónomos en Portugal: declaraciones y cotizaciones de la Segurança Social, IRS, IVA. Cuatro preguntas, gratis.",
+  "flyerTitle": "Prazos — el calendario de plazos de los recibos verdes",
+  "flyerDesc": "Cuatro preguntas y recibe su año de plazos de la Segurança Social y de Hacienda en Portugal, con lo que pasa si falla cada uno. Gratis, sin cuenta."
+ },
+ "ui": {
+  "h1": "Ningún plazo se escapa.",
+  "lede": "Su calendario personal de plazos de la Segurança Social y de Hacienda en Portugal. Cuatro preguntas, un año entero de fechas — y lo que pasa si falla alguna.",
+  "more": "Cómo funciona",
+  "fTitle": "Sus respuestas",
+  "sample": "Ejemplo rellenado — cambie las respuestas y el calendario se actualiza.",
+  "q1": "¿Cuándo inició la actividad?",
+  "q1h": "Mes de alta de la actividad en Finanças.",
+  "q2": "¿Quiénes son sus clientes?",
+  "q2h": "Puede elegir varios.",
+  "o2": {
+   "priv": "Particulares en PT",
+   "comp": "Empresas en PT",
+   "eu": "Clientes en la UE",
+   "out": "Fuera de la UE"
+  },
+  "q3": "Ingresos previstos este año",
+  "o3": {
+   "low": "hasta 15 000 €",
+   "mid": "15 000–18 750 €",
+   "high": "más de 18 750 €"
+  },
+  "q4": "¿En el último IRS tuvo impuesto a pagar?",
+  "q4h": "De esto dependen los pagos a cuenta.",
+  "o4": {
+   "yes": "Sí",
+   "no": "No",
+   "unk": "No sé"
+  },
+  "tl": "Su año de plazos",
+  "ics": "Todo el año al calendario",
+  "tg": "Avisos en Telegram · pronto",
+  "share": "Enviar a un amigo",
+  "icsNote": "Aquí no se pudo descargar el archivo. Abra prazos.seedwave.pt o añada cada fecha con «Google Calendar».",
+  "next": "Próximo plazo",
+  "days": [
+   "día",
+   "días"
+  ],
+  "today": "hoy",
+  "none": "Sin plazos en los próximos 12 meses.",
+  "miss": "Si lo falla:",
+  "src": "Base",
+  "ok": "verificado",
+  "wait": "por confirmar",
+  "gcal": "Google Calendar",
+  "kind": {
+   "file": "presentar",
+   "pay": "pagar",
+   "act": "hacer"
+  },
+  "shift": "Cae en día no laborable — hágalo antes del {d}.",
+  "rules": "Reglas siempre vigentes",
+  "plaque": "Prazos recuerda y explica; no asesora. La decisión es suya. Fechas verificadas el {v} en fuentes oficiales (CRC, Guía Práctica ISS, CIRS, CIVA). Sin cuenta ni publicidad: sus respuestas se quedan solo en este dispositivo.",
+  "cTitle": "Lo que viene: Contorno IP",
+  "tiers": [
+   [
+    "Vigía",
+    "ahora · gratis",
+    "Calendario personal, avisos y «qué pasa si lo falla»."
+   ],
+   [
+    "Lite",
+    "pronto",
+    "Acceso de lectura al Portal y al banco: conciliación, alertas, borradores de declaraciones."
+   ],
+   [
+    "Full",
+    "pronto",
+    "Presentación en Finanças y en la SS y pagos tras su confirmación. Contable incluido."
+   ]
+  ],
+  "cta": "¿Conoce a alguien con recibos verdes? Una declaración olvidada cuesta en silencio al menos 20 € al mes. Envíele Prazos.",
+  "copied": "Enlace copiado ✓",
+  "shareText": "Prazos — Ningún plazo se escapa. Mi calendario de plazos de la SS y de Hacienda en 4 preguntas:",
+  "q": [
+   "4.º trimestre",
+   "1.er trimestre",
+   "2.º trimestre",
+   "3.er trimestre"
+  ],
+  "langSoon": "pronto",
+  "window": "Plazo: del {a} al {b}",
+  "openNow": "abierto",
+  "opens": "abre el {d}",
+  "until": "hasta el {d}",
+  "lastDay": "Último día",
+  "openT": "Abre: {t}"
+ },
+ "ev": {
+  "ssDecl": [
+   "Declaración trimestral a la Segurança Social",
+   "Declarar los ingresos del {q} de {y} en Segurança Social Direta.",
+   "multa de 50–250 € y la SS fija la cotización mínima de 20 €. Aún puede presentarla fuera de plazo hasta el {late}."
+  ],
+  "ssDeclJan": [
+   "Declaración trimestral + ingresos anuales",
+   "Declarar el {q} de {y} y confirmar los ingresos anuales de {y}.",
+   "multa de 50–250 €; presentación fuera de plazo hasta el {late}."
+  ],
+  "ssLate": [
+   "Aún está a tiempo: declaración fuera de plazo",
+   "Si se le pasó la declaración de {m}, preséntela con la marca «Fora de Prazo».",
+   "después de esta fecha la ventana se cierra hasta la próxima declaración."
+  ],
+  "ssPay": [
+   "Cotización SS de {m}",
+   "Pagar entre los días 10 y 20. Importe en Segurança Social Direta.",
+   "intereses de demora; tras 30 días, infracción grave (300–1 200 €)."
+  ],
+  "ssTop": [
+   "Ajuste anual de la SS",
+   "Si la confirmación de enero generó un importe a pagar, páguelo antes de esta fecha.",
+   "intereses de demora."
+  ],
+  "ssStart": [
+   "Fin de la exención del primer año",
+   "Desde hoy cotiza a la Segurança Social.",
+   "—"
+  ],
+  "efat": [
+   "Gastos en e-fatura",
+   "Asignar las facturas de {y} a la actividad en el Portal das Finanças.",
+   "los gastos que falten hasta el 15 % se suman a la base imponible."
+  ],
+  "irsDecl": [
+   "IRS de {y}: presentación",
+   "Presentar el Modelo 3 con el Anexo B (y el Anexo SS anual) entre el 1 de abril y el 30 de junio.",
+   "multa según el RGIT. Este plazo no se traslada al siguiente día hábil."
+  ],
+  "irsPay": [
+   "Pago del IRS de {y}",
+   "Si la liquidación salió a pagar, pague antes de esta fecha.",
+   "intereses y cobro ejecutivo."
+  ],
+  "ppc": [
+   "Pago a cuenta del IRS",
+   "Solo si la AT le envía el documento (aprox. un mes antes). Por debajo de 50 € no se paga.",
+   "intereses."
+  ],
+  "ivaAlt": [
+   "Paso al IVA",
+   "Ingresos por encima de 15 000 € → IVA desde el 1 de enero. Presentar la declaração de alterações.",
+   "IVA debido desde el momento en que se superó el límite."
+  ],
+  "ivaNow": [
+   "IVA inmediato",
+   "Más de 18 750 € en el año: IVA desde ese momento; declaración de alteraciones en 15 días hábiles (fecha orientativa).",
+   "IVA y multa."
+  ]
+ },
+ "rl": {
+  "r101b": [
+   "Mención en el recibo",
+   "Mientras los ingresos no pasen de 15 000 €, escriba en el recibo: {m}. Sin ella, la empresa retiene el 23 %."
+  ],
+  "rOver": [
+   "Se pierde la exención de retención",
+   "Por encima de 15 000 € la exención termina el mes siguiente."
+  ],
+  "rFirst": [
+   "Primer año de actividad",
+   "Exención de cotizaciones hasta el {d}. Compruebe en Segurança Social Direta si está dispensado de las declaraciones trimestrales."
+  ],
+  "rRecap": [
+   "Clientes en la UE: declaración recapitulativa",
+   "Tras los cambios de 2025 la norma es ambigua para el régimen del art. 53. Confírmelo con un contable o con la AT."
+  ],
+  "rInv": [
+   "Factura para todo",
+   "Fatura-recibo el día del pago; fatura hasta el 5.º día hábil; servicios en la UE hasta el día 15 del mes siguiente. Incluye anticipos."
+  ],
+  "rIns": [
+   "Seguro de accidentes de trabajo",
+   "Obligatorio mientras la actividad esté abierta."
+  ],
+  "rChg": [
+   "Cambios y cese",
+   "Cambios: 15 días. Cese de actividad: 30 días."
+  ]
+ },
+ "flyer": {
+  "kick": "Recibos verdes · régimen simplificado",
+  "h1": "El calendario que no deja escapar ningún plazo",
+  "lead": "La Segurança Social y Hacienda no avisan. Una declaración olvidada se convierte en cotización mínima, multa e intereses — y se descubre meses después. Prazos le muestra su año entero en cuatro preguntas.",
+  "open": "Abrir Prazos",
+  "sample": [
+   [
+    "1–31 OCT",
+    "Declaración trimestral a la SS"
+   ],
+   [
+    "10–20 NOV",
+    "Cotización SS"
+   ],
+   [
+    "1 ABR–30 JUN",
+    "Presentación del IRS"
+   ]
+  ],
+  "howT": "Cómo funciona",
+  "how": [
+   [
+    "Responda 4 preguntas",
+    "Inicio de actividad, clientes, ingresos previstos, último IRS."
+   ],
+   [
+    "Vea su año",
+    "Cada fecha con qué hacer, qué pasa si la falla y la base legal."
+   ],
+   [
+    "Llévelo al calendario",
+    "Un toque y todo el año queda en el móvil: aviso el día en que se abre el plazo y el último día."
+   ]
+  ],
+  "whatT": "Qué encontrará",
+  "what": [
+   [
+    "«Aún está a tiempo»",
+    "¿Se le pasó una declaración? Prazos le muestra hasta cuándo puede presentarla fuera de plazo."
+   ],
+   [
+    "Días no laborables",
+    "¿Plazo en sábado? Se lo recuerda el viernes. El IRS del 30 de junio no se mueve — y Prazos lo dice."
+   ],
+   [
+    "Solo fuentes oficiales",
+    "Cada fecha verificada en el CRC, la Guía Práctica de la SS, el CIRS y el CIVA. Sin fuente, no entra."
+   ]
+  ],
+  "ctaT": "Gratis. Sin cuenta. Sin publicidad.",
+  "cta": "Las respuestas se quedan solo en su dispositivo."
+ }
 }
