@@ -83,7 +83,7 @@ window.PRAZOS_CLARA = function (ctx) {
     speechSynthesis.speak(u);
   }
   /* after Clara has spoken: wait for an answer (buttons and nod always; the voice in conversation mode) */
-  function wait() { awaiting = true; if (micOn) setTimeout(listen, 350); }
+  function wait() { awaiting = true; if (micOn) { if (ptt) tapHint(); else setTimeout(listen, 350); } }
   function present(lead) {
     renderLine();
     var text = top ? phrase(top) : touched ? SAY.end : SAY.none;
@@ -150,12 +150,16 @@ window.PRAZOS_CLARA = function (ctx) {
   $("cAgain").onclick = function () { begin(); restart(); };
   function begin() { if (!started) { started = true; $("tapStart").hidden = true; $("cnav").hidden = false; } }
   $("tapStart").onclick = $("orb").onclick = function () {
+    /* push-to-talk: where the phone only lets the microphone start from a touch, a tap on the orb = «I'm speaking» */
+    if (started && micOn && ptt && awaiting && !level.speaking) { listen(true); return; }
     var first = !started; begin();
     if (first && !store.get("prazos.claraHello")) { store.set("prazos.claraHello", "1"); present(SAY.hello); } else present();
   };
 
   /* ---------- voice in: a conversation — after every phrase Clara listens for an answer or a command ---------- */
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, micOn = false, since = 0;
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, micOn = false, since = 0, ptt = false;
+  function tapHint() { $("cheard").textContent = "🎙 " + CL.tapTalk; }
+  function micOff(code) { setMic(false); $("cnote").textContent = CL.micOff; ctx.toast(CL.micOff + (code ? " (" + code + ")" : "")); }
   var CMD = SAY.cmd || {};
   function norm(s) { return " " + s.toLowerCase().replace(/[.,!?¿¡«»"“”„:;]/g, " ").replace(/\s+/g, " ").trim() + " "; }
   function hit(t, words) { return (words || []).some(function (w) { return t.indexOf(" " + w.toLowerCase() + " ") >= 0; }); }
@@ -178,7 +182,7 @@ window.PRAZOS_CLARA = function (ctx) {
     else speak(SAY.unknown, wait);
     return true;
   }
-  function listen() {
+  function listen(byTap) {
     if (!micOn || !SR || !awaiting || rec || level.speaking) return;
     if (!since) since = Date.now();
     var heard = "", acted = false;
@@ -195,10 +199,16 @@ window.PRAZOS_CLARA = function (ctx) {
         rec = null;
         if (!acted && heard.trim()) { acted = true; since = 0; act(heard); return; }   /* iOS sometimes ends without a final result */
         if (!micOn || !awaiting || acted) return;
+        if (ptt) { tapHint(); return; }
         if (Date.now() - since > 25000) { since = 0; $("cheard").textContent = CL.paused; return; }   /* long silence: pause, a tap resumes */
         setTimeout(listen, 250);
       };
-      rec.onerror = function (e) { if (e && (e.error === "not-allowed" || e.error === "service-not-allowed")) { setMic(false); ctx.toast(CL.micErr); } };
+      rec.onerror = function (e) {
+        var c = e && e.error;
+        if (c !== "not-allowed" && c !== "service-not-allowed" && c !== "audio-capture") return;   /* no-speech / aborted: just listen again */
+        if (!byTap && !ptt) { ptt = true; acted = true; tapHint(); return; }   /* started without a touch was refused → switch to tap-to-talk */
+        acted = true; micOff(c);
+      };
       rec.start();
     } catch (e) { rec = null; }
   }

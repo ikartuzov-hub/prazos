@@ -440,6 +440,8 @@
   "again": "Von vorne",
   "back": "Zurück",
   "listening": "Ich höre…",
-  "paused": "Pause. Tippen Sie auf die Kugel, um weiterzumachen."
+  "paused": "Pause. Tippen Sie auf die Kugel, um weiterzumachen.",
+  "tapTalk": "Tippen Sie auf die Kugel und sprechen Sie",
+  "micOff": "Sprache ist nicht verfügbar. Aktivieren Sie das Diktieren (Einstellungen → Allgemein → Tastatur) oder öffnen Sie Clara in Safari."
  }
 }

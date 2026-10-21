@@ -438,6 +438,8 @@
   "again": "Start over",
   "back": "Back",
   "listening": "Listening…",
-  "paused": "Paused. Tap the orb to carry on."
+  "paused": "Paused. Tap the orb to carry on.",
+  "tapTalk": "Tap the orb and speak",
+  "micOff": "Voice isn't available. Turn on Dictation (Settings → General → Keyboard) or open Clara in Safari."
  }
 }

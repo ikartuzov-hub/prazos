@@ -445,6 +445,8 @@
   "again": "Do início",
   "back": "Voltar",
   "listening": "A ouvir…",
-  "paused": "Em pausa. Toque na esfera para continuar."
+  "paused": "Em pausa. Toque na esfera para continuar.",
+  "tapTalk": "Toque na esfera e fale",
+  "micOff": "A voz não está disponível. Ative o Ditado (Definições → Geral → Teclado) ou abra a Clara no Safari."
  }
 }
