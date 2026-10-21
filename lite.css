@@ -81,3 +81,11 @@
 .obCard .btn.primary{justify-content:center;height:52px;font-size:17px}
 
 @media (prefers-reduced-motion:reduce){.cardL,.sheet,.obCard{animation:none;transition:none}.cardL.top{transform:none}}
+
+/* bell: reminders on this phone */
+.bell{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bellBtn{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px dashed var(--accent);background:var(--accent-soft);color:var(--accent-ink);
+  border-radius:16px;padding:12px 14px;font-weight:600;font-size:15px;cursor:pointer;text-align:left}
+.bellBtn.on{border-style:solid;background:transparent;color:var(--ok);border-color:var(--line)}
+.bellBtn .bi{font-size:18px}
+.bellTest{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:12px 14px;font-size:14px;cursor:pointer}

@@ -38,7 +38,7 @@
   },
   "tl": "Su año de plazos",
   "ics": "Todo el año al calendario",
-  "tg": "Avisos en Telegram · pronto",
+  "tg": "Avisarme en este móvil",
   "share": "Enviar a un amigo",
   "icsNote": "Aquí no se pudo descargar el archivo. Abra prazos.seedwave.pt o añada cada fecha con «Google Calendar».",
   "next": "Próximo plazo",
@@ -288,5 +288,21 @@
   "tap": "Toque la tarjeta para ver por qué",
   "ob": "Cuatro toques y listo.",
   "obSub": "Las respuestas se quedan solo en este móvil."
+ },
+ "push": {
+  "on": "Avisarme en este móvil",
+  "onDone": "Avisos activados",
+  "test": "Ver ejemplo",
+  "off": "Desactivar",
+  "installT": "Primero, añádalo a la pantalla de inicio",
+  "installB": "En el iPhone, los avisos solo funcionan desde el icono: toque Compartir ⬆︎ → «Añadir a pantalla de inicio», abra Prazos desde el icono y toque aquí de nuevo.",
+  "denied": "Las notificaciones están bloqueadas. Actívelas en Ajustes → Notificaciones → Prazos.",
+  "unsupported": "Este navegador no admite notificaciones.",
+  "welcomeT": "Prazos le avisará",
+  "welcomeB": "Siguiente: {t} — {d}.",
+  "open": "Abierto hasta el {d}",
+  "last": "Hoy es el último día",
+  "soon": "Dentro de 3 días, {d}",
+  "how": "Aviso el día en que se abre el plazo y el último día, a las 9:00."
  }
 }

@@ -45,6 +45,10 @@
     <div class="left" id="left"></div>
   </div>
 
+  <div class="bell" id="bell" hidden>
+    <button type="button" class="bellBtn" id="bellBtn"><span class="bi" aria-hidden="true">🔔</span><span id="bellTxt"></span></button>
+    <button type="button" class="bellTest" id="bellTest" hidden></button>
+  </div>
   <div class="deck" id="deck" aria-live="polite"></div>
 
   <div class="acts" id="acts">
@@ -57,6 +61,7 @@
     <button type="button" id="answersBtn" data-t="lite.answers"></button>
     <button type="button" id="icsBtn" data-t="ui.ics"></button>
     <button type="button" id="resetBtn" data-t="lite.reset"></button>
+    <button type="button" id="bellOff" hidden data-t="push.off"></button>
   </nav>
 </main>
 
@@ -74,6 +79,8 @@
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 <script src="registry.js"></script>
+<script src="core.js"></script>
+<script src="push.js"></script>
 <script src="lite.js"></script>
 <script src="prazos.js"></script>
 </body>

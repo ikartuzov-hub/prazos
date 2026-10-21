@@ -38,7 +38,7 @@
   },
   "tl": "O seu ano de prazos",
   "ics": "Todo o ano no calendário",
-  "tg": "Lembretes no Telegram · em breve",
+  "tg": "Lembrar neste telemóvel",
   "share": "Enviar a um amigo",
   "icsNote": "Não foi possível descarregar o ficheiro aqui. Abra prazos.seedwave.pt ou adicione cada data com «Google Calendar».",
   "next": "Próximo prazo",
@@ -288,5 +288,21 @@
   "tap": "Toque no cartão para ver porquê",
   "ob": "Quatro toques e pronto.",
   "obSub": "As respostas ficam só neste telemóvel."
+ },
+ "push": {
+  "on": "Lembrar neste telemóvel",
+  "onDone": "Lembretes ativos",
+  "test": "Ver exemplo",
+  "off": "Desligar",
+  "installT": "Primeiro, adicione ao ecrã principal",
+  "installB": "No iPhone, os lembretes só funcionam a partir do ícone: toque em Partilhar ⬆︎ → «Adicionar ao ecrã principal», abra o Prazos a partir do ícone e toque aqui outra vez.",
+  "denied": "As notificações estão bloqueadas. Ative-as em Definições → Notificações → Prazos.",
+  "unsupported": "Este navegador não suporta notificações.",
+  "welcomeT": "O Prazos vai lembrar",
+  "welcomeB": "Próximo: {t} — {d}.",
+  "open": "Aberto até {d}",
+  "last": "Hoje é o último dia",
+  "soon": "Daqui a 3 dias, {d}",
+  "how": "Avisamos no dia em que o prazo abre e no último dia, às 9h."
  }
 }

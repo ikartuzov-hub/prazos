@@ -19,6 +19,7 @@ window.PRAZOS_LITE = function (ctx) {
     queue = R.ev.filter(function (e) {
       var u = uid(e);
       if (done[u]) return false;
+      if (e.id === "ssLate" && (done["ssDecl-" + ymd(e.v.mDate)] || done["ssDeclJan-" + ymd(e.v.mDate)])) return false;
       if (snooze[u] && snooze[u] > t && ymd(e.last) > t) return false;
       return true;
     });
@@ -86,7 +87,7 @@ window.PRAZOS_LITE = function (ctx) {
   }
   $("doneBtn").onclick = function () {
     if (!top) return; var u = uid(top);
-    advance("out", function () { var d = readJSON("prazos.done"); d[u] = ymd(today); store.set("prazos.done", JSON.stringify(d)); });
+    advance("out", function () { var d = readJSON("prazos.done"); d[u] = ymd(today); store.set("prazos.done", JSON.stringify(d)); if (window.PrazosPush) window.PrazosPush.sync(ctx.lang); });
   };
   $("laterBtn").onclick = function () {
     if (!top) return; var u = uid(top), tm = new Date(today); tm.setDate(tm.getDate() + 1);
@@ -145,9 +146,50 @@ window.PRAZOS_LITE = function (ctx) {
     };
     c.onchange = null;
   }
-  function finish() { A = ob.a; store.set("prazos.answers", JSON.stringify(A)); $("ob").hidden = true; rebuild(); renderDeck(); }
+  function finish() { A = ob.a; store.set("prazos.answers", JSON.stringify(A)); $("ob").hidden = true; rebuild(); renderDeck(); if (window.PrazosPush) window.PrazosPush.sync(ctx.lang); }
   $("answersBtn").onclick = function () { ob.step = 0; ob.a = JSON.parse(JSON.stringify(A)); $("ob").hidden = false; obRender(); };
   $("laterBtn").textContent = LT.later; $("doneBtn").textContent = LT.done + " ✓";
+
+
+  /* ---------- bell: reminders on this phone ---------- */
+  var PP = window.PrazosPush, PL = L.push;
+  function nextMain() { return R.ev.filter(function (e) { return !e.light; })[0] || R.ev[0]; }
+  function welcome() {
+    var e = top || nextMain(); if (!e) return;
+    var n = window.PrazosCore.notify(e, e.isOpen ? "open" : "date", L, CAL, ctx.lang);
+    PP.show(PL.welcomeT, PL.welcomeB.replace("{t}", LT.short[e.id] || "").replace("{d}", n.body.split(" · ")[0]) + " " + PL.how, n.url, "prazos-welcome");
+  }
+  function example() {
+    var e = top || nextMain(); if (!e) return;
+    var why = e.last && ymd(e.last) === ymd(today) ? "last" : e.isOpen ? "open" : "soon";
+    var n = window.PrazosCore.notify(e, why, L, CAL, ctx.lang);
+    PP.show(n.title, n.body, n.url, n.tag);
+  }
+  function renderBell() {
+    if (!PP || ctx.prerender) return;
+    var st = PP.status(), b = $("bellBtn");
+    $("bell").hidden = st === "unsupported";
+    b.classList.toggle("on", st === "on");
+    $("bellTxt").textContent = st === "on" ? PL.onDone : PL.on;
+    $("bellTest").hidden = st !== "on"; $("bellTest").textContent = PL.test;
+    $("bellOff").hidden = st !== "on";
+  }
+  function info(title, text) {
+    $("sheetBody").innerHTML = "<h2>" + esc(title) + "</h2><p>" + esc(text) + '</p><div class="sb"><button class="btn primary" type="button" id="sheetClose">OK</button></div>';
+    $("sheet").hidden = false; $("dim").hidden = false; $("sheetClose").onclick = closeSheet; $("dim").onclick = closeSheet;
+  }
+  if (PP && !ctx.prerender) {
+    $("bellBtn").onclick = function () {
+      var st = PP.status();
+      if (st === "install") return info(PL.installT, PL.installB);
+      if (st === "denied") return info(PL.on, PL.denied);
+      if (st === "on") return example();
+      PP.enable(ctx.lang).then(function () { renderBell(); welcome(); }, function () { info(PL.on, PL.denied); renderBell(); });
+    };
+    $("bellTest").onclick = example;
+    $("bellOff").onclick = function () { PP.disable(ctx.lang).then(renderBell, renderBell); };
+    PP.sync(ctx.lang);
+  }
 
   /* ---------- boot ---------- */
   try { var s0 = JSON.parse(store.get("prazos.answers") || "null"); if (s0 && s0.start) A = s0; } catch (e) {}
@@ -158,4 +200,13 @@ window.PRAZOS_LITE = function (ctx) {
     A = JSON.parse(JSON.stringify(CAL.sample)); rebuild(); renderDeck();
     $("ob").hidden = false; obRender();
   }
+  renderBell();
+  /* opened from a notification: bring that card to the top and explain it */
+  function fromHash() {
+    var h = (location.hash || "").slice(1); if (!h) return;
+    var i = queue.map(uid).indexOf(h);
+    if (i > 0) { queue.unshift(queue.splice(i, 1)[0]); top = queue[0]; renderDeck(); }
+    if (i >= 0) openSheet(queue[0]);
+  }
+  fromHash(); window.addEventListener("hashchange", fromHash);
 };

@@ -38,7 +38,7 @@
   },
   "tl": "Ihr Fristenjahr",
   "ics": "Ganzes Jahr in den Kalender",
-  "tg": "Telegram-Erinnerungen · bald",
+  "tg": "Auf diesem Handy erinnern",
   "share": "An Freunde senden",
   "icsNote": "Die Datei ließ sich hier nicht herunterladen. Öffnen Sie prazos.seedwave.pt oder fügen Sie jeden Termin über „Google Calendar“ hinzu.",
   "next": "Nächste Frist",
@@ -288,5 +288,21 @@
   "tap": "Karte antippen, um zu sehen, warum",
   "ob": "Vier Tipps, fertig.",
   "obSub": "Die Antworten bleiben nur auf diesem Handy."
+ },
+ "push": {
+  "on": "Auf diesem Handy erinnern",
+  "onDone": "Erinnerungen an",
+  "test": "Beispiel zeigen",
+  "off": "Ausschalten",
+  "installT": "Zuerst zum Home-Bildschirm hinzufügen",
+  "installB": "Auf dem iPhone funktionieren Erinnerungen nur über das Symbol: Teilen ⬆︎ → „Zum Home-Bildschirm“, Prazos über das Symbol öffnen und hier erneut tippen.",
+  "denied": "Mitteilungen sind blockiert. Aktivieren unter Einstellungen → Mitteilungen → Prazos.",
+  "unsupported": "Dieser Browser unterstützt keine Mitteilungen.",
+  "welcomeT": "Prazos erinnert Sie",
+  "welcomeB": "Als Nächstes: {t} — {d}.",
+  "open": "Offen bis {d}",
+  "last": "Heute ist der letzte Tag",
+  "soon": "In 3 Tagen, {d}",
+  "how": "Erinnerung, wenn die Frist beginnt, und am letzten Tag, um 9:00."
  }
 }

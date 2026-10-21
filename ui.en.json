@@ -38,7 +38,7 @@
   },
   "tl": "Your year of deadlines",
   "ics": "Whole year to calendar",
-  "tg": "Telegram reminders · soon",
+  "tg": "Remind me on this phone",
   "share": "Send to a friend",
   "icsNote": "The file could not be downloaded here. Open prazos.seedwave.pt or add each date with “Google Calendar”.",
   "next": "Next deadline",
@@ -288,5 +288,21 @@
   "tap": "Tap the card to see why",
   "ob": "Four taps and you're set.",
   "obSub": "Your answers stay on this phone only."
+ },
+ "push": {
+  "on": "Remind me on this phone",
+  "onDone": "Reminders on",
+  "test": "Show example",
+  "off": "Turn off",
+  "installT": "First, add to Home Screen",
+  "installB": "On iPhone, reminders only work from the icon: tap Share ⬆︎ → “Add to Home Screen”, open Prazos from the icon and tap here again.",
+  "denied": "Notifications are blocked. Turn them on in Settings → Notifications → Prazos.",
+  "unsupported": "This browser does not support notifications.",
+  "welcomeT": "Prazos will remind you",
+  "welcomeB": "Next: {t} — {d}.",
+  "open": "Open until {d}",
+  "last": "Today is the last day",
+  "soon": "In 3 days, {d}",
+  "how": "An alert when each window opens and on the last day, at 9:00."
  }
 }

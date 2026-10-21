@@ -1,0 +1,33 @@
+name: Prazos — напоминания (пуши)
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 09:00 UTC = 09:00 на Мадейре зимой, 10:00 летом
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "daily — по календарю; test — прислать ближайшее напоминание сейчас"
+        default: "test"
+        type: choice
+        options: [test, daily]
+      only_id:
+        description: "id подписки (pz_…), пусто — всем"
+        required: false
+        default: ""
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm install --no-audit --no-fund
+        working-directory: push
+      - run: node send.mjs
+        working-directory: push
+        env:
+          TZ: Atlantic/Madeira
+          PRAZOS_FEED: ${{ secrets.PRAZOS_FEED }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          MODE: ${{ github.event.inputs.mode || 'daily' }}
+          ONLY_ID: ${{ github.event.inputs.only_id || '' }}

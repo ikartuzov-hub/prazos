@@ -61,7 +61,7 @@
 
 <section>
   <div class="sh"><h2 data-t="ui.tl"></h2>
-    <div class="btns"><button class="btn primary" id="icsBtn" type="button" data-t="ui.ics"></button><button class="btn" type="button" disabled data-t="ui.tg"></button><button class="btn js-share" type="button" data-t="ui.share"></button></div>
+    <div class="btns"><button class="btn primary" id="icsBtn" type="button" data-t="ui.ics"></button><button class="btn" type="button" id="bellBtn"><span aria-hidden="true">🔔</span> <span id="bellTxt" data-t="ui.tg"></span></button><button class="btn js-share" type="button" data-t="ui.share"></button></div>
   </div>
   <p class="note" id="icsNote" data-t="ui.icsNote" hidden></p>
   <div id="timeline"></div>
@@ -88,6 +88,8 @@
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 <script src="registry.js"></script>
+<script src="core.js"></script>
+<script src="push.js"></script>
 <script src="prazos.js"></script>
 </body>
 </html>
