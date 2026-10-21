@@ -7,7 +7,9 @@
   "liteTitle": "Prazos Lite — nur das Wesentliche",
   "liteDesc": "Die Handy-Version: eine Frist nach der anderen, Datum, Betrag, wo – und zwei Tasten. Erklärungen nur auf Tipp.",
   "claraTitle": "Prazos Clara — die Stimme Ihrer Fristen",
-  "claraDesc": "Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken."
+  "claraDesc": "Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken.",
+  "fullTitle": "Prazos Full — Demo: nur Zahlen und ein „Ja“",
+  "fullDesc": "So sieht Prazos aus, wenn Bank, Finanças und Segurança Social verbunden sind: drei Quellen abgeglichen, exakte Beträge und eine Frage pro Karte — einreichen? zahlen? Demo am echten Fall des Autors, 2026."
  },
  "ui": {
   "h1": "Keine Frist rutscht durch.",
@@ -99,7 +101,8 @@
   "openT": "Öffnet: {t}",
   "modeFull": "Voll",
   "modeLite": "Lite",
-  "modeClara": "Clara"
+  "modeClara": "Clara",
+  "modeDemo": "Full"
  },
  "ev": {
   "ssDecl": [
@@ -490,5 +493,99 @@
   "paused": "Pause. Tippen Sie auf die Kugel, um weiterzumachen.",
   "tapTalk": "Tippen Sie auf die Kugel und sprechen Sie",
   "micOff": "Sprache ist nicht verfügbar. Aktivieren Sie das Diktieren (Einstellungen → Allgemein → Tastatur) oder öffnen Sie Clara in Safari."
+ },
+ "full": {
+  "h1": "Full · nur Zahlen.",
+  "banner": "Demo am echten Fall des Autors (Selbständiger, 2026). Nichts wird gesendet — „Ja“ zeigt, was geschehen würde.",
+  "connected": "Verbunden",
+  "ok": "abgeglichen",
+  "recon": "Recibos {y}: {total} = Bankeingänge. Differenz 0 €.",
+  "reconBad": "Bei der Segurança Social gemeldet: {declared} von {total}.",
+  "src": {
+   "bank": "Bank",
+   "at": "Finanças",
+   "ss": "SS"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Finanças-Portal"
+  },
+  "kind": {
+   "file": "einreichen",
+   "pay": "zahlen",
+   "act": "erledigen"
+  },
+  "sumL": "Betrag",
+  "whereL": "Wo",
+  "baseL": "Grundlage",
+  "whenL": "Wann",
+  "no": "Nein",
+  "yes": "Ja",
+  "q": [
+   "4. Quartal",
+   "1. Quartal",
+   "2. Quartal",
+   "3. Quartal"
+  ],
+  "steps": {
+   "recibo": {
+    "what": "{sum} von {client} eingegangen",
+    "sub": "Rechnung bezahlt — Recibo noch nicht ausgestellt",
+    "ask": "Recibo bei den Finanças ausstellen?",
+    "base": "CIRS Art. 115: ein Recibo für jeden erhaltenen Betrag",
+    "done": "Recibo ausgestellt · Nr. {n}"
+   },
+   "ssPay": {
+    "what": "SS-Beitrag für Oktober",
+    "sub": "Basis: Erklärung {q} — {base}. 21,4 % × 70 % ÷ 3",
+    "ask": "Zahlen?",
+    "base": "CRC Art. 162–164, 168",
+    "done": "Bezahlt · Referenz {n}"
+   },
+   "flagQ1": {
+    "what": "{q}: gemeldet {declared}, laut Recibos {real}",
+    "sub": "Gezahlt {paid} im Monat, fällig {due}. Fehlbetrag {sum}",
+    "ask": "Im Januar korrigieren (Substituir)?",
+    "base": "Abgleich Finanças ↔ SS: der März-Recibo fehlte",
+    "done": "Im Januar-Plan · Substituir {q}"
+   },
+   "flagQ2": {
+    "what": "{q}: Erklärung nicht eingereicht",
+    "sub": "Die SS setzte stillschweigend {paid} im Monat, fällig {due}. Fehlbetrag {sum}",
+    "ask": "Registar für Januar einplanen?",
+    "base": "CRC Art. 151-A: nur im Januar-Fenster",
+    "done": "Im Januar-Plan · Registar {q}"
+   },
+   "jan": {
+    "what": "Januar 2027: Erklärung {q} + zwei Korrekturen",
+    "sub": "Nachzahlung {sum} bis {pay}. Sonst — versteckte Schuld und Bußgeld 50–250 €",
+    "ask": "Im Januar einreichen und zahlen?",
+    "base": "CRC Art. 151-A Abs. 5; ISS-Leitfaden F4",
+    "done": "Notiert · Erinnerung am 1. Januar"
+   }
+  },
+  "receipt": "Demo-Beleg",
+  "receiptNote": "Nichts wurde gesendet. Im Full stünde hier der echte Comprovativo.",
+  "clara": "Clara liest die Karte",
+  "allT": "Versteckte Schuld — 0 €",
+  "all": "Alle Differenzen gefunden und im Plan notiert. Nächster Ruf — {d}.",
+  "again": "Noch einmal",
+  "ahead": "Als Nächstes",
+  "aheadN": "{n} Schritte",
+  "dirT": "Richtung",
+  "dirSub": "Was Full nach der Demo hinzufügt",
+  "dir": [
+   [
+    "📷",
+    "Foto des Briefs → Karte",
+    "Brief von AT oder SS fotografieren — Sekunden später eine Karte „Datum · Betrag · wo“, Clara erklärt sie in Ihrer Sprache."
+   ],
+   [
+    "🐷",
+    "Sparschwein",
+    "Eine Zahl auf dem Bildschirm: heute {d} zurücklegen — und die nächsten {n} Fristen, {sum}, sind entspannt gedeckt."
+   ]
+  ],
+  "say": "Vorlesen"
  }
 }

@@ -1,0 +1,30 @@
+{
+ "id": "/full.html",
+ "name": "Prazos Full",
+ "short_name": "Prazos Full",
+ "description": "Como fica o Prazos com o banco, as Finanças e a Segurança Social ligados: conferência de três fontes, valores exatos e uma pergunta por cartão — entrego? pago? Demo com o caso real do autor, 2026.",
+ "lang": "pt-PT",
+ "start_url": "/full.html",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-lite-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

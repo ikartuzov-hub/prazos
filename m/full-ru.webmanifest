@@ -1,0 +1,30 @@
+{
+ "id": "/ru/full.html",
+ "name": "Prazos Full",
+ "short_name": "Prazos Full",
+ "description": "Как выглядит Prazos, когда подключены банк, Finanças и Segurança Social: сверка трёх источников, точные суммы и один вопрос на карточке — подаю? оплачиваю? Демо на живом кейсе автора, 2026.",
+ "lang": "ru",
+ "start_url": "/ru/full.html",
+ "scope": "/ru/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-lite-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

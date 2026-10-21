@@ -1,0 +1,24 @@
+{
+  "_": "Prazos Full — demo on the author's own 2026 case (decision of Igor, 21.10.2026). Figures from the bank/recibos/SS reconciliation of 19.10.2026; contribution formula CRC art. 162–164: 21.4 % × 70 % of the quarter's income ÷ 3, minimum 20 €. Nothing here is sent anywhere.",
+  "asOf": "2026-10-21",
+  "year": 2026,
+  "rate": 0.214,
+  "share": 0.7,
+  "min": 20,
+  "sources": { "bank": "Novo Banco", "at": "Finanças", "ss": "Segurança Social" },
+  "recibos": { "total": 6230, "clients": 3, "bankMatch": true },
+  "declared": 2000,
+  "steps": [
+    { "id": "recibo", "kind": "act",  "where": "at", "sum": 130,    "v": { "client": "Resto" } },
+    { "id": "ssPay",  "kind": "pay",  "where": "ss", "sum": 49.93,  "open": "2026-11-10", "last": "2026-11-20", "v": { "q": 3, "base": 1000 } },
+    { "id": "flagQ1", "kind": "file", "where": "ss", "sum": 209.73, "v": { "q": 1, "declared": 1000, "real": 2400, "paid": 49.93, "due": 119.84 } },
+    { "id": "flagQ2", "kind": "file", "where": "ss", "sum": 363.93, "v": { "q": 2, "declared": 0, "real": 2830, "paid": 20, "due": 141.31 } },
+    { "id": "jan",    "kind": "file", "where": "ss", "sum": 573.66, "open": "2027-01-01", "last": "2027-01-29", "pay": "2027-02-20", "v": { "q": 4 } }
+  ],
+  "ahead": [
+    { "date": "2026-11-20", "sum": 49.93 },
+    { "date": "2026-12-21", "sum": 49.93 },
+    { "date": "2027-01-20", "sum": 49.93 },
+    { "date": "2027-02-20", "sum": 573.66 }
+  ]
+}

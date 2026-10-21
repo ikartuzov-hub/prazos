@@ -6,7 +6,8 @@ import json, os, re, sys, glob, html as H
 REG = json.load(open("manifest.json", encoding="utf-8"))
 SITE, LANGS = REG["site"], REG["langs"]
 HL = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
-PAGES = {"": ("ui.h1", "meta.title"), "flyer.html": ("flyer.h1", "meta.flyerTitle"), "lite.html": ("lite.h1", "meta.liteTitle"), "clara.html": ("clara.h1", "meta.claraTitle")}
+PAGES = {"": ("ui.h1", "meta.title"), "flyer.html": ("flyer.h1", "meta.flyerTitle"), "lite.html": ("lite.h1", "meta.liteTitle"), "clara.html": ("clara.h1", "meta.claraTitle"), "full.html": ("full.h1", "meta.fullTitle")}
+NOINDEX = {"full.html"}
 UI = {l: json.load(open("ui.%s.json" % l, encoding="utf-8")) for l in LANGS}
 CAL = json.load(open("data/calendar.json", encoding="utf-8"))
 bad = []
@@ -45,20 +46,25 @@ for page, (h1key, tkey) in PAGES.items():
         if sorted(hre) != sorted([HL[x] for x in LANGS] + ["x-default"]): bad.append("%s: hreflang %s" % (tag, hre))
         for img in re.findall(r"<img[^>]*>", h):
             if not re.search(r'alt="[^"]+"', img): bad.append("%s: img без alt" % tag)
-        if len(text_of(h)) < {"lite.html": 600, "clara.html": 250}.get(page, 1000): bad.append("%s: текста без JS мало (%d)" % (tag, len(text_of(h))))
+        if len(text_of(h)) < {"lite.html": 600, "clara.html": 250, "full.html": 400}.get(page, 1000): bad.append("%s: текста без JS мало (%d)" % (tag, len(text_of(h))))
         if re.search(r'<meta property="og:url" content="([^"]*)"', h).group(1) != url: bad.append("%s: og:url" % tag)
         if "PRAZOS_PRERENDER" in h: bad.append("%s: флаг пререндера попал в страницу" % tag)
         if l != "pt" and '<base href="../">' not in h: bad.append("%s: нет base" % tag)
-        app = {"lite.html": "lite", "clara.html": "clara"}.get(page, "app")
+        app = {"lite.html": "lite", "clara.html": "clara", "full.html": "full"}.get(page, "app")
         mh = re.search(r'<link rel="manifest" href="([^"]*)"', h).group(1)
         if mh != "m/%s-%s.webmanifest" % (app, l) or not os.path.exists(mh): bad.append("%s: манифест %s" % (tag, mh))
         else:
             mj = json.load(open(mh, encoding="utf-8"))
-            if mj["start_url"] != "/" + ("" if l == "pt" else l + "/") + {"lite": "lite.html", "clara": "clara.html"}.get(app, ""): bad.append("%s: start_url %s" % (tag, mj["start_url"]))
+            if mj["start_url"] != "/" + ("" if l == "pt" else l + "/") + {"lite": "lite.html", "clara": "clara.html", "full": "full.html"}.get(app, ""): bad.append("%s: start_url %s" % (tag, mj["start_url"]))
+        if page in NOINDEX and '<meta name="robots" content="noindex">' not in h: bad.append("%s: нет noindex" % tag)
+        if page not in NOINDEX and 'content="noindex"' in h: bad.append("%s: noindex на публичной странице" % tag)
         if page == "lite.html" and ('apple-touch-icon-lite.png' not in h or 'content="Prazos Lite"' not in h): bad.append("%s: иконка/имя Лайта" % tag)
 
 sm = open("sitemap.xml").read()
-if sm.count("<loc>") != len(PAGES) * len(LANGS): bad.append("sitemap: %d <loc>" % sm.count("<loc>"))
+for p in NOINDEX:
+    if p in sm: bad.append("sitemap: %s не должен быть в карте" % p)
+    if "Disallow: /%s" % p not in open("robots.txt").read(): bad.append("robots.txt: нет Disallow для %s" % p)
+if sm.count("<loc>") != (len(PAGES) - len(NOINDEX)) * len(LANGS): bad.append("sitemap: %d <loc>" % sm.count("<loc>"))
 
 for f in ["CNAME", "robots.txt", "manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "og-image.png", "icon.svg", "sw.js", "registry.js"]:
     if not os.path.exists(f): bad.append("нет файла %s" % f)

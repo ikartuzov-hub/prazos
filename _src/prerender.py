@@ -12,9 +12,10 @@ REG = json.load(open(os.path.join(ROOT, "manifest.json"), encoding="utf-8"))
 SITE, LANGS = REG["site"], REG["langs"]
 HTML_LANG = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
 OG_LOCALE = {"pt": "pt_PT", "en": "en_GB", "ru": "ru_RU", "es": "es_ES", "de": "de_DE"}
-PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc"), "clara.html": ("meta.claraTitle", "meta.claraDesc")}
+PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc"), "clara.html": ("meta.claraTitle", "meta.claraDesc"), "full.html": ("meta.fullTitle", "meta.fullDesc")}
+NOINDEX = {"full.html"}   # the demo tier: open by link, not for search engines
 TODAY = datetime.date.today().isoformat()
-APP_OF = {"": "app", "flyer.html": "app", "lite.html": "lite", "clara.html": "clara"}
+APP_OF = {"": "app", "flyer.html": "app", "lite.html": "lite", "clara.html": "clara", "full.html": "full"}
 
 
 def write_manifests():
@@ -23,13 +24,13 @@ def write_manifests():
     for lang in LANGS:
         ui = json.load(open(os.path.join(ROOT, "ui.%s.json" % lang), encoding="utf-8"))
         base = "/" if lang == "pt" else "/%s/" % lang
-        for app in ("app", "lite", "clara"):
-            start = base + {"app": "", "lite": "lite.html", "clara": "clara.html"}[app]
-            sfx = {"app": "", "lite": "-lite", "clara": "-clara"}[app]
-            name = {"app": "Prazos", "lite": "Prazos Lite", "clara": ui["clara"]["name"]}[app]
+        for app in ("app", "lite", "clara", "full"):
+            start = base + {"app": "", "lite": "lite.html", "clara": "clara.html", "full": "full.html"}[app]
+            sfx = {"app": "", "lite": "-lite", "clara": "-clara", "full": "-lite"}[app]
+            name = {"app": "Prazos", "lite": "Prazos Lite", "clara": ui["clara"]["name"], "full": "Prazos Full"}[app]
             m = {
                 "id": start, "name": name, "short_name": name,
-                "description": ui["meta"][{"app": "desc", "lite": "liteDesc", "clara": "claraDesc"}[app]], "lang": HTML_LANG[lang],
+                "description": ui["meta"][{"app": "desc", "lite": "liteDesc", "clara": "claraDesc", "full": "fullDesc"}[app]], "lang": HTML_LANG[lang],
                 "start_url": start, "scope": base, "display": "standalone",
                 "background_color": "#05080F" if app == "clara" else "#0E1524", "theme_color": "#05080F" if app == "clara" else "#0E1524",
                 "icons": [{"src": "/icon%s-192.png" % sfx, "sizes": "192x192", "type": "image/png"},
@@ -135,6 +136,8 @@ async def main():
                 pg.on("pageerror", lambda e: errs.append(str(e)))
                 await pg.goto("http://127.0.0.1:%d/%s" % (port, page or "index.html"))
                 await pg.wait_for_selector("html[data-ready]", timeout=20000)
+                if page == "full.html":
+                    await pg.wait_for_selector("html[data-demo]", timeout=20000)
                 await pg.wait_for_timeout(300)
                 if errs:
                     raise SystemExit("JS error on %s/%s: %s" % (lang, page, errs))
@@ -152,6 +155,8 @@ async def main():
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for page in PAGES:
+        if page in NOINDEX:
+            continue
         for lang in LANGS:
             sm.append("  <url><loc>%s</loc><lastmod>%s</lastmod>" % (url_of(page, lang), TODAY))
             for l in LANGS:
@@ -160,9 +165,10 @@ async def main():
             sm.append("  </url>")
     sm.append("</urlset>")
     open(os.path.join(ROOT, "sitemap.xml"), "w").write("\n".join(sm) + "\n")
-    open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n" % SITE)
+    dis = "".join("Disallow: /%s\nDisallow: /*/%s\n" % (p, p) for p in sorted(NOINDEX))
+    open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nAllow: /\n%s\nSitemap: %ssitemap.xml\n" % (dis, SITE))
     write_manifests()
-    print("prerender: %d адресов, %d манифестов" % (len(out), 3 * len(LANGS)))
+    print("prerender: %d адресов, %d манифестов" % (len(out), 4 * len(LANGS)))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,48 @@
+/* Prazos Full — the demo tier. Lite's deck and card (lite.css), plus: the demo banner, «connected» row, amount as the big number,
+   the question on the card, the demo receipt, the «direction» slides. */
+.full .brand .lt{font-weight:500;color:var(--accent-ink)}
+.demoBar{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.35;color:var(--accent-ink);background:var(--accent-soft);
+  border:1px dashed var(--accent);border-radius:16px;padding:10px 14px;margin:-2px 0 2px}
+.demoBar .dot{flex:none;width:10px;height:10px;margin-top:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)}
+.conn{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.conn .cn{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 9px;font-size:13px}
+.conn .cn i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 28%,transparent)}
+.conn .cn b{font-weight:600}.conn .cn small{color:var(--muted);font-size:12px}
+.conn .cok{margin-left:auto;font-family:var(--f-mono);font-size:12px;color:var(--ok)}
+.recon{font-size:13px;line-height:1.4;margin:-4px 0 0}
+.recon .g{color:var(--ok)}.recon .w{color:var(--warn);font-weight:600}
+.aheadRow{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:-6px 0 -8px}
+
+/* the big number is the amount; the window (when there is one) keeps Lite's river */
+.cardL .big.sum{font-size:clamp(38px,12vw,60px);letter-spacing:-.02em}
+.full .deck{height:min(470px,64vh)}
+.full .cardL{overflow:hidden}
+.full .cardL .facts{margin-top:6px}
+.full .cardL .facts.one{grid-template-columns:1fr}
+.cardL .ask{margin-top:auto;padding-top:6px;font-family:var(--f-display);font-weight:500;font-size:17px;color:var(--accent-ink);text-wrap:balance}
+.cardL .what{margin-top:2px}
+.cardL .shiftL{color:var(--muted)}
+.full .acts{grid-template-columns:1fr 1.6fr}
+.full .act.done{background:var(--accent)}
+
+/* demo receipt */
+.rc{font-family:var(--f-mono);border:1px dashed var(--line);border-radius:16px;padding:14px 16px;background:color-mix(in srgb,var(--bg) 60%,transparent)}
+.rc .rcT{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rc .rcL{font-family:var(--f-display);font-weight:500;font-size:18px;margin:4px 0 10px;color:var(--ok);text-wrap:balance}
+.rc .rcRow{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:5px 0;border-top:1px solid var(--line)}
+.rc .rcRow b{font-weight:500;text-align:right}
+.rc .note{font-family:var(--f-body);font-size:12px;color:var(--muted);margin:10px 0 0}
+
+.empty.fin b{color:var(--ok)}
+.empty.fin .btn{margin-top:6px}
+
+/* direction slides */
+.dirT{margin:26px 0 2px;font-family:var(--f-display);font-weight:500;font-size:16px}
+.dirSub{margin:0 0 10px;font-size:13px;color:var(--muted)}
+.dir{display:grid;gap:10px}
+@media (min-width:520px){.dir{grid-template-columns:1fr 1fr}}
+.dcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px 14px 54px;font-size:14px;line-height:1.4}
+.dcard .dic{position:absolute;left:14px;top:13px;font-size:24px}
+.dcard b{display:block;font-weight:600;margin-bottom:3px}
+.dcard p{margin:0;color:var(--muted)}
+.dcard::after{content:"→";position:absolute;right:12px;top:10px;font-family:var(--f-mono);font-size:11px;color:var(--accent-ink);opacity:.8}

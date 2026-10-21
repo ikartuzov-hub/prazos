@@ -1,6 +1,6 @@
 /* Prazos — offline: network-first for everything, last good copy kept for offline use. */
-var V = "prazos-v14";
-var SHELL = ["./", "flyer.html", "lite.html", "lite.css", "lite.js", "clara.html", "clara.css", "clara.js", "prazos.css", "prazos.js", "core.js", "push.js", "registry.js", "icon.svg", "data/calendar.json",
+var V = "prazos-v15";
+var SHELL = ["./", "flyer.html", "lite.html", "lite.css", "lite.js", "clara.html", "clara.css", "clara.js", "full.html", "full.css", "full.js", "data/demo.json", "prazos.css", "prazos.js", "core.js", "push.js", "registry.js", "icon.svg", "data/calendar.json",
   "ui.pt.json", "ui.en.json", "ui.ru.json", "ui.es.json", "ui.de.json"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(V).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));

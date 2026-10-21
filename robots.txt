@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /full.html
+Disallow: /*/full.html
 
 Sitemap: https://prazos.seedwave.pt/sitemap.xml

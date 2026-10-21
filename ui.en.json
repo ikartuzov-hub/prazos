@@ -7,7 +7,9 @@
   "liteTitle": "Prazos Lite — just the essentials",
   "liteDesc": "The phone version: one deadline at a time, date, amount, where — and two buttons. Explanations only when you tap.",
   "claraTitle": "Prazos Clara — the voice of your deadlines",
-  "claraDesc": "The third version of Prazos: Clara says the deadline out loud and waits for your “yes” — a tap, your voice or a nod."
+  "claraDesc": "The third version of Prazos: Clara says the deadline out loud and waits for your “yes” — a tap, your voice or a nod.",
+  "fullTitle": "Prazos Full — demo: just the numbers and a “yes”",
+  "fullDesc": "What Prazos looks like with the bank, Finanças and Segurança Social connected: three sources reconciled, exact amounts and one question per card — file? pay? Demo on the author's real 2026 case."
  },
  "ui": {
   "h1": "No deadline slips by.",
@@ -99,7 +101,8 @@
   "openT": "Opens: {t}",
   "modeFull": "Full",
   "modeLite": "Lite",
-  "modeClara": "Clara"
+  "modeClara": "Clara",
+  "modeDemo": "Full"
  },
  "ev": {
   "ssDecl": [
@@ -488,5 +491,99 @@
   "paused": "Paused. Tap the orb to carry on.",
   "tapTalk": "Tap the orb and speak",
   "micOff": "Voice isn't available. Turn on Dictation (Settings → General → Keyboard) or open Clara in Safari."
+ },
+ "full": {
+  "h1": "Full · just the numbers.",
+  "banner": "Demo on the author's real case (sole trader, 2026). Nothing is sent anywhere — “Yes” shows what would be done.",
+  "connected": "Connected",
+  "ok": "reconciled",
+  "recon": "Recibos {y}: {total} = bank receipts. Difference 0 €.",
+  "reconBad": "Declared to Segurança Social: {declared} of {total}.",
+  "src": {
+   "bank": "Bank",
+   "at": "Finanças",
+   "ss": "SS"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Finanças portal"
+  },
+  "kind": {
+   "file": "file",
+   "pay": "pay",
+   "act": "do"
+  },
+  "sumL": "Amount",
+  "whereL": "Where",
+  "baseL": "Basis",
+  "whenL": "When",
+  "no": "No",
+  "yes": "Yes",
+  "q": [
+   "Q4",
+   "Q1",
+   "Q2",
+   "Q3"
+  ],
+  "steps": {
+   "recibo": {
+    "what": "{sum} received from {client}",
+    "sub": "Invoice paid — recibo not issued yet",
+    "ask": "Issue the recibo in Finanças?",
+    "base": "CIRS art. 115: a recibo for every amount received",
+    "done": "Recibo issued · no. {n}"
+   },
+   "ssPay": {
+    "what": "SS contribution for October",
+    "sub": "Base: {q} declaration — {base}. 21.4 % × 70 % ÷ 3",
+    "ask": "Pay it?",
+    "base": "CRC art. 162–164, 168",
+    "done": "Paid · reference {n}"
+   },
+   "flagQ1": {
+    "what": "{q}: declared {declared}, recibos say {real}",
+    "sub": "Paid {paid} a month, should be {due}. Shortfall {sum}",
+    "ask": "Fix in January (Substituir)?",
+    "base": "Finanças ↔ SS check: the March recibo was missed",
+    "done": "On the January plan · Substituir {q}"
+   },
+   "flagQ2": {
+    "what": "{q}: declaration never filed",
+    "sub": "SS quietly set {paid} a month, should be {due}. Shortfall {sum}",
+    "ask": "Schedule Registar for January?",
+    "base": "CRC art. 151-A: only the January window",
+    "done": "On the January plan · Registar {q}"
+   },
+   "jan": {
+    "what": "January 2027: {q} declaration + two fixes",
+    "sub": "Top-up of {sum} by {pay}. Otherwise — hidden debt and a 50–250 € fine",
+    "ask": "File and pay in January?",
+    "base": "CRC art. 151-A (5); ISS guide F4",
+    "done": "Noted · reminder on 1 January"
+   }
+  },
+  "receipt": "Demo receipt",
+  "receiptNote": "Nothing was sent. In Full, the real comprovativo would be here.",
+  "clara": "Clara reads the card",
+  "allT": "Hidden debt — 0 €",
+  "all": "Every difference found and put on the plan. Next call — {d}.",
+  "again": "Run it again",
+  "ahead": "Ahead",
+  "aheadN": "{n} steps",
+  "dirT": "Direction",
+  "dirSub": "What Full adds after the demo",
+  "dir": [
+   [
+    "📷",
+    "Photo of a letter → card",
+    "Snap the letter from AT or SS — seconds later a “date · amount · where” card, and Clara explains it in your language."
+   ],
+   [
+    "🐷",
+    "Piggy bank",
+    "One number on screen: set aside {d} today — and the next {n} deadlines, {sum}, are covered calmly."
+   ]
+  ],
+  "say": "Read aloud"
  }
 }

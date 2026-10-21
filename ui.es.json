@@ -7,7 +7,9 @@
   "liteTitle": "Prazos Lite — solo lo esencial",
   "liteDesc": "La versión para el móvil: un plazo cada vez, fecha, importe, dónde — y dos botones. Explicaciones solo al tocar.",
   "claraTitle": "Prazos Clara — la voz de sus plazos",
-  "claraDesc": "La tercera versión de Prazos: Clara dice el plazo en voz alta y espera su «sí» — con un toque, con la voz o asintiendo."
+  "claraDesc": "La tercera versión de Prazos: Clara dice el plazo en voz alta y espera su «sí» — con un toque, con la voz o asintiendo.",
+  "fullTitle": "Prazos Full — demo: solo cifras y un «sí»",
+  "fullDesc": "Así es Prazos con el banco, Finanças y la Segurança Social conectados: tres fuentes conciliadas, importes exactos y una pregunta por tarjeta — ¿presento? ¿pago? Demo con el caso real del autor, 2026."
  },
  "ui": {
   "h1": "Ningún plazo se escapa.",
@@ -99,7 +101,8 @@
   "openT": "Abre: {t}",
   "modeFull": "Completa",
   "modeLite": "Lite",
-  "modeClara": "Clara"
+  "modeClara": "Clara",
+  "modeDemo": "Full"
  },
  "ev": {
   "ssDecl": [
@@ -496,5 +499,99 @@
   "paused": "En pausa. Toque la esfera para seguir.",
   "tapTalk": "Toque la esfera y hable",
   "micOff": "La voz no está disponible. Active el Dictado (Ajustes → General → Teclado) o abra Clara en Safari."
+ },
+ "full": {
+  "h1": "Full · solo cifras.",
+  "banner": "Demo con el caso real del autor (autónomo, 2026). No se envía nada — «Sí» muestra lo que se haría.",
+  "connected": "Conectado",
+  "ok": "conciliado",
+  "recon": "Recibos {y}: {total} = ingresos en el banco. Diferencia 0 €.",
+  "reconBad": "Declarado a la Segurança Social: {declared} de {total}.",
+  "src": {
+   "bank": "Banco",
+   "at": "Finanças",
+   "ss": "SS"
+  },
+  "where": {
+   "ss": "Segurança Social Direta",
+   "at": "Portal das Finanças"
+  },
+  "kind": {
+   "file": "presentar",
+   "pay": "pagar",
+   "act": "hacer"
+  },
+  "sumL": "Importe",
+  "whereL": "Dónde",
+  "baseL": "Base",
+  "whenL": "Cuándo",
+  "no": "No",
+  "yes": "Sí",
+  "q": [
+   "4.º trim.",
+   "1.º trim.",
+   "2.º trim.",
+   "3.º trim."
+  ],
+  "steps": {
+   "recibo": {
+    "what": "Han entrado {sum} de {client}",
+    "sub": "Factura pagada — recibo aún no emitido",
+    "ask": "¿Emitir el recibo en Finanças?",
+    "base": "CIRS art. 115: un recibo por cada importe cobrado",
+    "done": "Recibo emitido · n.º {n}"
+   },
+   "ssPay": {
+    "what": "Cuota SS de octubre",
+    "sub": "Base: declaración del {q} — {base}. 21,4 % × 70 % ÷ 3",
+    "ask": "¿Pago?",
+    "base": "CRC art. 162–164, 168",
+    "done": "Pagado · referencia {n}"
+   },
+   "flagQ1": {
+    "what": "{q}: declarado {declared}, en recibos {real}",
+    "sub": "Pagó {paid} al mes, correspondían {due}. Falta {sum}",
+    "ask": "¿Corregir en enero (Substituir)?",
+    "base": "Conciliación Finanças ↔ SS: faltó el recibo de marzo",
+    "done": "En el plan de enero · Substituir {q}"
+   },
+   "flagQ2": {
+    "what": "{q}: declaración no presentada",
+    "sub": "La SS fijó {paid} al mes en silencio, correspondían {due}. Falta {sum}",
+    "ask": "¿Programar Registar en enero?",
+    "base": "CRC art. 151-A: solo en la ventana de enero",
+    "done": "En el plan de enero · Registar {q}"
+   },
+   "jan": {
+    "what": "Enero 2027: declaración del {q} + dos correcciones",
+    "sub": "Ajuste de {sum} hasta el {pay}. Sin esto — deuda oculta y multa de 50–250 €",
+    "ask": "¿Presento y pago en enero?",
+    "base": "CRC art. 151-A ap. 5; guía ISS F4",
+    "done": "Anotado · aviso el 1 de enero"
+   }
+  },
+  "receipt": "Justificante de demo",
+  "receiptNote": "No se ha enviado nada. En Full aquí estaría el comprovativo real.",
+  "clara": "Clara lee la tarjeta",
+  "allT": "Deuda oculta — 0 €",
+  "all": "Todas las diferencias encontradas y anotadas en el plan. Próximo aviso — {d}.",
+  "again": "Repetir",
+  "ahead": "A continuación",
+  "aheadN": "{n} pasos",
+  "dirT": "Dirección",
+  "dirSub": "Lo que Full añade después de la demo",
+  "dir": [
+   [
+    "📷",
+    "Foto de la carta → tarjeta",
+    "Fotografía la carta de la AT o la SS — en segundos una tarjeta «fecha · importe · dónde», y Clara la explica en tu idioma."
+   ],
+   [
+    "🐷",
+    "Hucha",
+    "Una cifra en pantalla: aparta hoy {d} — y los próximos {n} plazos, {sum}, quedan cubiertos con calma."
+   ]
+  ],
+  "say": "Leer en voz alta"
  }
 }
