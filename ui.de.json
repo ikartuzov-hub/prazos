@@ -292,7 +292,7 @@
  "push": {
   "on": "Auf diesem Handy erinnern",
   "onDone": "Erinnerungen an",
-  "test": "Beispiel zeigen",
+  "test": "Beispiel",
   "off": "Ausschalten",
   "installT": "Zuerst zum Home-Bildschirm hinzufügen",
   "installB": "Auf dem iPhone funktionieren Erinnerungen nur über das Symbol: Teilen ⬆︎ → „Zum Home-Bildschirm“, Prazos über das Symbol öffnen und hier erneut tippen.",

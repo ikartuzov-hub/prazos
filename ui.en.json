@@ -292,7 +292,7 @@
  "push": {
   "on": "Remind me on this phone",
   "onDone": "Reminders on",
-  "test": "Show example",
+  "test": "Example",
   "off": "Turn off",
   "installT": "First, add to Home Screen",
   "installB": "On iPhone, reminders only work from the icon: tap Share ⬆︎ → “Add to Home Screen”, open Prazos from the icon and tap here again.",

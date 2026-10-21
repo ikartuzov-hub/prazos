@@ -292,7 +292,7 @@
  "push": {
   "on": "Lembrar neste telemóvel",
   "onDone": "Lembretes ativos",
-  "test": "Ver exemplo",
+  "test": "Exemplo",
   "off": "Desligar",
   "installT": "Primeiro, adicione ao ecrã principal",
   "installB": "No iPhone, os lembretes só funcionam a partir do ícone: toque em Partilhar ⬆︎ → «Adicionar ao ecrã principal», abra o Prazos a partir do ícone e toque aqui outra vez.",

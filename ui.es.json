@@ -292,7 +292,7 @@
  "push": {
   "on": "Avisarme en este móvil",
   "onDone": "Avisos activados",
-  "test": "Ver ejemplo",
+  "test": "Ejemplo",
   "off": "Desactivar",
   "installT": "Primero, añádalo a la pantalla de inicio",
   "installB": "En el iPhone, los avisos solo funcionan desde el icono: toque Compartir ⬆︎ → «Añadir a pantalla de inicio», abra Prazos desde el icono y toque aquí de nuevo.",
