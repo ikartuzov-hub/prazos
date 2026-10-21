@@ -6,8 +6,9 @@ from playwright.async_api import async_playwright
 ROOT = os.getcwd()
 def font(f): return "data:font/woff2;base64," + base64.b64encode(open(os.path.join(ROOT, "fonts", f), "rb").read()).decode()
 MARK = '<path d="M24 46V16h11a9.5 9.5 0 0 1 0 19H24" fill="none" stroke="{c}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 53c6.5-4 13-4 19.5 0s13 4 19.5 0" fill="none" stroke="{c}" stroke-width="3.5" stroke-linecap="round"/>'
-def tile(size):
-    return f'<html><body style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 64 64"><rect width="64" height="64" fill="#D9890B"/><g transform="translate(6.4 5.6) scale(.8)">{MARK.format(c="#1B1200")}</g></svg></body></html>'
+def tile(size, lite=False):
+    bg, fg = ("#13203A", "#F2B33D") if lite else ("#D9890B", "#1B1200")
+    return f'<html><body style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 64 64"><rect width="64" height="64" fill="{bg}"/><g transform="translate(6.4 5.6) scale(.8)">{MARK.format(c=fg)}</g></svg></body></html>'
 def dial():
     import math
     s = '<svg width="360" height="360" viewBox="0 0 260 260"><circle cx="130" cy="130" r="118" fill="#162034" stroke="#28354E" stroke-width="2"/>'
@@ -31,9 +32,10 @@ p{{font-size:40px;margin:26px 0 0;color:#E8EDF6}} .s{{font:500 26px M,monospace;
 async def main():
     async with async_playwright() as pw:
         b = await pw.chromium.launch()
-        for name, size in [("apple-touch-icon.png", 180), ("icon-192.png", 192), ("icon-512.png", 512)]:
+        for name, size, lite in [("apple-touch-icon.png", 180, False), ("icon-192.png", 192, False), ("icon-512.png", 512, False),
+                                 ("apple-touch-icon-lite.png", 180, True), ("icon-lite-192.png", 192, True), ("icon-lite-512.png", 512, True)]:
             pg = await b.new_page(viewport={"width": size, "height": size})
-            await pg.set_content(tile(size)); await pg.screenshot(path=name)
+            await pg.set_content(tile(size, lite)); await pg.screenshot(path=name)
         pg = await b.new_page(viewport={"width": 1200, "height": 630})
         await pg.set_content(OG); await pg.wait_for_timeout(300); await pg.screenshot(path="og-image.png")
         await b.close()

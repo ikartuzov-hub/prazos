@@ -14,6 +14,29 @@ HTML_LANG = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
 OG_LOCALE = {"pt": "pt_PT", "en": "en_GB", "ru": "ru_RU", "es": "es_ES", "de": "de_DE"}
 PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc")}
 TODAY = datetime.date.today().isoformat()
+APP_OF = {"": "app", "flyer.html": "app", "lite.html": "lite"}
+
+
+def write_manifests():
+    """Static manifests: m/app-{lang} → /{lang}/ ; m/lite-{lang} → /{lang}/lite.html. Distinct id, name, icons."""
+    os.makedirs(os.path.join(ROOT, "m"), exist_ok=True)
+    for lang in LANGS:
+        ui = json.load(open(os.path.join(ROOT, "ui.%s.json" % lang), encoding="utf-8"))
+        base = "/" if lang == "pt" else "/%s/" % lang
+        for app in ("app", "lite"):
+            lite = app == "lite"
+            start = base + ("lite.html" if lite else "")
+            sfx = "-lite" if lite else ""
+            m = {
+                "id": start, "name": "Prazos Lite" if lite else "Prazos", "short_name": "Prazos Lite" if lite else "Prazos",
+                "description": ui["meta"]["liteDesc" if lite else "desc"], "lang": HTML_LANG[lang],
+                "start_url": start, "scope": base, "display": "standalone",
+                "background_color": "#0E1524", "theme_color": "#0E1524",
+                "icons": [{"src": "/icon%s-192.png" % sfx, "sizes": "192x192", "type": "image/png"},
+                          {"src": "/icon%s-512.png" % sfx, "sizes": "512x512", "type": "image/png"},
+                          {"src": "/icon%s-512.png" % sfx, "sizes": "512x512", "type": "image/png", "purpose": "maskable"}],
+            }
+            open(os.path.join(ROOT, "m", "%s-%s.webmanifest" % (app, lang)), "w", encoding="utf-8").write(json.dumps(m, ensure_ascii=False, indent=1))
 CAL = json.load(open(os.path.join(ROOT, "data/calendar.json"), encoding="utf-8"))
 
 
@@ -63,6 +86,7 @@ def head_fix(html, page, lang, ui):
     html = re.sub(r'<base href="[^"]*">', "", html)
     html = re.sub(r'<script>window\.PRAZOS_LANG="[a-z]{2}";</script>', "", html)
     html = html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n' + boot, 1)
+    html = re.sub(r'<link rel="manifest" href="[^"]*">', '<link rel="manifest" href="m/%s-%s.webmanifest">' % (APP_OF[page], lang), html, count=1)
     html = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', "", html, flags=re.S)
     ld = {
         "@context": "https://schema.org", "@type": "WebApplication" if page == "" else "WebPage",
@@ -137,7 +161,8 @@ async def main():
     sm.append("</urlset>")
     open(os.path.join(ROOT, "sitemap.xml"), "w").write("\n".join(sm) + "\n")
     open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n" % SITE)
-    print("prerender: %d адресов" % len(out))
+    write_manifests()
+    print("prerender: %d адресов, %d манифестов" % (len(out), 2 * len(LANGS)))
 
 
 if __name__ == "__main__":

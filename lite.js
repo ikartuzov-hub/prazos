@@ -126,22 +126,26 @@ window.PRAZOS_LITE = function (ctx) {
     };
     if (s === 0) h += "<h2>" + esc(U.q1) + '</h2><p class="sub">' + esc(U.q1h) + '</p><input type="month" id="obStart" min="2015-01" max="' + today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + '" value="' + esc(ob.a.start) + '"><button class="btn primary" type="button" id="obNext">' + esc(LT.cont) + "</button>";
     if (s === 1) h += "<h2>" + esc(U.q2) + '</h2><p class="sub">' + esc(U.q2h) + "</p>" + tapOpts("clients", U.o2, "checkbox", ob.a.clients) + '<button class="btn primary" type="button" id="obNext">' + esc(LT.cont) + "</button>";
-    if (s === 2) h += "<h2>" + esc(U.q3) + "</h2>" + tapOpts("income", U.o3, "radio", ob.a.income);
-    if (s === 3) h += "<h2>" + esc(U.q4) + '</h2><p class="sub">' + esc(U.q4h) + "</p>" + tapOpts("irs", U.o4, "radio", ob.a.irs);
+    if (s === 2) h += "<h2>" + esc(U.q3) + "</h2>" + tapOpts("income", U.o3, "radio", ob.a.income) + '<button class="btn primary" type="button" id="obNext">' + esc(LT.cont) + "</button>";
+    if (s === 3) h += "<h2>" + esc(U.q4) + '</h2><p class="sub">' + esc(U.q4h) + "</p>" + tapOpts("irs", U.o4, "radio", ob.a.irs) + '<button class="btn primary" type="button" id="obNext">' + esc(LT.start) + "</button>";
     var c = $("obCard"); c.innerHTML = h; c.style.animation = "none"; void c.offsetWidth; c.style.animation = "";
     var next = $("obNext");
     if (next) next.onclick = function () {
       if (s === 0) { var v = $("obStart").value; if (!v) { $("obStart").focus(); return; } ob.a.start = v; }
       if (s === 1) ob.a.clients = [].map.call(c.querySelectorAll("input[name=clients]:checked"), function (i) { return i.value; });
+      if (s === 2 || s === 3) { var r = c.querySelector("input[type=radio]:checked"); if (r) ob.a[r.name] = r.value; }
+      if (s === 3) { finish(); return; }
       ob.step++; obRender();
     };
-    c.onchange = function (ev) {
-      var i = ev.target; if (i.type !== "radio") return;
+    /* a tap on any option — even the one already selected — answers and moves on */
+    c.onclick = function (ev) {
+      var i = ev.target; if (!i.matches || !i.matches("input[type=radio]")) return;
       ob.a[i.name] = i.value;
-      if (s === 3) { A = ob.a; store.set("prazos.answers", JSON.stringify(A)); $("ob").hidden = true; rebuild(); renderDeck(); }
-      else { ob.step++; obRender(); }
+      setTimeout(function () { if (s === 3) finish(); else { ob.step++; obRender(); } }, 160);
     };
+    c.onchange = null;
   }
+  function finish() { A = ob.a; store.set("prazos.answers", JSON.stringify(A)); $("ob").hidden = true; rebuild(); renderDeck(); }
   $("answersBtn").onclick = function () { ob.step = 0; ob.a = JSON.parse(JSON.stringify(A)); $("ob").hidden = false; obRender(); };
   $("laterBtn").textContent = LT.later; $("doneBtn").textContent = LT.done + " ✓";
 

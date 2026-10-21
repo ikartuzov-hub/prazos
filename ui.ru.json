@@ -96,7 +96,8 @@
   "until": "до {d}",
   "lastDay": "Последний день",
   "openT": "Открылось: {t}",
-  "liteLink": "Лайт-версия"
+  "modeFull": "Полная",
+  "modeLite": "Лайт"
  },
  "ev": {
   "ssDecl": [

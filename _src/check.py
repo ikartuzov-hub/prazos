@@ -49,6 +49,13 @@ for page, (h1key, tkey) in PAGES.items():
         if re.search(r'<meta property="og:url" content="([^"]*)"', h).group(1) != url: bad.append("%s: og:url" % tag)
         if "PRAZOS_PRERENDER" in h: bad.append("%s: флаг пререндера попал в страницу" % tag)
         if l != "pt" and '<base href="../">' not in h: bad.append("%s: нет base" % tag)
+        app = "lite" if page == "lite.html" else "app"
+        mh = re.search(r'<link rel="manifest" href="([^"]*)"', h).group(1)
+        if mh != "m/%s-%s.webmanifest" % (app, l) or not os.path.exists(mh): bad.append("%s: манифест %s" % (tag, mh))
+        else:
+            mj = json.load(open(mh, encoding="utf-8"))
+            if mj["start_url"] != "/" + ("" if l == "pt" else l + "/") + ("lite.html" if app == "lite" else ""): bad.append("%s: start_url %s" % (tag, mj["start_url"]))
+        if page == "lite.html" and ('apple-touch-icon-lite.png' not in h or 'content="Prazos Lite"' not in h): bad.append("%s: иконка/имя Лайта" % tag)
 
 sm = open("sitemap.xml").read()
 if sm.count("<loc>") != len(PAGES) * len(LANGS): bad.append("sitemap: %d <loc>" % sm.count("<loc>"))

@@ -1,0 +1,30 @@
+{
+ "id": "/de/lite.html",
+ "name": "Prazos Lite",
+ "short_name": "Prazos Lite",
+ "description": "Die Handy-Version: eine Frist nach der anderen, Datum, Betrag, wo – und zwei Tasten. Erklärungen nur auf Tipp.",
+ "lang": "de",
+ "start_url": "/de/lite.html",
+ "scope": "/de/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-lite-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

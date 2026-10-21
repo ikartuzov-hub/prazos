@@ -1,0 +1,30 @@
+{
+ "id": "/es/",
+ "name": "Prazos",
+ "short_name": "Prazos",
+ "description": "Calendario personal de plazos para autónomos en Portugal: declaraciones y cotizaciones de la Segurança Social, IRS, IVA. Cuatro preguntas, gratis.",
+ "lang": "es",
+ "start_url": "/es/",
+ "scope": "/es/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

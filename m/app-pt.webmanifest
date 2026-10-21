@@ -1,0 +1,30 @@
+{
+ "id": "/",
+ "name": "Prazos",
+ "short_name": "Prazos",
+ "description": "Calendário pessoal de prazos para trabalhadores independentes em Portugal: declarações e contribuições da Segurança Social, IRS, IVA. Quatro perguntas, grátis.",
+ "lang": "pt-PT",
+ "start_url": "/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

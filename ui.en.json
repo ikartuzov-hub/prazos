@@ -95,7 +95,8 @@
   "until": "until {d}",
   "lastDay": "Last day",
   "openT": "Opens: {t}",
-  "liteLink": "Lite version"
+  "modeFull": "Full",
+  "modeLite": "Lite"
  },
  "ev": {
   "ssDecl": [

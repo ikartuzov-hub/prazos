@@ -1,0 +1,30 @@
+{
+ "id": "/ru/lite.html",
+ "name": "Prazos Lite",
+ "short_name": "Prazos Lite",
+ "description": "Версия для телефона: один срок за раз, дата, сумма, куда — и две кнопки. Пояснения только по касанию.",
+ "lang": "ru",
+ "start_url": "/ru/lite.html",
+ "scope": "/ru/",
+ "display": "standalone",
+ "background_color": "#0E1524",
+ "theme_color": "#0E1524",
+ "icons": [
+  {
+   "src": "/icon-lite-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-lite-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
