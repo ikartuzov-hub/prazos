@@ -5,7 +5,9 @@
   "flyerTitle": "Prazos — el calendario de plazos de los recibos verdes",
   "flyerDesc": "Cuatro preguntas y recibe su año de plazos de la Segurança Social y de Hacienda en Portugal, con lo que pasa si falla cada uno. Gratis, sin cuenta.",
   "liteTitle": "Prazos Lite — solo lo esencial",
-  "liteDesc": "La versión para el móvil: un plazo cada vez, fecha, importe, dónde — y dos botones. Explicaciones solo al tocar."
+  "liteDesc": "La versión para el móvil: un plazo cada vez, fecha, importe, dónde — y dos botones. Explicaciones solo al tocar.",
+  "claraTitle": "Prazos Clara — la voz de sus plazos",
+  "claraDesc": "La tercera versión de Prazos: Clara dice el plazo en voz alta y espera su «sí» — con un toque, con la voz o asintiendo."
  },
  "ui": {
   "h1": "Ningún plazo se escapa.",
@@ -96,7 +98,8 @@
   "lastDay": "Último día",
   "openT": "Abre: {t}",
   "modeFull": "Completa",
-  "modeLite": "Lite"
+  "modeLite": "Lite",
+  "modeClara": "Clara"
  },
  "ev": {
   "ssDecl": [
@@ -304,5 +307,59 @@
   "last": "Hoy es el último día",
   "soon": "Dentro de 3 días, {d}",
   "how": "Aviso el día en que se abre el plazo y el último día, a las 9:00."
+ },
+ "clara": {
+  "name": "Clara",
+  "h1": "Clara, la voz de sus plazos",
+  "tap": "Toque y Clara habla",
+  "yes": "Sí",
+  "later": "Luego",
+  "mic": "Responder con la voz",
+  "cam": "Responder asintiendo",
+  "camOn": "Mirando su gesto · el vídeo se queda en el móvil",
+  "hint": "Asentir = sí · negar = luego",
+  "heard": "He oído: {w}",
+  "none": "Todo al día. Le aviso cuando se abra el próximo plazo.",
+  "future": "Hoy «sí» lo marca como hecho. Con el Contorno IP, «sí» = presentar y pagar.",
+  "noAnswers": "Primero, cuatro preguntas",
+  "start": "Responder",
+  "camErr": "La cámara no está disponible aquí.",
+  "micErr": "Este navegador no reconoce la voz.",
+  "say": {
+   "open": "{what}. Abierto hasta el {date}. {where}. {amount}. ¿Ya está hecho?",
+   "last": "{what}. Hoy es el último día. {where}. {amount}. ¿Ya está hecho?",
+   "soon": "{what}. La fecha es el {date}. {where}. {amount}. ¿Ya está hecho?",
+   "hello": "Hola, soy Clara. Le recordaré sus plazos.",
+   "ok": "Perfecto. Marcado como hecho.",
+   "okNext": "Perfecto. Siguiente: {what}, {date}.",
+   "later": "De acuerdo. Se lo recuerdo mañana.",
+   "none": "Todo está al día.",
+   "where": {
+    "ss": "En Segurança Social Direta",
+    "at": "En el portal de Finanças",
+    "efat": "En e-fatura"
+   },
+   "amount": {
+    "min20": "Mínimo veinte euros",
+    "ge50": "Solo si son cincuenta euros o más",
+    "calc": "El importe viene en la notificación",
+    "none": "Sin pago",
+    "info": ""
+   },
+   "yes": [
+    "sí",
+    "si",
+    "vale",
+    "hecho",
+    "ok",
+    "claro"
+   ],
+   "no": [
+    "luego",
+    "no",
+    "después",
+    "mañana"
+   ]
+  }
  }
 }

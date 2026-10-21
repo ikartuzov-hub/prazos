@@ -19,7 +19,7 @@
   var lang = window.PRAZOS_LANG || document.documentElement.getAttribute("data-lang") || "pt";
   var want = qs.get("lang") || (window.PRAZOS_LANG ? null : store.get("prazos.lang"));
   function langHref(l) {
-    var file = PAGE === "flyer" ? "flyer.html" : PAGE === "lite" ? "lite.html" : "";
+    var file = PAGE === "flyer" ? "flyer.html" : PAGE === "lite" ? "lite.html" : PAGE === "clara" ? "clara.html" : "";
     var t = document.documentElement.getAttribute("data-theme");
     return (l === "pt" ? "./" : l + "/") + file + (t ? "?theme=" + t : "");
   }
@@ -180,7 +180,7 @@
     $("yr").textContent = new Date().getFullYear();
     [].forEach.call(document.querySelectorAll("a[data-nav]"), function (a) {
       var nv = a.getAttribute("data-nav");
-      a.setAttribute("href", (lang === "pt" ? "./" : lang + "/") + (nv === "flyer" ? "flyer.html" : nv === "lite" ? "lite.html" : ""));
+      a.setAttribute("href", (lang === "pt" ? "./" : lang + "/") + (nv === "flyer" ? "flyer.html" : nv === "lite" ? "lite.html" : nv === "clara" ? "clara.html" : ""));
     });
     [].forEach.call(document.querySelectorAll("[data-t]"), function (el) {
       var v = el.getAttribute("data-t").split(".").reduce(function (o, k) { return o && o[k]; }, L);
@@ -297,8 +297,9 @@
     today = D(now.getFullYear(), now.getMonth(), now.getDate());
     renderChrome(); bindChrome();
     if (PAGE === "flyer") { renderFlyer(); }
-    else if (PAGE === "lite") {
-      window.PRAZOS_LITE({ L: L, U: U, CAL: CAL, today: today, lang: lang, site: REG.site, store: store, toast: toast, esc: esc, fmt: fmt, fd: fd, span: span,
+    else if (PAGE === "lite" || PAGE === "clara") {
+      store.set("prazos.mode", PAGE);
+      (PAGE === "clara" ? window.PRAZOS_CLARA : window.PRAZOS_LITE)({ L: L, U: U, CAL: CAL, today: today, lang: lang, site: REG.site, store: store, toast: toast, esc: esc, fmt: fmt, fd: fd, span: span,
         working: working, texts: texts, gcal: gcal, blockStart: blockStart, prerender: !!window.PRAZOS_PRERENDER,
         build: function (a) { return build(a, today, CAL); }, ics: function (r) { R = r; return ics(); } });
     }

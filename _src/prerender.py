@@ -12,9 +12,9 @@ REG = json.load(open(os.path.join(ROOT, "manifest.json"), encoding="utf-8"))
 SITE, LANGS = REG["site"], REG["langs"]
 HTML_LANG = {"pt": "pt-PT", "en": "en", "ru": "ru", "es": "es", "de": "de"}
 OG_LOCALE = {"pt": "pt_PT", "en": "en_GB", "ru": "ru_RU", "es": "es_ES", "de": "de_DE"}
-PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc")}
+PAGES = {"": ("meta.title", "meta.desc"), "flyer.html": ("meta.flyerTitle", "meta.flyerDesc"), "lite.html": ("meta.liteTitle", "meta.liteDesc"), "clara.html": ("meta.claraTitle", "meta.claraDesc")}
 TODAY = datetime.date.today().isoformat()
-APP_OF = {"": "app", "flyer.html": "app", "lite.html": "lite"}
+APP_OF = {"": "app", "flyer.html": "app", "lite.html": "lite", "clara.html": "clara"}
 
 
 def write_manifests():
@@ -23,15 +23,15 @@ def write_manifests():
     for lang in LANGS:
         ui = json.load(open(os.path.join(ROOT, "ui.%s.json" % lang), encoding="utf-8"))
         base = "/" if lang == "pt" else "/%s/" % lang
-        for app in ("app", "lite"):
-            lite = app == "lite"
-            start = base + ("lite.html" if lite else "")
-            sfx = "-lite" if lite else ""
+        for app in ("app", "lite", "clara"):
+            start = base + {"app": "", "lite": "lite.html", "clara": "clara.html"}[app]
+            sfx = {"app": "", "lite": "-lite", "clara": "-clara"}[app]
+            name = {"app": "Prazos", "lite": "Prazos Lite", "clara": ui["clara"]["name"]}[app]
             m = {
-                "id": start, "name": "Prazos Lite" if lite else "Prazos", "short_name": "Prazos Lite" if lite else "Prazos",
-                "description": ui["meta"]["liteDesc" if lite else "desc"], "lang": HTML_LANG[lang],
+                "id": start, "name": name, "short_name": name,
+                "description": ui["meta"][{"app": "desc", "lite": "liteDesc", "clara": "claraDesc"}[app]], "lang": HTML_LANG[lang],
                 "start_url": start, "scope": base, "display": "standalone",
-                "background_color": "#0E1524", "theme_color": "#0E1524",
+                "background_color": "#05080F" if app == "clara" else "#0E1524", "theme_color": "#05080F" if app == "clara" else "#0E1524",
                 "icons": [{"src": "/icon%s-192.png" % sfx, "sizes": "192x192", "type": "image/png"},
                           {"src": "/icon%s-512.png" % sfx, "sizes": "512x512", "type": "image/png"},
                           {"src": "/icon%s-512.png" % sfx, "sizes": "512x512", "type": "image/png", "purpose": "maskable"}],
@@ -162,7 +162,7 @@ async def main():
     open(os.path.join(ROOT, "sitemap.xml"), "w").write("\n".join(sm) + "\n")
     open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n" % SITE)
     write_manifests()
-    print("prerender: %d адресов, %d манифестов" % (len(out), 2 * len(LANGS)))
+    print("prerender: %d адресов, %d манифестов" % (len(out), 3 * len(LANGS)))
 
 
 if __name__ == "__main__":

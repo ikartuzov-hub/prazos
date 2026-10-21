@@ -9,6 +9,11 @@ MARK = '<path d="M24 46V16h11a9.5 9.5 0 0 1 0 19H24" fill="none" stroke="{c}" st
 def tile(size, lite=False):
     bg, fg = ("#13203A", "#F2B33D") if lite else ("#D9890B", "#1B1200")
     return f'<html><body style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 64 64"><rect width="64" height="64" fill="{bg}"/><g transform="translate(6.4 5.6) scale(.8)">{MARK.format(c=fg)}</g></svg></body></html>'
+def orb(size):
+    return f'''<html><body style="margin:0;background:#05080F"><svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 100 100">
+<defs><radialGradient id="a" cx="50%" cy="44%" r="50%"><stop offset="0" stop-color="#FFF1D2"/><stop offset=".35" stop-color="#FFD07A"/><stop offset=".7" stop-color="#F2B33D" stop-opacity=".55"/><stop offset="1" stop-color="#F2B33D" stop-opacity="0"/></radialGradient>
+<radialGradient id="b" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#1A2440"/><stop offset="1" stop-color="#05080F"/></radialGradient></defs>
+<rect width="100" height="100" fill="url(#b)"/><circle cx="50" cy="50" r="40" fill="url(#a)"/><circle cx="50" cy="48" r="17" fill="#FFF4DC" opacity=".55"/></svg></body></html>'''
 def dial():
     import math
     s = '<svg width="360" height="360" viewBox="0 0 260 260"><circle cx="130" cy="130" r="118" fill="#162034" stroke="#28354E" stroke-width="2"/>'
@@ -33,9 +38,10 @@ async def main():
     async with async_playwright() as pw:
         b = await pw.chromium.launch()
         for name, size, lite in [("apple-touch-icon.png", 180, False), ("icon-192.png", 192, False), ("icon-512.png", 512, False),
-                                 ("apple-touch-icon-lite.png", 180, True), ("icon-lite-192.png", 192, True), ("icon-lite-512.png", 512, True)]:
+                                 ("apple-touch-icon-lite.png", 180, True), ("icon-lite-192.png", 192, True), ("icon-lite-512.png", 512, True),
+                                 ("apple-touch-icon-clara.png", 180, "clara"), ("icon-clara-192.png", 192, "clara"), ("icon-clara-512.png", 512, "clara")]:
             pg = await b.new_page(viewport={"width": size, "height": size})
-            await pg.set_content(tile(size, lite)); await pg.screenshot(path=name)
+            await pg.set_content(orb(size) if lite == "clara" else tile(size, lite)); await pg.screenshot(path=name)
         pg = await b.new_page(viewport={"width": 1200, "height": 630})
         await pg.set_content(OG); await pg.wait_for_timeout(300); await pg.screenshot(path="og-image.png")
         await b.close()

@@ -1,0 +1,30 @@
+{
+ "id": "/de/clara.html",
+ "name": "Clara",
+ "short_name": "Clara",
+ "description": "Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken.",
+ "lang": "de",
+ "start_url": "/de/clara.html",
+ "scope": "/de/",
+ "display": "standalone",
+ "background_color": "#05080F",
+ "theme_color": "#05080F",
+ "icons": [
+  {
+   "src": "/icon-clara-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-clara-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-clara-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

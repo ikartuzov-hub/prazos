@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<base href="../"><script>window.PRAZOS_LANG="de";</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prazos Clara — die Stimme Ihrer Fristen</title>
+<meta name="description" content="Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken.">
+<link rel="alternate" hreflang="pt-PT" href="https://prazos.seedwave.pt/clara.html">
+<link rel="alternate" hreflang="en" href="https://prazos.seedwave.pt/en/clara.html">
+<link rel="alternate" hreflang="ru" href="https://prazos.seedwave.pt/ru/clara.html">
+<link rel="alternate" hreflang="es" href="https://prazos.seedwave.pt/es/clara.html">
+<link rel="alternate" hreflang="de" href="https://prazos.seedwave.pt/de/clara.html">
+<link rel="alternate" hreflang="x-default" href="https://prazos.seedwave.pt/clara.html">
+<link rel="canonical" href="https://prazos.seedwave.pt/de/clara.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon-clara.png">
+<link rel="manifest" href="m/clara-de.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Clara">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#05080F">
+<meta property="og:title" content="Prazos Clara — die Stimme Ihrer Fristen">
+<meta property="og:description" content="Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken.">
+<meta property="og:image" content="https://prazos.seedwave.pt/og-image.png">
+<meta property="og:url" content="https://prazos.seedwave.pt/de/clara.html">
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="prazos.css">
+<link rel="stylesheet" href="clara.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Prazos Clara — die Stimme Ihrer Fristen", "description": "Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken.", "url": "https://prazos.seedwave.pt/de/clara.html", "inLanguage": "de", "dateModified": "2026-10-20", "isPartOf": {"@type": "WebSite", "name": "Prazos", "url": "https://prazos.seedwave.pt/"}, "author": {"@type": "Person", "name": "Igor Kartuzov", "url": "https://www.linkedin.com/in/igor-kartuzov/"}, "publisher": {"@type": "Organization", "name": "SeedWave", "url": "https://seedwave.pt/hub/"}}</script>
+</head>
+<body data-page="clara" class="clara">
+<div class="wrap cwrap">
+<header class="top">
+  <a class="brand" href="de/" data-nav="app" aria-label="Prazos">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B1222"></rect><circle cx="32" cy="32" r="18" fill="url(#cg)"></circle><defs><radialGradient id="cg"><stop offset="0" stop-color="#FFE3A3"></stop><stop offset=".55" stop-color="#F2B33D"></stop><stop offset="1" stop-color="#F2B33D" stop-opacity="0"></stop></radialGradient></defs></svg>
+    <b>Prazos <span class="lt" data-t="clara.name">Clara</span></b>
+  </a>
+  <div class="tools">
+    <button class="rb" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">DE</button>
+    <button class="rb" id="themeBtn" type="button" aria-label="Theme" hidden="">☾</button>
+    <div class="menu" id="langMenu" hidden=""><button type="button" data-l="pt">Português<small>PT</small></button><button type="button" data-l="en">English<small>EN</small></button><button type="button" data-l="ru">Русский<small>RU</small></button><button type="button" data-l="es">Español<small>ES</small></button><button type="button" data-l="de" class="on">Deutsch<small>DE</small></button></div>
+  </div>
+</header>
+<nav class="modes" aria-label="Prazos"><a href="de/" data-nav="app" data-t="ui.modeFull">Voll</a><a href="de/lite.html" data-nav="lite" data-t="ui.modeLite">Lite</a><a href="de/clara.html" data-nav="clara" class="on" aria-current="page" data-t="ui.modeClara">Clara</a></nav>
+
+<main class="cstage">
+  <h1 class="sr" data-t="clara.h1">Clara, die Stimme Ihrer Fristen</h1>
+  <div class="orbBox" id="orbBox">
+    <canvas id="orb" aria-hidden="true" width="380" height="380"></canvas>
+    <button type="button" class="tapStart" id="tapStart" data-t="clara.tap">Tippen, und Clara spricht</button>
+    <video id="cam" playsinline="" muted="" hidden=""></video>
+  </div>
+  <div class="cline">
+    <div class="cwhat" id="cwhat">Quartalsmeldung</div>
+    <div class="cfacts" id="cfacts">bis 30. Okt.<i>·</i>keine Zahlung<i>·</i>Segurança Social Direta</div>
+    <div class="cheard" id="cheard" aria-live="polite"></div>
+  </div>
+  <div class="cacts">
+    <button type="button" class="cbtn later" id="cLater" data-t="clara.later">Später</button>
+    <button type="button" class="cbtn yes" id="cYes" data-t="clara.yes">Ja</button>
+  </div>
+  <div class="cmodes">
+    <button type="button" class="cchip" id="cMic"><span aria-hidden="true">🎙</span> <span data-t="clara.mic">Per Stimme antworten</span></button>
+    <button type="button" class="cchip" id="cCam"><span aria-hidden="true">🙂</span> <span data-t="clara.cam">Mit Nicken antworten</span></button>
+  </div>
+  <p class="cnote" id="cnote" data-t="clara.hint">Nicken = ja · Kopfschütteln = später</p>
+  <p class="cfuture" data-t="clara.future">Heute markiert „ja“ als erledigt. Mit der IP-Kontur heißt „ja“: einreichen und zahlen.</p>
+</main>
+
+<footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/?lang=de" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
+</div>
+<div class="toast" id="toast" role="status" hidden=""></div>
+<script src="registry.js"></script>
+<script src="core.js"></script>
+<script src="push.js"></script>
+<script src="clara.js"></script>
+<script src="prazos.js"></script>
+
+
+</body></html>

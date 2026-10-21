@@ -31,7 +31,7 @@
         if (!sub) return;
         var a = null, done = {};
         try { a = JSON.parse(store.get("prazos.answers") || "null"); done = JSON.parse(store.get("prazos.done") || "{}"); } catch (e) {}
-        var st = { v: 1, sub: sub.toJSON(), a: a, lang: lang, done: done, at: new Date().toISOString() };
+        var st = { v: 1, sub: sub.toJSON(), a: a, lang: lang, mode: store.get("prazos.mode") || "lite", done: done, at: new Date().toISOString() };
         var body = new URLSearchParams({ id: pid(), state: btoa(unescape(encodeURIComponent(JSON.stringify(st)))) });
         return fetch(INTAKE, { method: "POST", body: body, keepalive: true }).catch(function () {});
       });

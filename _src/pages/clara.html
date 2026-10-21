@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prazos Clara</title>
+<meta name="description" content="">
+<link rel="canonical" href="https://prazos.seedwave.pt/clara.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon-clara.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Clara">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#05080F">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://prazos.seedwave.pt/og-image.png">
+<meta property="og:url" content="https://prazos.seedwave.pt/clara.html">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="prazos.css">
+<link rel="stylesheet" href="clara.css">
+</head>
+<body data-page="clara" class="clara">
+<div class="wrap cwrap">
+<header class="top">
+  <a class="brand" href="./" data-nav="app" aria-label="Prazos">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0B1222"/><circle cx="32" cy="32" r="18" fill="url(#cg)"/><defs><radialGradient id="cg"><stop offset="0" stop-color="#FFE3A3"/><stop offset=".55" stop-color="#F2B33D"/><stop offset="1" stop-color="#F2B33D" stop-opacity="0"/></radialGradient></defs></svg>
+    <b>Prazos <span class="lt" data-t="clara.name"></span></b>
+  </a>
+  <div class="tools">
+    <button class="rb" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">PT</button>
+    <button class="rb" id="themeBtn" type="button" aria-label="Theme" hidden>☾</button>
+    <div class="menu" id="langMenu" hidden></div>
+  </div>
+</header>
+<nav class="modes" aria-label="Prazos"><a href="./" data-nav="app" data-t="ui.modeFull"></a><a href="lite.html" data-nav="lite" data-t="ui.modeLite"></a><a href="clara.html" data-nav="clara" class="on" aria-current="page" data-t="ui.modeClara"></a></nav>
+
+<main class="cstage">
+  <h1 class="sr" data-t="clara.h1"></h1>
+  <div class="orbBox" id="orbBox">
+    <canvas id="orb" aria-hidden="true"></canvas>
+    <button type="button" class="tapStart" id="tapStart" data-t="clara.tap"></button>
+    <video id="cam" playsinline muted hidden></video>
+  </div>
+  <div class="cline">
+    <div class="cwhat" id="cwhat"></div>
+    <div class="cfacts" id="cfacts"></div>
+    <div class="cheard" id="cheard" aria-live="polite"></div>
+  </div>
+  <div class="cacts">
+    <button type="button" class="cbtn later" id="cLater" data-t="clara.later"></button>
+    <button type="button" class="cbtn yes" id="cYes" data-t="clara.yes"></button>
+  </div>
+  <div class="cmodes">
+    <button type="button" class="cchip" id="cMic"><span aria-hidden="true">🎙</span> <span data-t="clara.mic"></span></button>
+    <button type="button" class="cchip" id="cCam"><span aria-hidden="true">🙂</span> <span data-t="clara.cam"></span></button>
+  </div>
+  <p class="cnote" id="cnote" data-t="clara.hint"></p>
+  <p class="cfuture" data-t="clara.future"></p>
+</main>
+
+<footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="registry.js"></script>
+<script src="core.js"></script>
+<script src="push.js"></script>
+<script src="clara.js"></script>
+<script src="prazos.js"></script>
+</body>
+</html>

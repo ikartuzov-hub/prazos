@@ -97,13 +97,13 @@
   }
   /* notification text — the same on the phone (welcome, example) and in the daily sender */
   var LOCALE = { pt: "pt-PT", en: "en-GB", ru: "ru-RU", es: "es-ES", de: "de-DE" };
-  function notify(e, why, L, CAL, lang) {
+  function notify(e, why, L, CAL, lang, page) {
     var f = function (d) { return new Intl.DateTimeFormat(LOCALE[lang], { weekday: "short", day: "numeric", month: "long" }).format(d); };
     var c = CAL.events[e.id] || {}, P = L.push, parts = [];
     parts.push(why === "open" ? P.open.replace("{d}", f(e.last)) : why === "last" ? P.last : why === "soon" ? P.soon.replace("{d}", f(e.last)) : f(e.last));
     if (c.where) parts.push(L.lite.where[c.where]);
     if (c.amount && c.amount !== "info") parts.push(L.lite.amount[c.amount]);
-    return { title: "⏰ " + (L.lite.short[e.id] || e.id), body: parts.join(" · "), url: "/" + (lang === "pt" ? "" : lang + "/") + "lite.html#" + uid(e), tag: uid(e) + "-" + why };
+    return { title: "⏰ " + (L.lite.short[e.id] || e.id), body: parts.join(" · "), url: "/" + (lang === "pt" ? "" : lang + "/") + (page || "lite.html") + "#" + uid(e), tag: uid(e) + "-" + why };
   }
   var api = { D: D, addD: addD, key: key, working: working, prevW: prevW, nextW: nextW, addWD: addWD, build: build, ymd: ymd, uid: uid, due: due, notify: notify };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.PrazosCore = api;

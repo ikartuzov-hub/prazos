@@ -33,7 +33,7 @@ for (const [id, b64] of rows) {
     if (e) items = [{ e, why: e.isOpen ? "open" : "soon" }];
   }
   for (const { e, why } of items) {
-    const msg = C.notify(e, why, L[lang], CAL, lang);
+    const msg = C.notify(e, why, L[lang], CAL, lang, st.mode === "clara" ? "clara.html" : "lite.html");
     try {
       await webpush.sendNotification(st.sub, JSON.stringify(msg), { TTL: 60 * 60 * 20, urgency: "normal" });
       sent++;

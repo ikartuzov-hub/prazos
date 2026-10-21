@@ -1,0 +1,30 @@
+{
+ "id": "/en/clara.html",
+ "name": "Clara",
+ "short_name": "Clara",
+ "description": "The third version of Prazos: Clara says the deadline out loud and waits for your “yes” — a tap, your voice or a nod.",
+ "lang": "en",
+ "start_url": "/en/clara.html",
+ "scope": "/en/",
+ "display": "standalone",
+ "background_color": "#05080F",
+ "theme_color": "#05080F",
+ "icons": [
+  {
+   "src": "/icon-clara-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-clara-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-clara-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

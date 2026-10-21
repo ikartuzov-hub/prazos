@@ -5,7 +5,9 @@
   "flyerTitle": "Prazos — the deadline calendar for recibos verdes",
   "flyerDesc": "Four questions and you get your year of Social Security and tax deadlines in Portugal, with what happens if you miss each one. Free, no account.",
   "liteTitle": "Prazos Lite — just the essentials",
-  "liteDesc": "The phone version: one deadline at a time, date, amount, where — and two buttons. Explanations only when you tap."
+  "liteDesc": "The phone version: one deadline at a time, date, amount, where — and two buttons. Explanations only when you tap.",
+  "claraTitle": "Prazos Clara — the voice of your deadlines",
+  "claraDesc": "The third version of Prazos: Clara says the deadline out loud and waits for your “yes” — a tap, your voice or a nod."
  },
  "ui": {
   "h1": "No deadline slips by.",
@@ -96,7 +98,8 @@
   "lastDay": "Last day",
   "openT": "Opens: {t}",
   "modeFull": "Full",
-  "modeLite": "Lite"
+  "modeLite": "Lite",
+  "modeClara": "Clara"
  },
  "ev": {
   "ssDecl": [
@@ -304,5 +307,60 @@
   "last": "Today is the last day",
   "soon": "In 3 days, {d}",
   "how": "An alert when each window opens and on the last day, at 9:00."
+ },
+ "clara": {
+  "name": "Clara",
+  "h1": "Clara, the voice of your deadlines",
+  "tap": "Tap and Clara speaks",
+  "yes": "Yes",
+  "later": "Later",
+  "mic": "Answer by voice",
+  "cam": "Answer with a nod",
+  "camOn": "Watching for a nod · video stays on the phone",
+  "hint": "Nod = yes · shake = later",
+  "heard": "Heard: {w}",
+  "none": "All clear. I'll tell you when the next window opens.",
+  "future": "Today “yes” marks it done. With IP Contour, “yes” = file and pay.",
+  "noAnswers": "First, four questions",
+  "start": "Answer",
+  "camErr": "The camera isn't available here.",
+  "micErr": "This browser can't recognise speech.",
+  "say": {
+   "open": "{what}. Open until {date}. {where}. {amount}. Is it done?",
+   "last": "{what}. Today is the last day. {where}. {amount}. Is it done?",
+   "soon": "{what}. Due {date}. {where}. {amount}. Is it done?",
+   "hello": "Hi, I'm Clara. I'll remind you of your deadlines.",
+   "ok": "Great. Marked as done.",
+   "okNext": "Great. Next: {what}, {date}.",
+   "later": "All right. I'll remind you tomorrow.",
+   "none": "You're all clear.",
+   "where": {
+    "ss": "In Segurança Social Direta",
+    "at": "On the Finanças portal",
+    "efat": "In e-fatura"
+   },
+   "amount": {
+    "min20": "At least twenty euros",
+    "ge50": "Only if it's fifty euros or more",
+    "calc": "The amount is in the notice",
+    "none": "Nothing to pay",
+    "info": ""
+   },
+   "yes": [
+    "yes",
+    "yeah",
+    "yep",
+    "done",
+    "ok",
+    "okay",
+    "sure"
+   ],
+   "no": [
+    "later",
+    "no",
+    "not yet",
+    "tomorrow"
+   ]
+  }
  }
 }

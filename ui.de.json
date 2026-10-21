@@ -5,7 +5,9 @@
   "flyerTitle": "Prazos — der Fristenkalender für Recibos Verdes",
   "flyerDesc": "Vier Fragen, und Sie erhalten Ihr Jahr mit allen Fristen der Segurança Social und des Finanzamts in Portugal – mit den Folgen eines Versäumnisses. Kostenlos, ohne Konto.",
   "liteTitle": "Prazos Lite — nur das Wesentliche",
-  "liteDesc": "Die Handy-Version: eine Frist nach der anderen, Datum, Betrag, wo – und zwei Tasten. Erklärungen nur auf Tipp."
+  "liteDesc": "Die Handy-Version: eine Frist nach der anderen, Datum, Betrag, wo – und zwei Tasten. Erklärungen nur auf Tipp.",
+  "claraTitle": "Prazos Clara — die Stimme Ihrer Fristen",
+  "claraDesc": "Die dritte Version von Prazos: Clara spricht die Frist laut aus und wartet auf Ihr „Ja“ – per Tipp, per Stimme oder mit einem Nicken."
  },
  "ui": {
   "h1": "Keine Frist rutscht durch.",
@@ -96,7 +98,8 @@
   "lastDay": "Letzter Tag",
   "openT": "Öffnet: {t}",
   "modeFull": "Voll",
-  "modeLite": "Lite"
+  "modeLite": "Lite",
+  "modeClara": "Clara"
  },
  "ev": {
   "ssDecl": [
@@ -304,5 +307,58 @@
   "last": "Heute ist der letzte Tag",
   "soon": "In 3 Tagen, {d}",
   "how": "Erinnerung, wenn die Frist beginnt, und am letzten Tag, um 9:00."
+ },
+ "clara": {
+  "name": "Clara",
+  "h1": "Clara, die Stimme Ihrer Fristen",
+  "tap": "Tippen, und Clara spricht",
+  "yes": "Ja",
+  "later": "Später",
+  "mic": "Per Stimme antworten",
+  "cam": "Mit Nicken antworten",
+  "camOn": "Ich achte auf Ihr Nicken · das Video bleibt auf dem Handy",
+  "hint": "Nicken = ja · Kopfschütteln = später",
+  "heard": "Gehört: {w}",
+  "none": "Alles erledigt. Ich sage Bescheid, wenn die nächste Frist beginnt.",
+  "future": "Heute markiert „ja“ als erledigt. Mit der IP-Kontur heißt „ja“: einreichen und zahlen.",
+  "noAnswers": "Zuerst vier Fragen",
+  "start": "Antworten",
+  "camErr": "Die Kamera ist hier nicht verfügbar.",
+  "micErr": "Dieser Browser erkennt keine Sprache.",
+  "say": {
+   "open": "{what}. Offen bis {date}. {where}. {amount}. Schon erledigt?",
+   "last": "{what}. Heute ist der letzte Tag. {where}. {amount}. Schon erledigt?",
+   "soon": "{what}. Fällig am {date}. {where}. {amount}. Schon erledigt?",
+   "hello": "Hallo, ich bin Clara. Ich erinnere Sie an Ihre Fristen.",
+   "ok": "Prima. Als erledigt markiert.",
+   "okNext": "Prima. Als Nächstes: {what}, {date}.",
+   "later": "In Ordnung. Ich erinnere Sie morgen.",
+   "none": "Alles ist erledigt.",
+   "where": {
+    "ss": "In Segurança Social Direta",
+    "at": "Im Finanças-Portal",
+    "efat": "In e-fatura"
+   },
+   "amount": {
+    "min20": "Mindestens zwanzig Euro",
+    "ge50": "Nur ab fünfzig Euro",
+    "calc": "Der Betrag steht im Bescheid",
+    "none": "Nichts zu zahlen",
+    "info": ""
+   },
+   "yes": [
+    "ja",
+    "jawohl",
+    "erledigt",
+    "ok",
+    "okay",
+    "klar"
+   ],
+   "no": [
+    "später",
+    "nein",
+    "morgen"
+   ]
+  }
  }
 }
