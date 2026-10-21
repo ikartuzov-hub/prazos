@@ -65,13 +65,14 @@
     <button type="button" class="cchip" id="cMic"><span aria-hidden="true">🎙</span> <span data-t="clara.mic">Talk by voice</span></button>
     <button type="button" class="cchip" id="cCam"><span aria-hidden="true">🙂</span> <span data-t="clara.cam">Answer with a nod</span></button>
   </div>
-  <div class="cmodes cnav" id="cnav" hidden="">
-    <button type="button" class="cchip" id="cBack" disabled=""><span aria-hidden="true">↶</span> <span data-t="clara.back">Back</span></button>
-    <button type="button" class="cchip" id="cAgain"><span aria-hidden="true">↺</span> <span data-t="clara.again">Start over</span></button>
-  </div>
-  <p class="cnote" id="cnote" data-t="clara.hint">Nod = yes · shake = later</p>
-  <p class="cfuture" data-t="clara.future">Today “yes” marks it done. With IP Contour, “yes” = file and pay.</p>
+  <p class="cnote" id="cnote"></p>
+  <div class="moreRow"><button type="button" class="moreBtn" id="moreBtn" aria-haspopup="dialog"><span aria-hidden="true">⋯</span><span class="sr" data-t="lite.more">More</span></button></div>
 </main>
+<div class="dim" id="dim" hidden=""></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden="">
+  <div class="grip"></div>
+  <div id="sheetBody"></div>
+</section>
 
 <footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/?lang=en" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
 </div>

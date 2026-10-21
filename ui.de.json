@@ -288,7 +288,7 @@
   "answers": "Antworten ändern",
   "start": "Los",
   "cont": "Weiter",
-  "tap": "Karte antippen, um zu sehen, warum",
+  "tap": "Tippen Sie auf die Karte: Warum und wie",
   "ob": "Vier Tipps, fertig.",
   "obSub": "Die Antworten bleiben nur auf diesem Handy.",
   "tl": {
@@ -334,7 +334,15 @@
     "Im IVA-Teil das Regime von der Befreiung (Art. 53) auf normal umstellen.",
     "Absenden und die Bestätigung aufbewahren. Ab dann Rechnungen mit IVA; im Zweifel eine:n Contabilista Certificado fragen."
    ]
-  }
+  },
+  "more": "Mehr",
+  "moreT": "Mehr",
+  "ahead": "Anstehende Fristen: {n}",
+  "remind": "Erinnerungen auf diesem Telefon",
+  "remindOn": "An",
+  "remindOff": "Aus",
+  "enable": "Einschalten",
+  "hintOnce": "Tippen Sie auf die Karte: Warum und wie"
  },
  "push": {
   "on": "Auf diesem Handy erinnern",

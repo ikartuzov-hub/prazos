@@ -59,7 +59,6 @@ window.PRAZOS_LITE = function (ctx) {
     if (!queue.length) {
       var nx = R.ev[0];
       d.innerHTML = '<div class="empty"><b>' + esc(LT.allDone) + "</b>" + (nx ? "<span>" + esc(LT.next) + " " + esc(LT.short[nx.id] || "") + " · " + esc(fmt(nx.at, { day: "numeric", month: "long" })) + "</span>" : "") + "</div>";
-      $("left").textContent = "";
       $("doneBtn").disabled = $("laterBtn").disabled = true; $("tapHint").hidden = true;
       return;
     }
@@ -67,9 +66,8 @@ window.PRAZOS_LITE = function (ctx) {
     d.innerHTML = show.map(function (e, i) {
       return '<button type="button" class="cardL tl-' + light(e).lvl + (i === 0 ? " top" : "") + '" style="--k:' + i + '" data-u="' + uid(e) + '"' + (i ? ' tabindex="-1" aria-hidden="true"' : "") + ">" + face(e) + "</button>";
     }).join("") + ("speechSynthesis" in window || ctx.prerender ? '<button type="button" class="sayL" id="sayL" aria-label="' + esc(LT.say) + '" title="' + esc(LT.say) + '">🔊</button>' : "");
-    $("left").textContent = LT.left.replace("{n}", queue.length);
     if ($("sayL")) $("sayL").onclick = function (ev) { ev.stopPropagation(); sayIt(top); };
-    $("doneBtn").disabled = $("laterBtn").disabled = false; $("tapHint").hidden = false;
+    $("doneBtn").disabled = $("laterBtn").disabled = false; $("tapHint").hidden = !!store.get("prazos.hintSeen");
     var t = d.querySelector(".cardL.top");
     t.onclick = function () { openSheet(top); };
     if (!reduce) tilt(t);
@@ -101,14 +99,14 @@ window.PRAZOS_LITE = function (ctx) {
     if (!top) return; var u = uid(top), tm = new Date(today); tm.setDate(tm.getDate() + 1);
     advance("snooze", function () { var s = readJSON("prazos.snooze"); s[u] = ymd(tm); store.set("prazos.snooze", JSON.stringify(s)); });
   };
-  $("resetBtn").onclick = function () { store.set("prazos.done", "{}"); store.set("prazos.snooze", "{}"); rebuild(); renderDeck(); ctx.toast("✓"); };
-  $("icsBtn").onclick = function () {
+  function resetDone() { store.set("prazos.done", "{}"); store.set("prazos.snooze", "{}"); rebuild(); renderDeck(); ctx.toast("✓"); }
+  function dlIcs() {
     try {
       var a = document.createElement("a");
       a.href = URL.createObjectURL(new Blob([ctx.ics(R)], { type: "text/calendar" })); a.download = "prazos.ics";
       document.body.appendChild(a); a.click(); a.remove();
     } catch (e) { ctx.toast(U.icsNote); }
-  };
+  }
 
   /* ---------- 🔊 the card out loud — the same words as Clara ---------- */
   var LOC = { pt: "pt-PT", en: "en-GB", ru: "ru-RU", es: "es-ES", de: "de-DE" }[ctx.lang], voice = null;
@@ -144,6 +142,7 @@ window.PRAZOS_LITE = function (ctx) {
 
   /* ---------- sheet: why ---------- */
   function openSheet(e) {
+    if (!store.get("prazos.hintSeen")) { store.set("prazos.hintSeen", "1"); $("tapHint").hidden = true; }
     var t = ctx.texts(e), win = e.open ? U.window.replace("{a}", fmt(e.open, { day: "numeric", month: "long" })).replace("{b}", fmt(e.date, { day: "numeric", month: "long" })) : fmt(e.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     $("sheetBody").innerHTML = "<h2>" + esc(t.title) + '</h2><div class="win note">' + esc(win) + "</div><p>" + esc(t.doo) + "</p>" +
       (t.miss !== "—" ? '<p class="miss"><b>' + esc(U.miss) + "</b> " + esc(t.miss.replace(/\.\.+/g, ".")) + "</p>" : "") + howHTML(e) +
@@ -187,7 +186,31 @@ window.PRAZOS_LITE = function (ctx) {
     c.onchange = null;
   }
   function finish() { A = ob.a; store.set("prazos.answers", JSON.stringify(A)); $("ob").hidden = true; rebuild(); renderDeck(); if (window.PrazosPush) window.PrazosPush.sync(ctx.lang); }
-  $("answersBtn").onclick = function () { ob.step = 0; ob.a = JSON.parse(JSON.stringify(A)); $("ob").hidden = false; obRender(); };
+  function editAnswers() { closeSheet(); ob.step = 0; ob.a = JSON.parse(JSON.stringify(A)); $("ob").hidden = false; obRender(); }
+
+  /* ---------- «⋯»: everything that isn't the card lives here (reminders, calendar, answers, reset) ---------- */
+  function row(ic, txt, st, id, cls) {
+    return '<button type="button" id="' + id + '"' + (cls ? ' class="' + cls + '"' : "") + '><span class="ic" aria-hidden="true">' + ic + '</span><span class="txt">' + txt + "</span>" + (st || "") + "</button>";
+  }
+  function openMore() {
+    if (!store.get("prazos.moreSeen")) { store.set("prazos.moreSeen", "1"); $("moreBtn").classList.remove("pulse"); }
+    var st = PP && !ctx.prerender ? PP.status() : "unsupported", on = st === "on";
+    var h = '<h2>' + esc(LT.moreT) + '</h2><div class="menuL"><div class="cap">' + esc(LT.ahead.replace("{n}", queue.length)) + "</div>";
+    if (st !== "unsupported") h += row("🔔", esc(LT.remind) + '<span class="sub">' + esc(on ? PL.how : PL.on) + "</span>", '<span class="st' + (on ? " on" : "") + '">' + esc(on ? LT.remindOn : LT.enable) + "</span>", "mBell");
+    if (on) h += row("📣", esc(PL.test), "", "mTest") + row("🔕", esc(PL.off), "", "mOff");
+    h += row("📅", esc(U.ics), "", "mIcs") + row("✎", esc(LT.answers), "", "mAns") + row("↺", esc(LT.reset), "", "mReset", "danger");
+    h += '</div><div class="sb"><button class="btn" type="button" id="sheetClose">✕</button></div>';
+    $("sheetBody").innerHTML = h; $("sheet").hidden = false; $("dim").hidden = false;
+    $("sheetClose").onclick = closeSheet; $("dim").onclick = closeSheet;
+    if ($("mBell")) $("mBell").onclick = function () { closeSheet(); bellTap(); };
+    if ($("mTest")) $("mTest").onclick = function () { closeSheet(); example(); };
+    if ($("mOff")) $("mOff").onclick = function () { PP.disable(ctx.lang).then(function () { renderBell(); openMore(); }, function () { renderBell(); openMore(); }); };
+    $("mIcs").onclick = function () { closeSheet(); dlIcs(); };
+    $("mAns").onclick = editAnswers;
+    $("mReset").onclick = function () { closeSheet(); resetDone(); };
+  }
+  $("moreBtn").onclick = openMore;
+  if (!store.get("prazos.moreSeen") && !ctx.prerender) $("moreBtn").classList.add("pulse");
   $("laterBtn").textContent = LT.later; $("doneBtn").textContent = LT.done + " ✓";
 
 
@@ -207,29 +230,27 @@ window.PRAZOS_LITE = function (ctx) {
   }
   function renderBell() {
     if (!PP || ctx.prerender) return;
-    var st = PP.status(), b = $("bellBtn");
-    $("bell").hidden = st === "unsupported";
-    b.classList.toggle("on", st === "on");
-    $("bellTxt").textContent = st === "on" ? PL.onDone : PL.on;
-    $("bellTest").hidden = st !== "on"; $("bellTest").textContent = PL.test;
-    $("bellOff").hidden = st !== "on";
+    var st = PP.status();
+    $("bell").hidden = st === "unsupported" || st === "on";   /* once on, reminders live under «⋯» */
+    $("bellTxt").textContent = PL.on; $("bellTest").hidden = true;
   }
   function info(title, text) {
     $("sheetBody").innerHTML = "<h2>" + esc(title) + "</h2><p>" + esc(text) + '</p><div class="sb"><button class="btn primary" type="button" id="sheetClose">OK</button></div>';
     $("sheet").hidden = false; $("dim").hidden = false; $("sheetClose").onclick = closeSheet; $("dim").onclick = closeSheet;
   }
   if (PP && !ctx.prerender) {
-    $("bellBtn").onclick = function () {
-      var st = PP.status();
-      if (st === "install") return info(PL.installT, PL.installB);
-      if (st === "denied") return info(PL.on, PL.denied);
-      if (st === "on") return example();
-      PP.enable(ctx.lang).then(function () { renderBell(); welcome(); }, function () { info(PL.on, PL.denied); renderBell(); });
-    };
-    $("bellTest").onclick = example;
-    $("bellOff").onclick = function () { PP.disable(ctx.lang).then(renderBell, renderBell); };
+    $("bellBtn").onclick = bellTap;
     PP.sync(ctx.lang);
   }
+  function bellTap() {
+    var st = PP.status();
+    if (st === "install") return info(PL.installT, PL.installB);
+    if (st === "denied") return info(PL.on, PL.denied);
+    if (st === "on") return example();
+    PP.enable(ctx.lang).then(function () { renderBell(); welcome(); }, function () { info(PL.on, PL.denied); renderBell(); });
+  }
+
+  if (location.hash === "#answers" && !ctx.prerender) { history.replaceState(null, "", location.pathname); setTimeout(editAnswers, 50); }
 
   /* ---------- boot ---------- */
   try { var s0 = JSON.parse(store.get("prazos.answers") || "null"); if (s0 && s0.start) A = s0; } catch (e) {}

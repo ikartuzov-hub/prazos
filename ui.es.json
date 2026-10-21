@@ -288,7 +288,7 @@
   "answers": "Cambiar respuestas",
   "start": "Empezar",
   "cont": "Continuar",
-  "tap": "Toque la tarjeta para ver por qué",
+  "tap": "Toque la tarjeta para ver por qué y cómo hacerlo",
   "ob": "Cuatro toques y listo.",
   "obSub": "Las respuestas se quedan solo en este móvil.",
   "tl": {
@@ -334,7 +334,15 @@
     "En el apartado de IVA, cambie el régimen de exención (art. 53) a normal.",
     "Envíe y guarde el justificante. Desde entonces, las facturas llevan IVA; si duda, consulte a un Contabilista Certificado."
    ]
-  }
+  },
+  "more": "Más",
+  "moreT": "Más",
+  "ahead": "Plazos pendientes: {n}",
+  "remind": "Recordatorios en este teléfono",
+  "remindOn": "Activados",
+  "remindOff": "Desactivados",
+  "enable": "Activar",
+  "hintOnce": "Toque la tarjeta para ver por qué y cómo hacerlo"
  },
  "push": {
   "on": "Avisarme en este móvil",

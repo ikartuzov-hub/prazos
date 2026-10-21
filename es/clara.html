@@ -65,13 +65,14 @@
     <button type="button" class="cchip" id="cMic"><span aria-hidden="true">🎙</span> <span data-t="clara.mic">Hablar por voz</span></button>
     <button type="button" class="cchip" id="cCam"><span aria-hidden="true">🙂</span> <span data-t="clara.cam">Responder asintiendo</span></button>
   </div>
-  <div class="cmodes cnav" id="cnav" hidden="">
-    <button type="button" class="cchip" id="cBack" disabled=""><span aria-hidden="true">↶</span> <span data-t="clara.back">Atrás</span></button>
-    <button type="button" class="cchip" id="cAgain"><span aria-hidden="true">↺</span> <span data-t="clara.again">Desde el inicio</span></button>
-  </div>
-  <p class="cnote" id="cnote" data-t="clara.hint">Asentir = sí · negar = luego</p>
-  <p class="cfuture" data-t="clara.future">Hoy «sí» lo marca como hecho. Con el Contorno IP, «sí» = presentar y pagar.</p>
+  <p class="cnote" id="cnote"></p>
+  <div class="moreRow"><button type="button" class="moreBtn" id="moreBtn" aria-haspopup="dialog"><span aria-hidden="true">⋯</span><span class="sr" data-t="lite.more">Más</span></button></div>
 </main>
+<div class="dim" id="dim" hidden=""></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden="">
+  <div class="grip"></div>
+  <div id="sheetBody"></div>
+</section>
 
 <footer>© <span id="yr">2026</span> <a href="https://seedwave.pt/hub/?lang=es" id="hubLink">SeedWave</a> · <a href="https://www.linkedin.com/in/igor-kartuzov/" target="_blank" rel="noopener">Igor Kartuzov</a></footer>
 </div>

@@ -47,10 +47,7 @@
 <nav class="modes" aria-label="Prazos"><a href="ru/" data-nav="app" data-t="ui.modeFull">Полная</a><a href="ru/lite.html" data-nav="lite" class="on" aria-current="page" data-t="ui.modeLite">Лайт</a><a href="ru/clara.html" data-nav="clara" data-t="ui.modeClara">Клара</a></nav>
 
 <main class="stage">
-  <div class="status">
-    <h1 data-t="lite.h1">Только главное.</h1>
-    <div class="left" id="left">осталось 23</div>
-  </div>
+  <h1 class="sr" data-t="lite.h1">Только главное.</h1>
 
   <div class="bell" id="bell" hidden="">
     <button type="button" class="bellBtn" id="bellBtn"><span class="bi" aria-hidden="true">🔔</span><span id="bellTxt"></span></button>
@@ -62,14 +59,9 @@
     <button class="act later" id="laterBtn" type="button">Потом</button>
     <button class="act done" id="doneBtn" type="button">Сделано ✓</button>
   </div>
-  <p class="hint" id="tapHint" data-t="lite.tap">Коснитесь карточки, чтобы увидеть почему</p>
+  <p class="hint" id="tapHint" data-t="lite.tap">Коснитесь карточки, чтобы увидеть почему и как сделать</p>
 
-  <nav class="more">
-    <button type="button" id="answersBtn" data-t="lite.answers">Изменить ответы</button>
-    <button type="button" id="icsBtn" data-t="ui.ics">Весь год в календарь</button>
-    <button type="button" id="resetBtn" data-t="lite.reset">Сбросить «сделано»</button>
-    <button type="button" id="bellOff" hidden="" data-t="push.off">Выключить</button>
-  </nav>
+  <div class="moreRow"><button type="button" class="moreBtn" id="moreBtn" aria-haspopup="dialog"><span aria-hidden="true">⋯</span><span class="sr" data-t="lite.more">Ещё</span></button></div>
 </main>
 
 <div class="dim" id="dim" hidden=""></div>

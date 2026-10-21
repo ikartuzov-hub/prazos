@@ -47,10 +47,7 @@
 <nav class="modes" aria-label="Prazos"><a href="en/" data-nav="app" data-t="ui.modeFull">Full</a><a href="en/lite.html" data-nav="lite" class="on" aria-current="page" data-t="ui.modeLite">Lite</a><a href="en/clara.html" data-nav="clara" data-t="ui.modeClara">Clara</a></nav>
 
 <main class="stage">
-  <div class="status">
-    <h1 data-t="lite.h1">Just the essentials.</h1>
-    <div class="left" id="left">23 to do</div>
-  </div>
+  <h1 class="sr" data-t="lite.h1">Just the essentials.</h1>
 
   <div class="bell" id="bell" hidden="">
     <button type="button" class="bellBtn" id="bellBtn"><span class="bi" aria-hidden="true">🔔</span><span id="bellTxt"></span></button>
@@ -62,14 +59,9 @@
     <button class="act later" id="laterBtn" type="button">Later</button>
     <button class="act done" id="doneBtn" type="button">Done ✓</button>
   </div>
-  <p class="hint" id="tapHint" data-t="lite.tap">Tap the card to see why</p>
+  <p class="hint" id="tapHint" data-t="lite.tap">Tap the card to see why and how</p>
 
-  <nav class="more">
-    <button type="button" id="answersBtn" data-t="lite.answers">Change answers</button>
-    <button type="button" id="icsBtn" data-t="ui.ics">Whole year to calendar</button>
-    <button type="button" id="resetBtn" data-t="lite.reset">Reset “done”</button>
-    <button type="button" id="bellOff" hidden="" data-t="push.off">Turn off</button>
-  </nav>
+  <div class="moreRow"><button type="button" class="moreBtn" id="moreBtn" aria-haspopup="dialog"><span aria-hidden="true">⋯</span><span class="sr" data-t="lite.more">More</span></button></div>
 </main>
 
 <div class="dim" id="dim" hidden=""></div>

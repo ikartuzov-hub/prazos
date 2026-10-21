@@ -47,10 +47,7 @@
 <nav class="modes" aria-label="Prazos"><a href="es/" data-nav="app" data-t="ui.modeFull">Completa</a><a href="es/lite.html" data-nav="lite" class="on" aria-current="page" data-t="ui.modeLite">Lite</a><a href="es/clara.html" data-nav="clara" data-t="ui.modeClara">Clara</a></nav>
 
 <main class="stage">
-  <div class="status">
-    <h1 data-t="lite.h1">Solo lo esencial.</h1>
-    <div class="left" id="left">23 por hacer</div>
-  </div>
+  <h1 class="sr" data-t="lite.h1">Solo lo esencial.</h1>
 
   <div class="bell" id="bell" hidden="">
     <button type="button" class="bellBtn" id="bellBtn"><span class="bi" aria-hidden="true">🔔</span><span id="bellTxt"></span></button>
@@ -62,14 +59,9 @@
     <button class="act later" id="laterBtn" type="button">Luego</button>
     <button class="act done" id="doneBtn" type="button">Hecho ✓</button>
   </div>
-  <p class="hint" id="tapHint" data-t="lite.tap">Toque la tarjeta para ver por qué</p>
+  <p class="hint" id="tapHint" data-t="lite.tap">Toque la tarjeta para ver por qué y cómo hacerlo</p>
 
-  <nav class="more">
-    <button type="button" id="answersBtn" data-t="lite.answers">Cambiar respuestas</button>
-    <button type="button" id="icsBtn" data-t="ui.ics">Todo el año al calendario</button>
-    <button type="button" id="resetBtn" data-t="lite.reset">Reiniciar «hechos»</button>
-    <button type="button" id="bellOff" hidden="" data-t="push.off">Desactivar</button>
-  </nav>
+  <div class="moreRow"><button type="button" class="moreBtn" id="moreBtn" aria-haspopup="dialog"><span aria-hidden="true">⋯</span><span class="sr" data-t="lite.more">Más</span></button></div>
 </main>
 
 <div class="dim" id="dim" hidden=""></div>

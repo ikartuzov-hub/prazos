@@ -2,8 +2,6 @@
 .lite{display:flex;flex-direction:column;min-height:calc(100vh - env(safe-area-inset-top,0px));max-width:560px}
 .lite .brand .lt{font-weight:500;color:var(--accent-ink)}
 .stage{flex:1;display:flex;flex-direction:column;gap:14px}
-.status{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.status h1{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0;color:var(--muted)}
 .left{font-family:var(--f-mono);font-size:13px;color:var(--muted);white-space:nowrap}
 
 /* deck */
@@ -58,16 +56,7 @@
 .act.done{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-size:19px}
 .act:disabled{opacity:.4;cursor:default;box-shadow:none}
 .hint{margin:-4px 0 0;text-align:center;font-size:12px;color:var(--muted)}
-.more{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:13px;color:var(--muted);padding-block:6px}
-.more a,.more button{border:0;background:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:8px 2px;cursor:pointer;font:inherit;font-size:13px}
 
-/* sheet */
-.dim{position:fixed;inset:0;background:rgba(5,10,24,.55);z-index:30;backdrop-filter:blur(2px)}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--surface);color:var(--ink);border-radius:26px 26px 0 0;
-  padding:10px max(18px,env(safe-area-inset-left,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-right,0px));
-  max-height:86vh;overflow:auto;box-shadow:0 -20px 60px rgba(0,0,0,.35);animation:up .32s cubic-bezier(.2,.8,.2,1)}
-@keyframes up{from{transform:translateY(40px);opacity:0}}
-.sheet .grip{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
 .sheet h2{font-family:var(--f-display);font-weight:500;font-size:20px;margin:0 0 4px;text-wrap:balance}
 .sheet .win{margin-bottom:10px}
 .sheet p{margin:8px 0;font-size:16px}

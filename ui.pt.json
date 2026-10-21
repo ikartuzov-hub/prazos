@@ -288,7 +288,7 @@
   "answers": "Alterar respostas",
   "start": "Começar",
   "cont": "Continuar",
-  "tap": "Toque no cartão para ver porquê",
+  "tap": "Toque no cartão para ver porquê e como fazer",
   "ob": "Quatro toques e pronto.",
   "obSub": "As respostas ficam só neste telemóvel.",
   "tl": {
@@ -334,7 +334,15 @@
     "Na parte do IVA, mude o regime de isenção (art. 53.º) para normal.",
     "Submeta e guarde o comprovativo. A partir daí, as faturas levam IVA; em caso de dúvida, fale com um Contabilista Certificado."
    ]
-  }
+  },
+  "more": "Mais",
+  "moreT": "Mais",
+  "ahead": "Prazos pela frente: {n}",
+  "remind": "Lembretes neste telemóvel",
+  "remindOn": "Ligados",
+  "remindOff": "Desligados",
+  "enable": "Ligar",
+  "hintOnce": "Toque no cartão para ver porquê e como fazer"
  },
  "push": {
   "on": "Lembrar neste telemóvel",

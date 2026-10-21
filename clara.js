@@ -31,7 +31,6 @@ window.PRAZOS_CLARA = function (ctx) {
     if (i > 0) queue.unshift(queue.splice(i, 1)[0]);
     queue = queue.filter(function (e) { return !skipped[uid(e)]; });
     top = queue[0] || null;
-    $("cBack").disabled = !undo.length;
   }
 
   /* ---------- the one line: when · how much · where ---------- */
@@ -146,9 +145,43 @@ window.PRAZOS_CLARA = function (ctx) {
 
   $("cYes").onclick = function () { begin(); answer(true); };
   $("cLater").onclick = function () { begin(); answer(false); };
-  $("cBack").onclick = function () { begin(); back(); };
-  $("cAgain").onclick = function () { begin(); restart(); };
-  function begin() { if (!started) { started = true; $("tapStart").hidden = true; $("cnav").hidden = false; } }
+  function begin() { if (!started) { started = true; $("tapStart").hidden = true; } }
+
+  /* ---------- «⋯»: back, start over, reminders, answers — off the stage, same sheet as Lite ---------- */
+  var LT = L.lite, PL = L.push, PP = window.PrazosPush, liteHref = (ctx.lang === "pt" ? "" : "../" + ctx.lang + "/").replace("../", "") + "lite.html";
+  function closeSheet() { $("sheet").hidden = true; $("dim").hidden = true; }
+  function row(ic, txt, st, id, cls, dis) {
+    return '<button type="button" id="' + id + '"' + (cls ? ' class="' + cls + '"' : "") + (dis ? " disabled" : "") + '><span class="ic" aria-hidden="true">' + ic + '</span><span class="txt">' + txt + "</span>" + (st || "") + "</button>";
+  }
+  function openMore() {
+    if (!store.get("prazos.moreSeen")) { store.set("prazos.moreSeen", "1"); $("moreBtn").classList.remove("pulse"); }
+    var st = PP && !ctx.prerender ? PP.status() : "unsupported", on = st === "on";
+    var h = "<h2>" + esc(LT.moreT) + '</h2><div class="menuL"><div class="cap">' + esc(LT.ahead.replace("{n}", queue.length)) + " · " + esc(CL.hint) + "</div>";
+    h += row("↶", esc(CL.back), "", "mBack", "", !undo.length) + row("↺", esc(CL.again), "", "mAgain");
+    if (st !== "unsupported") h += row("🔔", esc(LT.remind) + '<span class="sub">' + esc(on ? PL.how : PL.on) + "</span>", '<span class="st' + (on ? " on" : "") + '">' + esc(on ? LT.remindOn : LT.enable) + "</span>", "mBell");
+    if (on) h += row("🔕", esc(PL.off), "", "mOff");
+    h += '<a href="' + liteHref + '#answers"><span class="ic" aria-hidden="true">✎</span><span class="txt">' + esc(LT.answers) + "</span></a>";
+    h += '</div><p class="note">' + esc(CL.future) + '</p><div class="sb"><button class="btn" type="button" id="sheetClose">✕</button></div>';
+    $("sheetBody").innerHTML = h; $("sheet").hidden = false; $("dim").hidden = false;
+    $("sheetClose").onclick = closeSheet; $("dim").onclick = closeSheet;
+    $("mBack").onclick = function () { closeSheet(); begin(); back(); };
+    $("mAgain").onclick = function () { closeSheet(); begin(); restart(); };
+    if ($("mBell")) $("mBell").onclick = function () {
+      closeSheet();
+      if (st === "install") return info(PL.installT, PL.installB);
+      if (st === "denied") return info(PL.on, PL.denied);
+      if (on) return;
+      PP.enable(ctx.lang).then(function () { ctx.toast(PL.onDone); }, function () { info(PL.on, PL.denied); });
+    };
+    if ($("mOff")) $("mOff").onclick = function () { PP.disable(ctx.lang).then(openMore, openMore); };
+  }
+  function info(title, text) {
+    $("sheetBody").innerHTML = "<h2>" + esc(title) + "</h2><p>" + esc(text) + '</p><div class="sb"><button class="btn primary" type="button" id="sheetClose">OK</button></div>';
+    $("sheet").hidden = false; $("dim").hidden = false; $("sheetClose").onclick = closeSheet; $("dim").onclick = closeSheet;
+  }
+  $("moreBtn").onclick = openMore;
+  if (!store.get("prazos.moreSeen") && !ctx.prerender) $("moreBtn").classList.add("pulse");
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") closeSheet(); });
   $("tapStart").onclick = $("orb").onclick = function () {
     /* push-to-talk: where the phone only lets the microphone start from a touch, a tap on the orb = «I'm speaking» */
     if (started && micOn && ptt && awaiting && !level.speaking) { listen(true); return; }
@@ -267,7 +300,7 @@ window.PRAZOS_CLARA = function (ctx) {
   function stopCam() {
     cancelAnimationFrame(rafCam);
     var s = vid.srcObject; if (s) s.getTracks().forEach(function (t) { t.stop(); });
-    vid.srcObject = null; vid.hidden = true; $("cnote").textContent = CL.hint;
+    vid.srcObject = null; vid.hidden = true; $("cnote").textContent = "";
   }
   $("cCam").onclick = function () {
     begin();
@@ -310,7 +343,7 @@ window.PRAZOS_CLARA = function (ctx) {
   if (!A) {
     A = JSON.parse(JSON.stringify(CAL.sample));
     if (!ctx.prerender) {
-      $("cnote").innerHTML = esc(CL.noAnswers) + ' · <a href="' + (ctx.lang === "pt" ? "" : "../" + ctx.lang + "/").replace("../", "") + 'lite.html">' + esc(CL.start) + "</a>";
+      $("cnote").innerHTML = esc(CL.noAnswers) + ' · <a href="' + liteHref + '">' + esc(CL.start) + "</a>";
     }
   }
   if (!SR) $("cMic").hidden = true;
