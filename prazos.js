@@ -159,6 +159,7 @@
     $("sample").hidden = !isSample;
     $("start").value = A.start;
     $("start").max = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0");
+    window.PrazosCore.monthPick($("start"), lang); if ($("start")._mpLoad) $("start")._mpLoad();
     function opts(id, name, map, type, val) {
       $(id).innerHTML = Object.keys(map).map(function (k) {
         var on = type === "checkbox" ? val.indexOf(k) >= 0 : val === k;

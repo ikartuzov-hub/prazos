@@ -105,6 +105,33 @@
     if (c.amount && c.amount !== "info") parts.push(L.lite.amount[c.amount]);
     return { title: "⏰ " + (L.lite.short[e.id] || e.id), body: parts.join(" · "), url: "/" + (lang === "pt" ? "" : lang + "/") + (page || "lite.html") + "#" + uid(e), tag: uid(e) + "-" + why };
   }
-  var api = { D: D, addD: addD, key: key, working: working, prevW: prevW, nextW: nextW, addWD: addWD, build: build, ymd: ymd, uid: uid, due: due, notify: notify };
+  /* month + year as two plain selects: <input type="month"> is missing or blank in desktop Safari and some others.
+     The original input stays (hidden) and keeps the "YYYY-MM" value, so the pages read it as before. */
+  function monthPick(inp, lang, minY) {
+    if (!inp || typeof document === "undefined") return;
+    if (inp._mpLoad) return;   /* already live on this page */
+    var old = inp.nextElementSibling; if (old && old.className === "mpick") old.remove();   /* a static copy left by the prerender */
+    var now = new Date(), maxY = now.getFullYear(), maxM = now.getMonth() + 1;
+    var wrap = document.createElement("div"); wrap.className = "mpick";
+    var sm = document.createElement("select"), sy = document.createElement("select");
+    sm.setAttribute("aria-label", "month"); sy.setAttribute("aria-label", "year");
+    var nm = new Intl.DateTimeFormat(LOCALE[lang] || lang, { month: "long" });
+    var blank = function (s) { var o = document.createElement("option"); o.value = ""; o.textContent = "—"; s.appendChild(o); };
+    blank(sm); blank(sy);
+    for (var m = 1; m <= 12; m++) { var o = document.createElement("option"); o.value = String(m).padStart(2, "0"); var t = nm.format(new Date(2026, m - 1, 15)); o.textContent = t.charAt(0).toUpperCase() + t.slice(1); sm.appendChild(o); }
+    for (var y = maxY; y >= (minY || 2015); y--) { var o2 = document.createElement("option"); o2.value = String(y); o2.textContent = y; sy.appendChild(o2); }
+    function load() { var v = (inp.value || "").split("-"); sy.value = v[0] || ""; sm.value = v[1] || ""; }
+    function save() {
+      if (sy.value === String(maxY) && +sm.value > maxM) sm.value = String(maxM).padStart(2, "0");   /* no future months */
+      inp.value = sy.value && sm.value ? sy.value + "-" + sm.value : "";
+      inp.dispatchEvent(new Event("input", { bubbles: true })); inp.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    sm.onchange = sy.onchange = save;
+    load(); wrap.appendChild(sm); wrap.appendChild(sy);
+    inp.type = "hidden"; inp.parentNode.insertBefore(wrap, inp.nextSibling);
+    inp.focus = function () { (sm.value ? sy : sm).focus(); };
+    inp._mpLoad = load;
+  }
+  var api = { monthPick: monthPick, D: D, addD: addD, key: key, working: working, prevW: prevW, nextW: nextW, addWD: addWD, build: build, ymd: ymd, uid: uid, due: due, notify: notify };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.PrazosCore = api;
 })(typeof self !== "undefined" ? self : this);

@@ -1,5 +1,5 @@
 /* Prazos — offline: network-first for everything, last good copy kept for offline use. */
-var V = "prazos-v13";
+var V = "prazos-v14";
 var SHELL = ["./", "flyer.html", "lite.html", "lite.css", "lite.js", "clara.html", "clara.css", "clara.js", "prazos.css", "prazos.js", "core.js", "push.js", "registry.js", "icon.svg", "data/calendar.json",
   "ui.pt.json", "ui.en.json", "ui.ru.json", "ui.es.json", "ui.de.json"];
 self.addEventListener("install", function (e) {
@@ -13,7 +13,9 @@ self.addEventListener("activate", function (e) {
 self.addEventListener("fetch", function (e) {
   var u = new URL(e.request.url);
   if (e.request.method !== "GET" || u.origin !== location.origin) return;
-  e.respondWith(fetch(e.request).then(function (r) {
+  /* revalidate with the server every time (GitHub Pages sends max-age=600 — without this a fresh deploy can hide for 10 minutes) */
+  var net = e.request.mode === "navigate" ? fetch(u.href, { cache: "no-cache", credentials: "same-origin" }) : fetch(e.request, { cache: "no-cache" });
+  e.respondWith(net.then(function (r) {
     if (r.ok) { var copy = r.clone(); caches.open(V).then(function (c) { c.put(e.request, copy); }); }
     return r;
   }).catch(function () { return caches.match(e.request, { ignoreSearch: true }); }));

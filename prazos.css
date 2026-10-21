@@ -182,3 +182,7 @@ footer a{display:inline-block;padding:8px 4px;text-decoration:underline;text-dec
 @keyframes swapOut{to{opacity:0;transform:translateY(-.6em) scale(.7)}}
 @keyframes swapIn{from{opacity:0;transform:translateY(1.6em) scale(.5)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.card.soon .date .to,.swap s,.swap b{animation:none}.swap s{display:none}.swap b{position:static}}
+
+/* month + year pickers (replace <input type="month">) */
+.mpick{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}
+.mpick select{font:inherit;font-size:16px;padding:12px 12px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0}

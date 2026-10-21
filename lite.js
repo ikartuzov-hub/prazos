@@ -181,6 +181,7 @@ window.PRAZOS_LITE = function (ctx) {
     if (s === 2) h += "<h2>" + esc(U.q3) + "</h2>" + tapOpts("income", U.o3, "radio", ob.a.income) + '<button class="btn primary" type="button" id="obNext">' + esc(LT.cont) + "</button>";
     if (s === 3) h += "<h2>" + esc(U.q4) + '</h2><p class="sub">' + esc(U.q4h) + "</p>" + tapOpts("irs", U.o4, "radio", ob.a.irs) + '<button class="btn primary" type="button" id="obNext">' + esc(LT.start) + "</button>";
     var c = $("obCard"); c.innerHTML = h; c.style.animation = "none"; void c.offsetWidth; c.style.animation = "";
+    if ($("obStart")) window.PrazosCore.monthPick($("obStart"), ctx.lang);
     var next = $("obNext");
     if (next) next.onclick = function () {
       if (s === 0) { var v = $("obStart").value; if (!v) { $("obStart").focus(); return; } ob.a.start = v; }
