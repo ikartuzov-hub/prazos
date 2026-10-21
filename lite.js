@@ -36,10 +36,22 @@ window.PRAZOS_LITE = function (ctx) {
   }
   function face(e) {
     var c = CAL.events[e.id], short = LT.short[e.id] || ctx.texts(e).title, tl = light(e);
-    var big, mon;
+    var big, mon, river = "";
     if (e.open) {
-      var sameM = e.open.getMonth() === e.date.getMonth();
-      big = e.open.getDate() + '<small>→ ' + (sameM ? e.date.getDate() : esc(fmt(e.date, { day: "numeric", month: "short" }))) + "</small>";
+      /* the river of time: start (small, green) → today (growing warmer) → last day (big, red) */
+      var end = e.last || e.date, sameM = e.open.getMonth() === end.getMonth();
+      var dd = function (x, sm) { return sm ? String(x.getDate()) : esc(fmt(x, { day: "2-digit", month: "2-digit" })); };
+      var day0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      if (e.isOpen && day0 > e.open && day0 < end) {
+        var p = (day0 - e.open) / (end - e.open), pct = Math.round(p * 100);
+        var col = p < .5 ? "color-mix(in oklab,var(--ra) " + Math.round(p * 200) + "%,var(--rg))" : "color-mix(in oklab,var(--rr) " + Math.round((p - .5) * 200) + "%,var(--ra))";
+        var sameT = today.getMonth() === end.getMonth() && sameM;
+        big = '<span class="r0">' + dd(e.open, sameM) + '</span><span class="ra">→</span><span class="rt" style="color:' + col + '">' + dd(today, sameT) +
+          '<em>' + esc((LT.tl || {}).d0 || "") + '</em></span><span class="ra">→</span><span class="r1">' + dd(end, sameM) + "</span>";
+        river = '<div class="river" style="--p:' + pct + '%"><i></i><b style="background:' + col + '"></b></div>';
+      } else {
+        big = '<span class="r0">' + dd(e.open, sameM) + '</span><span class="ra">→</span><span class="r1">' + dd(end, sameM) + "</span>";
+      }
       mon = fmt(e.open, { month: "long", year: "numeric" });
     } else {
       big = e.date.getDate() + '<small>' + esc(fmt(e.date, { weekday: "short" })) + "</small>";
@@ -48,7 +60,7 @@ window.PRAZOS_LITE = function (ctx) {
     var where = c.where ? LT.where[c.where] : "—", amount = LT.amount[c.amount || "none"];
     return '<div class="row1"><span class="chip k-' + e.kind + '">' + esc(U.kind[e.kind]) + "</span>" +
       '<span class="tl tl-' + tl.lvl + '"><i></i>' + esc(tl.txt) + "</span></div>" +
-      '<div class="big">' + big + '</div><div class="mon">' + esc(cap(mon)) + "</div>" +
+      '<div class="big' + (e.open ? " rv" + (e.open.getMonth() !== (e.last || e.date).getMonth() ? " rvm" : "") : "") + '">' + big + "</div>" + river + '<div class="mon">' + esc(cap(mon)) + "</div>" +
       '<div class="what">' + esc(short) + "</div>" +
       (e.remind ? '<div class="shiftL">' + esc(U.lastDay) + ": " + esc(fmt(e.remind, { weekday: "long", day: "numeric", month: "long" })) + "</div>" : "") +
       '<div class="facts"><div class="f"><b>' + esc(LT.whereL) + "</b><span>" + esc(where) + '</span></div><div class="f amt"><b>' + esc(LT.howMuch) + "</b><span>" + esc(amount) + "</span></div></div>";

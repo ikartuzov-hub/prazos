@@ -37,3 +37,6 @@ body.clara .rb{background:transparent}
 .cfuture{margin:4px 0 0;font-size:12px;color:var(--muted);max-width:40ch;opacity:.8}
 .clara footer{padding-block:20px calc(40px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){.cbtn{transition:none}}
+.clast{color:#FF8A7A;display:inline-block;animation:lastBlink .9s ease-in-out .6s 5}
+@keyframes lastBlink{0%,100%{opacity:1;text-shadow:none}50%{opacity:.35;text-shadow:0 0 18px currentColor}}
+@media (prefers-reduced-motion:reduce){.clast{animation:none}}

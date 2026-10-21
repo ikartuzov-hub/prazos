@@ -42,9 +42,11 @@ window.PRAZOS_CLARA = function (ctx) {
     if (!top) { $("cwhat").textContent = ""; $("cfacts").textContent = touched ? SAY.end : CL.none; $("cYes").disabled = $("cLater").disabled = true; return; }
     var c = CAL.events[top.id] || {};
     var amt = c.amount && c.amount !== "info" ? L.lite.amount[c.amount] : "";
-    var parts = [when(top), amt, c.where ? L.lite.where[c.where] : ""].filter(Boolean);
+    var parts = [amt, c.where ? L.lite.where[c.where] : ""].filter(Boolean).map(esc);
+    var lastD = fmt(top.last, { day: "numeric", month: "short" }), w = esc(when(top)), k = w.lastIndexOf(esc(lastD));
+    if (k >= 0) w = w.slice(0, k) + '<span class="clast">' + esc(lastD) + "</span>" + w.slice(k + esc(lastD).length);   /* the last day nudges */
     $("cwhat").textContent = L.lite.short[top.id] || "";
-    $("cfacts").innerHTML = parts.map(esc).join("<i>·</i>");
+    $("cfacts").innerHTML = [w].concat(parts).join("<i>·</i>");
     $("cYes").disabled = $("cLater").disabled = false;
   }
 

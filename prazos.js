@@ -76,7 +76,10 @@
         var t = texts(e);
         var sameM = e.open && e.open.getMonth() === e.date.getMonth();
         var col = e.open
-          ? '<div class="dd">' + e.open.getDate() + '</div><div class="to">→ ' + esc(sameM ? String(e.date.getDate()) : dshort(e.date)) + "</div>"
+          ? '<div class="dd">' + e.open.getDate() + '</div><div class="to">→ ' + (e.remind && e === firstMain && sameM
+              /* the window ends on a weekend: the real last day flies in over it and nudges a few times */
+              ? '<span class="swap"><s>' + e.date.getDate() + "</s><b>" + e.remind.getDate() + "</b></span>"
+              : esc(sameM ? String(e.date.getDate()) : dshort(e.date))) + "</div>"
           : '<div class="dd">' + e.date.getDate() + '</div><div class="wd">' + esc(fmt(e.date, { weekday: "short" })) + "</div>";
         var when = e.open
           ? '<div class="win">' + esc(U.window.replace("{a}", fmt(e.open, { day: "numeric", month: "long" })).replace("{b}", fmt(e.date, { day: "numeric", month: "long" }))) + "</div>"
