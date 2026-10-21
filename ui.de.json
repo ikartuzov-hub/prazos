@@ -290,7 +290,12 @@
   "cont": "Weiter",
   "tap": "Karte antippen, um zu sehen, warum",
   "ob": "Vier Tipps, fertig.",
-  "obSub": "Die Antworten bleiben nur auf diesem Handy."
+  "obSub": "Die Antworten bleiben nur auf diesem Handy.",
+  "tl": {
+   "d": "noch {n} Tage",
+   "d1": "morgen",
+   "d0": "heute"
+  }
  },
  "push": {
   "on": "Auf diesem Handy erinnern",

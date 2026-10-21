@@ -15,6 +15,16 @@
   opacity:calc(1 - var(--k)*.22);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .35s;will-change:transform;cursor:pointer;
   display:flex;flex-direction:column;align-items:stretch;padding:22px 22px 18px;gap:8px;color:var(--ink);text-align:left;font:inherit;border-style:solid}
 .cardL[style*="--k:0"]{cursor:pointer}
+/* traffic light — the whole card takes the tint of the time left */
+.cardL.tl-g{--tl:#2FA36B}.cardL.tl-a{--tl:#E8A317}.cardL.tl-r{--tl:#E5484D}
+.cardL[class*="tl-"]{background:radial-gradient(120% 90% at 20% 0%,rgba(255,255,255,.22),transparent 55%),
+  linear-gradient(160deg,color-mix(in srgb,var(--surface) 82%,var(--tl)),color-mix(in srgb,var(--surface) 64%,var(--tl)));
+  border-color:color-mix(in srgb,var(--line) 40%,var(--tl))}
+.cardL.tl-r.top{animation:tlPulse 2.4s ease-in-out infinite}
+@keyframes tlPulse{50%{box-shadow:0 30px 60px -20px rgba(0,0,0,.45),0 0 0 6px color-mix(in srgb,var(--tl) 28%,transparent)}}
+.cardL .tl{display:inline-flex;align-items:center;gap:6px;font-weight:600;letter-spacing:.03em;color:var(--ink);
+  background:color-mix(in srgb,var(--tl) 22%,transparent);border:1px solid color-mix(in srgb,var(--tl) 55%,transparent);border-radius:999px;padding:4px 10px}
+.cardL .tl i{width:8px;height:8px;border-radius:50%;background:var(--tl);box-shadow:0 0 0 3px color-mix(in srgb,var(--tl) 30%,transparent)}
 .cardL:not(.top){pointer-events:none}
 .cardL.top{transform:translate3d(0,0,0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
 .cardL::after{content:"";position:absolute;inset:0;border-radius:26px;pointer-events:none;
@@ -80,7 +90,7 @@
 .obCard input[type=month]{font-size:18px;padding:12px 14px;width:100%}
 .obCard .btn.primary{justify-content:center;height:52px;font-size:17px}
 
-@media (prefers-reduced-motion:reduce){.cardL,.sheet,.obCard{animation:none;transition:none}.cardL.top{transform:none}}
+@media (prefers-reduced-motion:reduce){.cardL.tl-r.top{animation:none}.cardL,.sheet,.obCard{animation:none;transition:none}.cardL.top{transform:none}}
 
 /* bell: reminders on this phone */
 .bell{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:stretch}

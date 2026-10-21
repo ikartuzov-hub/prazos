@@ -290,7 +290,12 @@
   "cont": "Continue",
   "tap": "Tap the card to see why",
   "ob": "Four taps and you're set.",
-  "obSub": "Your answers stay on this phone only."
+  "obSub": "Your answers stay on this phone only.",
+  "tl": {
+   "d": "{n} days left",
+   "d1": "tomorrow",
+   "d0": "today"
+  }
  },
  "push": {
   "on": "Remind me on this phone",

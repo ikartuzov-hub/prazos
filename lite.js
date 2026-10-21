@@ -27,8 +27,15 @@ window.PRAZOS_LITE = function (ctx) {
   }
 
   /* ---------- card face ---------- */
+  /* traffic light: calm green → amber (≤ 7 days to the last day) → red (≤ 2 days) */
+  function light(e) {
+    var end = e.last || e.date, n = Math.round((new Date(end.getFullYear(), end.getMonth(), end.getDate()) - new Date(today.getFullYear(), today.getMonth(), today.getDate())) / 864e5);
+    var lvl = n <= 2 ? "r" : n <= 7 ? "a" : "g", tl = LT.tl || {};
+    var txt = n <= 0 ? tl.d0 : n === 1 ? tl.d1 : (tl.d || "").replace("{n}", n);
+    return { lvl: lvl, txt: (e.isOpen ? U.openNow + " · " : "") + txt };
+  }
   function face(e) {
-    var c = CAL.events[e.id], short = LT.short[e.id] || ctx.texts(e).title;
+    var c = CAL.events[e.id], short = LT.short[e.id] || ctx.texts(e).title, tl = light(e);
     var big, mon;
     if (e.open) {
       var sameM = e.open.getMonth() === e.date.getMonth();
@@ -40,7 +47,7 @@ window.PRAZOS_LITE = function (ctx) {
     }
     var where = c.where ? LT.where[c.where] : "—", amount = LT.amount[c.amount || "none"];
     return '<div class="row1"><span class="chip k-' + e.kind + '">' + esc(U.kind[e.kind]) + "</span>" +
-      (e.isOpen ? '<span class="live"><i></i>' + esc(U.openNow) + "</span>" : "") + "</div>" +
+      '<span class="tl tl-' + tl.lvl + '"><i></i>' + esc(tl.txt) + "</span></div>" +
       '<div class="big">' + big + '</div><div class="mon">' + esc(cap(mon)) + "</div>" +
       '<div class="what">' + esc(short) + "</div>" +
       (e.remind ? '<div class="shiftL">' + esc(U.lastDay) + ": " + esc(fmt(e.remind, { weekday: "long", day: "numeric", month: "long" })) + "</div>" : "") +
@@ -58,7 +65,7 @@ window.PRAZOS_LITE = function (ctx) {
     }
     var show = ctx.prerender ? queue : queue.slice(0, 4);
     d.innerHTML = show.map(function (e, i) {
-      return '<button type="button" class="cardL' + (i === 0 ? " top" : "") + '" style="--k:' + i + '" data-u="' + uid(e) + '"' + (i ? ' tabindex="-1" aria-hidden="true"' : "") + ">" + face(e) + "</button>";
+      return '<button type="button" class="cardL tl-' + light(e).lvl + (i === 0 ? " top" : "") + '" style="--k:' + i + '" data-u="' + uid(e) + '"' + (i ? ' tabindex="-1" aria-hidden="true"' : "") + ">" + face(e) + "</button>";
     }).join("");
     $("left").textContent = LT.left.replace("{n}", queue.length);
     $("doneBtn").disabled = $("laterBtn").disabled = false; $("tapHint").hidden = false;

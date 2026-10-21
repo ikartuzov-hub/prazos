@@ -290,7 +290,12 @@
   "cont": "Continuar",
   "tap": "Toque no cartão para ver porquê",
   "ob": "Quatro toques e pronto.",
-  "obSub": "As respostas ficam só neste telemóvel."
+  "obSub": "As respostas ficam só neste telemóvel.",
+  "tl": {
+   "d": "faltam {n} dias",
+   "d1": "amanhã",
+   "d0": "hoje"
+  }
  },
  "push": {
   "on": "Lembrar neste telemóvel",
