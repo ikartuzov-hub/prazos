@@ -314,7 +314,7 @@
   "tap": "Toque e a Clara fala",
   "yes": "Sim",
   "later": "Depois",
-  "mic": "Responder com a voz",
+  "mic": "Conversar por voz",
   "cam": "Responder com a cabeça",
   "camOn": "A ver o seu aceno · o vídeo fica no telemóvel",
   "hint": "Acenar = sim · abanar = depois",
@@ -360,7 +360,86 @@
     "nao",
     "amanhã",
     "mais tarde"
-   ]
-  }
+   ],
+   "skip": "Passo à frente.",
+   "back": "Volto atrás.",
+   "first": "Este é o primeiro prazo.",
+   "restart": "Recomeçamos.",
+   "end": "É tudo por agora. Diga «do início» para ouvir outra vez.",
+   "count": "Prazos pela frente: {n}. {list}.",
+   "help": "Pode dizer: sim, depois, seguinte, volta, repete, do início, quanto, onde, quando ou pára.",
+   "unknown": "Não percebi. Diga «sim», «depois» ou «ajuda».",
+   "bye": "Está bem, fico calada. Toque na esfera quando quiser continuar.",
+   "whenOpen": "De {from} a {date}.",
+   "whenDue": "Até {date}.",
+   "noInfo": "Não tenho dados sobre isso.",
+   "zero": "Não há prazos pela frente.",
+   "cmd": {
+    "stop": [
+     "pára",
+     "chega",
+     "silêncio",
+     "adeus",
+     "stop"
+    ],
+    "restart": [
+     "do início",
+     "do inicio",
+     "recomeça",
+     "recomeçar",
+     "começa de novo",
+     "desde o início"
+    ],
+    "back": [
+     "volta",
+     "voltar",
+     "anterior",
+     "desfaz",
+     "anula"
+    ],
+    "list": [
+     "quantos",
+     "o que mais",
+     "lista",
+     "todos os prazos"
+    ],
+    "help": [
+     "ajuda",
+     "o que sabes fazer",
+     "o que posso dizer"
+    ],
+    "repeat": [
+     "repete",
+     "repita",
+     "outra vez",
+     "de novo"
+    ],
+    "next": [
+     "seguinte",
+     "próximo",
+     "proximo",
+     "passa",
+     "salta",
+     "avança"
+    ],
+    "amount": [
+     "quanto",
+     "valor",
+     "montante"
+    ],
+    "where": [
+     "onde"
+    ],
+    "when": [
+     "quando",
+     "que dia",
+     "até quando"
+    ]
+   }
+  },
+  "again": "Do início",
+  "back": "Voltar",
+  "listening": "A ouvir…",
+  "paused": "Em pausa. Toque na esfera para continuar."
  }
 }

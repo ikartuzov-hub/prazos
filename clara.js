@@ -9,12 +9,14 @@ window.PRAZOS_CLARA = function (ctx) {
   var LOCALE = { pt: "pt-PT", en: "en-GB", ru: "ru-RU", es: "es-ES", de: "de-DE" }[ctx.lang];
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches || ctx.prerender;
   var A = null, R, queue = [], top = null, started = false, awaiting = false;
+  var skipped = {}, undo = [], pref = (location.hash || "").slice(1), touched = false;
 
   function ymd(x) { return x.getFullYear() + String(x.getMonth() + 1).padStart(2, "0") + String(x.getDate()).padStart(2, "0"); }
   function uid(e) { return e.id + "-" + ymd(e.date); }
   function readJSON(k) { try { return JSON.parse(store.get(k) || "null") || {}; } catch (e) { return {}; } }
+  function writeJSON(k, o) { store.set(k, JSON.stringify(o)); }
 
-  /* ---------- queue (same rules as Lite: done and snoozed are shared) ---------- */
+  /* ---------- queue (same rules as Lite: done and snoozed are shared; «skip» lives only in this conversation) ---------- */
   function rebuild() {
     R = ctx.build(A);
     var done = readJSON("prazos.done"), snooze = readJSON("prazos.snooze"), t = ymd(today);
@@ -25,9 +27,11 @@ window.PRAZOS_CLARA = function (ctx) {
       if (snooze[u] && snooze[u] > t && ymd(e.last) > t) return false;
       return true;
     });
-    var h = (location.hash || "").slice(1), i = queue.map(uid).indexOf(h);
+    var i = queue.map(uid).indexOf(pref);
     if (i > 0) queue.unshift(queue.splice(i, 1)[0]);
+    queue = queue.filter(function (e) { return !skipped[uid(e)]; });
     top = queue[0] || null;
+    $("cBack").disabled = !undo.length;
   }
 
   /* ---------- the one line: when · how much · where ---------- */
@@ -36,7 +40,7 @@ window.PRAZOS_CLARA = function (ctx) {
     return U.until.replace("{d}", fmt(e.last, { day: "numeric", month: "short" }));
   }
   function renderLine() {
-    if (!top) { $("cwhat").textContent = ""; $("cfacts").textContent = CL.none; $("cYes").disabled = $("cLater").disabled = true; return; }
+    if (!top) { $("cwhat").textContent = ""; $("cfacts").textContent = touched ? SAY.end : CL.none; $("cYes").disabled = $("cLater").disabled = true; return; }
     var c = CAL.events[top.id] || {};
     var amt = c.amount && c.amount !== "info" ? L.lite.amount[c.amount] : "";
     var parts = [when(top), amt, c.where ? L.lite.where[c.where] : ""].filter(Boolean);
@@ -57,77 +61,154 @@ window.PRAZOS_CLARA = function (ctx) {
     voice = (nice[0] || pool[0]) || null;
   }
   if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+  function longDate(x) { return fmt(x, { day: "numeric", month: "long" }); }
+  function clean(s) { return s.replace(/\s*\.\s*\./g, ".").replace(/\s{2,}/g, " ").trim(); }
   function phrase(e) {
     var c = CAL.events[e.id] || {}, why = ymd(e.last) === ymd(today) ? "last" : e.isOpen ? "open" : "soon";
-    var d = fmt(e.isOpen || !e.open ? e.last : e.open, { weekday: "long", day: "numeric", month: "long" });
-    return SAY[why].replace("{what}", L.lite.short[e.id] || "").replace("{date}", d)
-      .replace("{where}", c.where ? SAY.where[c.where] : "").replace("{amount}", SAY.amount[c.amount || "none"] || "")
-      .replace(/\s*\.\s*\./g, ".").replace(/\s{2,}/g, " ");
+    var d = longDate(e.isOpen || !e.open ? e.last : e.open);
+    return clean(SAY[why].replace("{what}", L.lite.short[e.id] || "").replace("{date}", d)
+      .replace("{where}", c.where ? SAY.where[c.where] : "").replace("{amount}", SAY.amount[c.amount || "none"] || ""));
   }
+  var talkId = 0;
   function speak(text, after) {
-    level.target = 0.35;
+    var my = ++talkId; stopListen();
     if (!("speechSynthesis" in window) || !text) { if (after) after(); return; }
     speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(text);
+    var u = new SpeechSynthesisUtterance(text), fired = false;
+    function fin() { if (fired || my !== talkId) return; fired = true; level.speaking = false; if (after) after(); }
     u.lang = LOCALE; if (voice) u.voice = voice; u.rate = 1; u.pitch = 1.05;
     u.onstart = function () { level.speaking = true; };
     u.onboundary = function () { level.kick = 1; };
-    u.onend = u.onerror = function () { level.speaking = false; if (after) after(); };
+    u.onend = u.onerror = fin;
     speechSynthesis.speak(u);
   }
-  function present() {
+  /* after Clara has spoken: wait for an answer (buttons and nod always; the voice in conversation mode) */
+  function wait() { awaiting = true; if (micOn) setTimeout(listen, 350); }
+  function present(lead) {
     renderLine();
-    if (!top) { speak(SAY.none); return; }
+    var text = top ? phrase(top) : touched ? SAY.end : SAY.none;
     awaiting = false;
-    speak(phrase(top), function () { awaiting = true; listen(); });
+    speak(clean((lead ? lead + " " : "") + text), wait);
   }
 
-  /* ---------- answers ---------- */
+  /* ---------- answers and moves ---------- */
+  function sync() { if (window.PrazosPush) window.PrazosPush.sync(ctx.lang); }
+  function remember(kind, u) { var d = readJSON("prazos.done"), s = readJSON("prazos.snooze"); undo.push({ kind: kind, u: u, d: d[u], s: s[u] }); }
   function answer(yes) {
     if (!top) return;
-    awaiting = false; stopListen();
-    var u = uid(top);
-    if (yes) { var d = readJSON("prazos.done"); d[u] = ymd(today); store.set("prazos.done", JSON.stringify(d)); }
-    else { var s = readJSON("prazos.snooze"), tm = new Date(today); tm.setDate(tm.getDate() + 1); s[u] = ymd(tm); store.set("prazos.snooze", JSON.stringify(s)); }
-    if (window.PrazosPush) window.PrazosPush.sync(ctx.lang);
+    awaiting = false; stopListen(); touched = true;
+    var u = uid(top); remember(yes ? "done" : "snooze", u);
+    if (yes) { var d = readJSON("prazos.done"); d[u] = ymd(today); writeJSON("prazos.done", d); }
+    else { var s = readJSON("prazos.snooze"), tm = new Date(today); tm.setDate(tm.getDate() + 1); s[u] = ymd(tm); writeJSON("prazos.snooze", s); }
+    sync();
     if (location.hash) history.replaceState(null, "", location.pathname);
-    level.kick = 1.6;
-    rebuild(); renderLine();
+    pref = ""; level.kick = 1.6;
+    rebuild();
+    if (micOn) { present(yes ? SAY.ok : SAY.later); return; }   /* conversation: acknowledge and go straight on */
+    renderLine();
     var nx = top, msg = !yes ? SAY.later : nx ? SAY.okNext.replace("{what}", L.lite.short[nx.id] || "").replace("{date}", when(nx)) : SAY.ok;
-    speak(msg);
+    speak(msg, wait);
   }
+  function skip() {
+    if (!top) { present(); return; }
+    touched = true; remember("skip", uid(top)); skipped[uid(top)] = 1; pref = ""; rebuild(); present(SAY.skip);
+  }
+  function back() {
+    var x = undo.pop();
+    if (!x) { speak(SAY.first, function () { present(); }); return; }
+    var d = readJSON("prazos.done"), s = readJSON("prazos.snooze");
+    if (x.kind === "skip") delete skipped[x.u];
+    else { if (x.d) d[x.u] = x.d; else delete d[x.u]; if (x.s) s[x.u] = x.s; else delete s[x.u]; writeJSON("prazos.done", d); writeJSON("prazos.snooze", s); sync(); }
+    pref = x.u; rebuild(); present(SAY.back);
+  }
+  function restart() {
+    /* from the top: everything passed over in this conversation comes back; what was marked done stays done */
+    var s = readJSON("prazos.snooze");
+    undo.filter(function (x) { return x.kind === "snooze"; }).forEach(function (x) { if (x.s) s[x.u] = x.s; else delete s[x.u]; });
+    writeJSON("prazos.snooze", s); sync();
+    skipped = {}; undo = undo.filter(function (x) { return x.kind === "done"; }); pref = ""; touched = false;
+    rebuild(); present(SAY.restart);
+  }
+  function listAll() {
+    if (!queue.length) { speak(SAY.zero, wait); return; }
+    var names = queue.slice(0, 5).map(function (e) { return L.lite.short[e.id] || ""; }).filter(Boolean).join(", ");
+    speak(SAY.count.replace("{n}", queue.length).replace("{list}", names), wait);
+  }
+  function tell(kind) {
+    if (!top) { speak(SAY.zero, wait); return; }
+    var c = CAL.events[top.id] || {}, t = "";
+    if (kind === "amount") t = SAY.amount[c.amount || "none"] || "";
+    else if (kind === "where") t = c.where ? SAY.where[c.where] : "";
+    else t = top.open && !top.isOpen ? SAY.whenOpen.replace("{from}", longDate(top.open)).replace("{date}", longDate(top.last)) : SAY.whenDue.replace("{date}", longDate(top.last));
+    speak(t ? (/[.!?]$/.test(t) ? t : t + ".") : SAY.noInfo, wait);
+  }
+  function hush() { awaiting = false; stopListen(); speak(SAY.bye); setMic(false); }
+
   $("cYes").onclick = function () { begin(); answer(true); };
   $("cLater").onclick = function () { begin(); answer(false); };
-  function begin() { if (!started) { started = true; $("tapStart").hidden = true; } }
+  $("cBack").onclick = function () { begin(); back(); };
+  $("cAgain").onclick = function () { begin(); restart(); };
+  function begin() { if (!started) { started = true; $("tapStart").hidden = true; $("cnav").hidden = false; } }
   $("tapStart").onclick = $("orb").onclick = function () {
     var first = !started; begin();
-    if (first && !store.get("prazos.claraHello")) { store.set("prazos.claraHello", "1"); speak(SAY.hello, present); } else present();
+    if (first && !store.get("prazos.claraHello")) { store.set("prazos.claraHello", "1"); present(SAY.hello); } else present();
   };
 
-  /* ---------- voice in ---------- */
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, micOn = false;
-  function norm(s) { return s.toLowerCase().replace(/[.,!?¿¡«»"]/g, " "); }
-  function hit(text, words) { var t = " " + norm(text) + " "; return words.some(function (w) { return t.indexOf(" " + w + " ") >= 0; }); }
+  /* ---------- voice in: a conversation — after every phrase Clara listens for an answer or a command ---------- */
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, micOn = false, since = 0;
+  var CMD = SAY.cmd || {};
+  function norm(s) { return " " + s.toLowerCase().replace(/[.,!?¿¡«»"“”„:;]/g, " ").replace(/\s+/g, " ").trim() + " "; }
+  function hit(t, words) { return (words || []).some(function (w) { return t.indexOf(" " + w.toLowerCase() + " ") >= 0; }); }
+  function act(raw) {
+    var t = norm(raw);
+    if (!t.trim()) return false;
+    $("cheard").textContent = CL.heard.replace("{w}", raw.trim());
+    if (hit(t, CMD.stop)) hush();
+    else if (hit(t, CMD.restart)) restart();
+    else if (hit(t, CMD.back)) back();
+    else if (hit(t, CMD.list)) listAll();
+    else if (hit(t, CMD.help)) speak(SAY.help, wait);
+    else if (hit(t, CMD.repeat)) present();
+    else if (hit(t, CMD.next)) skip();
+    else if (hit(t, CMD.amount)) tell("amount");
+    else if (hit(t, CMD.where)) tell("where");
+    else if (hit(t, CMD.when)) tell("when");
+    else if (top && hit(t, SAY.yes)) answer(true);
+    else if (top && hit(t, SAY.no)) answer(false);
+    else speak(SAY.unknown, wait);
+    return true;
+  }
   function listen() {
-    if (!micOn || !SR || !awaiting) return;
+    if (!micOn || !SR || !awaiting || rec || level.speaking) return;
+    if (!since) since = Date.now();
+    var heard = "", acted = false;
     try {
-      rec = new SR(); rec.lang = LOCALE; rec.interimResults = true; rec.maxAlternatives = 3; rec.continuous = false;
+      rec = new SR(); rec.lang = LOCALE; rec.interimResults = true; rec.maxAlternatives = 1; rec.continuous = false;
+      $("cheard").textContent = CL.listening;
       rec.onresult = function (ev) {
-        var txt = ""; for (var i = 0; i < ev.results.length; i++) txt += " " + ev.results[i][0].transcript;
-        $("cheard").textContent = CL.heard.replace("{w}", txt.trim());
-        if (hit(txt, SAY.yes)) answer(true); else if (hit(txt, SAY.no)) answer(false);
+        var txt = "", fin = false;
+        for (var i = 0; i < ev.results.length; i++) { txt += " " + ev.results[i][0].transcript; if (ev.results[i].isFinal) fin = true; }
+        heard = txt; $("cheard").textContent = CL.heard.replace("{w}", txt.trim());
+        if (fin && !acted) { acted = true; since = 0; try { rec.stop(); } catch (e) {} act(txt); }
       };
-      rec.onend = function () { rec = null; if (micOn && awaiting) setTimeout(listen, 300); };
-      rec.onerror = function () { rec = null; };
+      rec.onend = function () {
+        rec = null;
+        if (!acted && heard.trim()) { acted = true; since = 0; act(heard); return; }   /* iOS sometimes ends without a final result */
+        if (!micOn || !awaiting || acted) return;
+        if (Date.now() - since > 25000) { since = 0; $("cheard").textContent = CL.paused; return; }   /* long silence: pause, a tap resumes */
+        setTimeout(listen, 250);
+      };
+      rec.onerror = function (e) { if (e && (e.error === "not-allowed" || e.error === "service-not-allowed")) { setMic(false); ctx.toast(CL.micErr); } };
       rec.start();
-    } catch (e) {}
+    } catch (e) { rec = null; }
   }
   function stopListen() { try { if (rec) rec.abort(); } catch (e) {} rec = null; }
+  function setMic(on) { micOn = on; since = 0; $("cMic").classList.toggle("on", on); $("cMic").classList.toggle("live", on); if (!on) { stopListen(); $("cheard").textContent = ""; } }
   $("cMic").onclick = function () {
     begin();
     if (!SR) { ctx.toast(CL.micErr); return; }
-    micOn = !micOn; $("cMic").classList.toggle("on", micOn);
-    if (micOn) { if (awaiting) listen(); else present(); } else stopListen();
+    setMic(!micOn);
+    if (micOn) present();
   };
 
   /* ---------- head gesture in: nod = yes, shake = later ---------- */

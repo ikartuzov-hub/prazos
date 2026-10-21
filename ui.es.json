@@ -314,7 +314,7 @@
   "tap": "Toque y Clara habla",
   "yes": "Sí",
   "later": "Luego",
-  "mic": "Responder con la voz",
+  "mic": "Hablar por voz",
   "cam": "Responder asintiendo",
   "camOn": "Mirando su gesto · el vídeo se queda en el móvil",
   "hint": "Asentir = sí · negar = luego",
@@ -359,7 +359,88 @@
     "no",
     "después",
     "mañana"
-   ]
-  }
+   ],
+   "skip": "Lo salto.",
+   "back": "Vuelvo atrás.",
+   "first": "Este es el primer plazo.",
+   "restart": "Empezamos de nuevo.",
+   "end": "Eso es todo por ahora. Diga «desde el principio» para repasar.",
+   "count": "Plazos pendientes: {n}. {list}.",
+   "help": "Puede decir: sí, luego, siguiente, atrás, repite, desde el principio, cuánto, dónde, cuándo o basta.",
+   "unknown": "No le he entendido. Diga «sí», «luego» o «ayuda».",
+   "bye": "De acuerdo, me callo. Toque la esfera cuando quiera seguir.",
+   "whenOpen": "Del {from} al {date}.",
+   "whenDue": "Hasta el {date}.",
+   "noInfo": "No tengo datos sobre eso.",
+   "zero": "No hay plazos pendientes.",
+   "cmd": {
+    "stop": [
+     "basta",
+     "silencio",
+     "adiós",
+     "adios",
+     "stop"
+    ],
+    "restart": [
+     "desde el principio",
+     "empieza de nuevo",
+     "reinicia",
+     "al principio",
+     "desde el inicio"
+    ],
+    "back": [
+     "atrás",
+     "atras",
+     "deshacer",
+     "anterior",
+     "vuelve"
+    ],
+    "list": [
+     "cuántos",
+     "cuantos",
+     "qué más",
+     "que más",
+     "lista",
+     "todos los plazos"
+    ],
+    "help": [
+     "ayuda",
+     "qué sabes hacer",
+     "qué puedo decir"
+    ],
+    "repeat": [
+     "repite",
+     "repita",
+     "otra vez",
+     "de nuevo"
+    ],
+    "next": [
+     "siguiente",
+     "salta",
+     "pasa",
+     "adelante"
+    ],
+    "amount": [
+     "cuánto",
+     "cuanto",
+     "importe",
+     "cantidad"
+    ],
+    "where": [
+     "dónde",
+     "donde",
+     "adónde"
+    ],
+    "when": [
+     "cuándo",
+     "cuando",
+     "qué día"
+    ]
+   }
+  },
+  "again": "Desde el inicio",
+  "back": "Atrás",
+  "listening": "Escuchando…",
+  "paused": "En pausa. Toque la esfera para seguir."
  }
 }

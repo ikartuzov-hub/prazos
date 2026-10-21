@@ -314,7 +314,7 @@
   "tap": "Tippen, und Clara spricht",
   "yes": "Ja",
   "later": "Später",
-  "mic": "Per Stimme antworten",
+  "mic": "Per Stimme sprechen",
   "cam": "Mit Nicken antworten",
   "camOn": "Ich achte auf Ihr Nicken · das Video bleibt auf dem Handy",
   "hint": "Nicken = ja · Kopfschütteln = später",
@@ -358,7 +358,83 @@
     "später",
     "nein",
     "morgen"
-   ]
-  }
+   ],
+   "skip": "Übersprungen.",
+   "back": "Ich gehe zurück.",
+   "first": "Das ist die erste Frist.",
+   "restart": "Wir fangen von vorne an.",
+   "end": "Das ist alles für jetzt. Sagen Sie „von vorne“, um es noch einmal durchzugehen.",
+   "count": "Anstehende Fristen: {n}. {list}.",
+   "help": "Sie können sagen: ja, später, weiter, zurück, wiederholen, von vorne, wie viel, wo, wann oder stopp.",
+   "unknown": "Das habe ich nicht verstanden. Sagen Sie „ja“, „später“ oder „Hilfe“.",
+   "bye": "Gut, ich bin still. Tippen Sie auf die Kugel, wenn es weitergehen soll.",
+   "whenOpen": "Vom {from} bis {date}.",
+   "whenDue": "Bis {date}.",
+   "noInfo": "Dazu habe ich nichts.",
+   "zero": "Keine anstehenden Fristen.",
+   "cmd": {
+    "stop": [
+     "stopp",
+     "stop",
+     "ruhe",
+     "genug",
+     "tschüss"
+    ],
+    "restart": [
+     "von vorne",
+     "neu starten",
+     "von anfang an"
+    ],
+    "back": [
+     "zurück",
+     "rückgängig",
+     "vorherige"
+    ],
+    "list": [
+     "wie viele",
+     "was noch",
+     "liste",
+     "alle fristen"
+    ],
+    "help": [
+     "hilfe",
+     "was kannst du",
+     "was können sie",
+     "was kann ich sagen"
+    ],
+    "repeat": [
+     "wiederhole",
+     "wiederholen",
+     "nochmal",
+     "noch mal",
+     "wie bitte"
+    ],
+    "next": [
+     "weiter",
+     "nächste",
+     "nächster",
+     "überspringen"
+    ],
+    "amount": [
+     "wie viel",
+     "wieviel",
+     "betrag",
+     "summe"
+    ],
+    "where": [
+     "wo",
+     "wohin"
+    ],
+    "when": [
+     "wann",
+     "welcher tag",
+     "bis wann"
+    ]
+   }
+  },
+  "again": "Von vorne",
+  "back": "Zurück",
+  "listening": "Ich höre…",
+  "paused": "Pause. Tippen Sie auf die Kugel, um weiterzumachen."
  }
 }

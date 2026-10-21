@@ -314,7 +314,7 @@
   "tap": "Tap and Clara speaks",
   "yes": "Yes",
   "later": "Later",
-  "mic": "Answer by voice",
+  "mic": "Talk by voice",
   "cam": "Answer with a nod",
   "camOn": "Watching for a nod · video stays on the phone",
   "hint": "Nod = yes · shake = later",
@@ -360,7 +360,79 @@
     "no",
     "not yet",
     "tomorrow"
-   ]
-  }
+   ],
+   "skip": "Skipping.",
+   "back": "Going back.",
+   "first": "This is the very first one.",
+   "restart": "Starting over.",
+   "end": "That's all for now. Say “start over” to go through again.",
+   "count": "Deadlines ahead: {n}. {list}.",
+   "help": "You can say: yes, later, next, back, repeat, start over, how much, where, when, or stop.",
+   "unknown": "Sorry, I didn't catch that. Say “yes”, “later” or “help”.",
+   "bye": "All right, I'll be quiet. Tap the orb when you want to go on.",
+   "whenOpen": "Open from {from} to {date}.",
+   "whenDue": "By {date}.",
+   "noInfo": "I have nothing on that.",
+   "zero": "No deadlines ahead.",
+   "cmd": {
+    "stop": [
+     "stop",
+     "quiet",
+     "enough",
+     "goodbye",
+     "bye"
+    ],
+    "restart": [
+     "start over",
+     "from the start",
+     "restart",
+     "from the beginning"
+    ],
+    "back": [
+     "back",
+     "undo",
+     "previous",
+     "go back"
+    ],
+    "list": [
+     "how many",
+     "what else",
+     "list",
+     "all deadlines"
+    ],
+    "help": [
+     "help",
+     "what can you do",
+     "what can i say"
+    ],
+    "repeat": [
+     "repeat",
+     "again",
+     "say again",
+     "pardon"
+    ],
+    "next": [
+     "next",
+     "skip",
+     "move on"
+    ],
+    "amount": [
+     "how much",
+     "amount"
+    ],
+    "where": [
+     "where"
+    ],
+    "when": [
+     "when",
+     "what date",
+     "which day"
+    ]
+   }
+  },
+  "again": "Start over",
+  "back": "Back",
+  "listening": "Listening…",
+  "paused": "Paused. Tap the orb to carry on."
  }
 }
