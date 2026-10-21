@@ -1,5 +1,5 @@
 /* Prazos — offline: network-first for everything, last good copy kept for offline use. */
-var V = "prazos-v8";
+var V = "prazos-v9";
 var SHELL = ["./", "flyer.html", "lite.html", "lite.css", "lite.js", "clara.html", "clara.css", "clara.js", "prazos.css", "prazos.js", "core.js", "push.js", "registry.js", "icon.svg", "data/calendar.json",
   "ui.pt.json", "ui.en.json", "ui.ru.json", "ui.es.json", "ui.de.json"];
 self.addEventListener("install", function (e) {

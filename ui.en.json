@@ -295,6 +295,45 @@
    "d": "{n} days left",
    "d1": "tomorrow",
    "d0": "today"
+  },
+  "howT": "How to do it",
+  "howNote": "Menu names on the portal may differ slightly. Checked 21.10.2026.",
+  "say": "Read aloud",
+  "how": {
+   "ssDecl": [
+    "Sign in to Segurança Social Direta (app.seg-social.pt) — Chave Móvel Digital or NISS and password.",
+    "Trabalho → Remunerações e Contribuições → Trabalhadores Independentes.",
+    "“Entregar Declaração Trimestral”: income per month; no income — answer “não”.",
+    "Check the contribution (you can move it ±25%) → “Entregar declaração”. A copy is under “Consultar e substituir”."
+   ],
+   "ssPay": [
+    "Easiest: débito direto — the contribution is taken on time by itself.",
+    "Or in Segurança Social Direta → “Pagamentos e dívidas”, get a payment reference.",
+    "Pay with the reference: Multibanco ATM, home banking or MB WAY.",
+    "Check it went through: “Pagamentos e dívidas” → current position."
+   ],
+   "efat": [
+    "Open e-fatura (faturas.portaldasfinancas.gov.pt) with your Finanças password.",
+    "Faturas → the list of invoices waiting for details.",
+    "For each expense, mark whether it belongs to your activity (up to 20 invoices at once).",
+    "Press “Guardar”."
+   ],
+   "irsDecl": [
+    "Portal das Finanças → IRS → “Entregar Declaração” (Modelo 3).",
+    "Take the pre-filled return and add Anexo B (and Anexo SS if the portal asks).",
+    "“Validar”, then “Simular” — you'll see whether you pay or get a refund.",
+    "“Entregar” and keep the confirmation."
+   ],
+   "atPay": [
+    "Portal das Finanças → “A minha área” → “Pagamentos”.",
+    "Under “Pagamentos a decorrer”, open the document — the reference is there.",
+    "Pay with the reference: Multibanco ATM or home banking."
+   ],
+   "iva": [
+    "Portal das Finanças → Entregar → Declarações → Atividade → Alterações.",
+    "In the IVA section, change the regime from the exemption (art. 53) to normal.",
+    "Submit and keep the confirmation. From now on, invoices carry IVA; if in doubt, ask a Contabilista Certificado."
+   ]
   }
  },
  "push": {

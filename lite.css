@@ -73,6 +73,13 @@
 .sheet p{margin:8px 0;font-size:16px}
 .sheet .miss b{color:var(--warn)}
 .sheet .meta{margin-top:10px}
+.sheet .how{margin-top:12px;border:1px solid var(--line);border-radius:16px;padding:10px 14px;background:color-mix(in srgb,var(--bg) 60%,transparent)}
+.sheet .how summary{font-weight:600;cursor:pointer;color:var(--accent-ink)}
+.sheet .how ol{margin:8px 0 4px;padding-left:22px;display:grid;gap:6px;font-size:15px;line-height:1.35}
+.sheet .how .note{font-size:12px;color:var(--muted);margin:6px 0 0}
+.sayL{position:absolute;right:18px;top:62px;z-index:15;width:46px;height:46px;border-radius:50%;border:1px solid color-mix(in srgb,var(--line) 50%,var(--tl,var(--accent)));
+  background:color-mix(in srgb,var(--surface) 70%,transparent);backdrop-filter:blur(6px);font-size:20px;cursor:pointer;display:grid;place-items:center}
+.sayL.on{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)}
 .sheet .sb{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .sheet .btn.primary{flex:1;justify-content:center}
 

@@ -296,6 +296,45 @@
    "d": "ещё {n} дн.",
    "d1": "завтра",
    "d0": "сегодня"
+  },
+  "howT": "Как сделать",
+  "howNote": "Названия меню на портале могут слегка отличаться. Сверено 21.10.2026.",
+  "say": "Прочитать вслух",
+  "how": {
+   "ssDecl": [
+    "Войдите в Segurança Social Direta (app.seg-social.pt) — Chave Móvel Digital или NISS и пароль.",
+    "Trabalho → Remunerações e Contribuições → Trabalhadores Independentes.",
+    "«Entregar Declaração Trimestral»: доход по месяцам; не было дохода — ответьте «não».",
+    "Проверьте взнос (можно сдвинуть на ±25 %) → «Entregar declaração». Копия — в «Consultar e substituir»."
+   ],
+   "ssPay": [
+    "Проще всего — débito direto: взнос спишется сам в срок.",
+    "Или в Segurança Social Direta → «Pagamentos e dívidas» возьмите референс для оплаты.",
+    "Оплатите по референсу: банкомат Multibanco, homebanking или MB WAY.",
+    "Проверьте, что платёж прошёл: «Pagamentos e dívidas» → текущая позиция."
+   ],
+   "efat": [
+    "Откройте e-fatura (faturas.portaldasfinancas.gov.pt) с паролем Finanças.",
+    "Faturas → список счетов, которые ждут уточнения.",
+    "Для каждого расхода отметьте, относится ли он к вашей деятельности (можно сразу до 20 счетов).",
+    "Нажмите «Guardar»."
+   ],
+   "irsDecl": [
+    "Portal das Finanças → IRS → «Entregar Declaração» (Modelo 3).",
+    "Возьмите предзаполненную декларацию и добавьте Anexo B (и Anexo SS, если портал попросит).",
+    "«Validar», затем «Simular» — увидите доплату или возврат.",
+    "«Entregar» и сохраните подтверждение."
+   ],
+   "atPay": [
+    "Portal das Finanças → «A minha área» → «Pagamentos».",
+    "В «Pagamentos a decorrer» откройте документ — в нём референс.",
+    "Оплатите по референсу: банкомат Multibanco или homebanking."
+   ],
+   "iva": [
+    "Portal das Finanças → Entregar → Declarações → Atividade → Alterações.",
+    "В разделе IVA смените режим: с освобождения (ст. 53) на обычный.",
+    "Отправьте и сохраните подтверждение. Дальше в счетах — с IVA; при сомнениях — к бухгалтеру (Contabilista Certificado)."
+   ]
   }
  },
  "push": {

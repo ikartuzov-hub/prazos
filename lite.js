@@ -66,8 +66,9 @@ window.PRAZOS_LITE = function (ctx) {
     var show = ctx.prerender ? queue : queue.slice(0, 4);
     d.innerHTML = show.map(function (e, i) {
       return '<button type="button" class="cardL tl-' + light(e).lvl + (i === 0 ? " top" : "") + '" style="--k:' + i + '" data-u="' + uid(e) + '"' + (i ? ' tabindex="-1" aria-hidden="true"' : "") + ">" + face(e) + "</button>";
-    }).join("");
+    }).join("") + ("speechSynthesis" in window || ctx.prerender ? '<button type="button" class="sayL" id="sayL" aria-label="' + esc(LT.say) + '" title="' + esc(LT.say) + '">🔊</button>' : "");
     $("left").textContent = LT.left.replace("{n}", queue.length);
+    if ($("sayL")) $("sayL").onclick = function (ev) { ev.stopPropagation(); sayIt(top); };
     $("doneBtn").disabled = $("laterBtn").disabled = false; $("tapHint").hidden = false;
     var t = d.querySelector(".cardL.top");
     t.onclick = function () { openSheet(top); };
@@ -109,11 +110,43 @@ window.PRAZOS_LITE = function (ctx) {
     } catch (e) { ctx.toast(U.icsNote); }
   };
 
+  /* ---------- 🔊 the card out loud — the same words as Clara ---------- */
+  var LOC = { pt: "pt-PT", en: "en-GB", ru: "ru-RU", es: "es-ES", de: "de-DE" }[ctx.lang], voice = null;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    var vs = speechSynthesis.getVoices(), lc = LOC.toLowerCase(), base = lc.split("-")[0];
+    var pool = vs.filter(function (v) { return v.lang && v.lang.toLowerCase().replace("_", "-") === lc; });
+    if (!pool.length) pool = vs.filter(function (v) { return v.lang && v.lang.toLowerCase().indexOf(base) === 0; });
+    voice = pool.filter(function (v) { return /premium|enhanced|natural|neural/i.test(v.name); })[0] || pool[0] || null;
+  }
+  if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+  function sayIt(e) {
+    if (!e || !("speechSynthesis" in window)) return;
+    var S = L.clara.say, c = CAL.events[e.id] || {}, why = ymd(e.last) === ymd(today) ? "last" : e.isOpen ? "open" : "soon";
+    var txt = S[why].replace("{what}", LT.short[e.id] || "").replace("{date}", fmt(e.isOpen || !e.open ? e.last : e.open, { day: "numeric", month: "long" }))
+      .replace("{where}", c.where ? S.where[c.where] : "").replace("{amount}", S.amount[c.amount || "none"] || "")
+      .replace(/\s*[^.!?]*\?\s*$/, "").replace(/\s*\.\s*\./g, ".").replace(/\s{2,}/g, " ").trim();   /* no question: Lite answers with buttons */
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(txt); u.lang = LOC; if (voice) u.voice = voice; u.pitch = 1.05;
+    var b = $("sayL"); if (b) b.classList.add("on");
+    u.onend = u.onerror = function () { var b2 = $("sayL"); if (b2) b2.classList.remove("on"); };
+    speechSynthesis.speak(u);
+  }
+
+  /* ---------- «how to do it»: short steps, checked against the official guides ---------- */
+  var HOW = { ssDecl: "ssDecl", ssDeclJan: "ssDecl", ssLate: "ssDecl", ssPay: "ssPay", ssTop: "ssPay", efat: "efat", irsDecl: "irsDecl", irsPay: "atPay", ppc: "atPay", ivaAlt: "iva", ivaNow: "iva" };
+  function howHTML(e) {
+    var st = LT.how && LT.how[HOW[e.id]];
+    if (!st || !st.length) return "";
+    return '<details class="how" open><summary>' + esc(LT.howT) + "</summary><ol>" + st.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
+      '</ol><p class="note">' + esc(LT.howNote) + "</p></details>";
+  }
+
   /* ---------- sheet: why ---------- */
   function openSheet(e) {
     var t = ctx.texts(e), win = e.open ? U.window.replace("{a}", fmt(e.open, { day: "numeric", month: "long" })).replace("{b}", fmt(e.date, { day: "numeric", month: "long" })) : fmt(e.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     $("sheetBody").innerHTML = "<h2>" + esc(t.title) + '</h2><div class="win note">' + esc(win) + "</div><p>" + esc(t.doo) + "</p>" +
-      (t.miss !== "—" ? '<p class="miss"><b>' + esc(U.miss) + "</b> " + esc(t.miss) + "</p>" : "") +
+      (t.miss !== "—" ? '<p class="miss"><b>' + esc(U.miss) + "</b> " + esc(t.miss.replace(/\.\.+/g, ".")) + "</p>" : "") + howHTML(e) +
       '<div class="meta"><span>' + esc(U.src) + ": " + esc(e.src) + '</span><span class="chip ' + e.conf + '">' + esc(e.conf === "ok" ? U.ok : U.wait) + "</span></div>" +
       '<div class="sb"><a class="btn primary" target="_blank" rel="noopener" href="' + esc(ctx.gcal(e)) + '">+ ' + esc(U.gcal) + '</a><button class="btn" type="button" id="sheetClose">✕</button></div>';
     $("sheet").hidden = false; $("dim").hidden = false;

@@ -295,6 +295,45 @@
    "d": "faltam {n} dias",
    "d1": "amanhã",
    "d0": "hoje"
+  },
+  "howT": "Como fazer",
+  "howNote": "Os nomes dos menus no portal podem variar ligeiramente. Verificado a 21.10.2026.",
+  "say": "Ler em voz alta",
+  "how": {
+   "ssDecl": [
+    "Entre na Segurança Social Direta (app.seg-social.pt) — Chave Móvel Digital ou NISS e senha.",
+    "Trabalho → Remunerações e Contribuições → Trabalhadores Independentes.",
+    "«Entregar Declaração Trimestral»: rendimento por mês; sem rendimento — responda «não».",
+    "Confirme a contribuição (pode ajustar ±25 %) → «Entregar declaração». A cópia fica em «Consultar e substituir»."
+   ],
+   "ssPay": [
+    "O mais simples: débito direto — a contribuição é cobrada no prazo.",
+    "Ou na Segurança Social Direta → «Pagamentos e dívidas», obtenha a referência de pagamento.",
+    "Pague com a referência: Multibanco, homebanking ou MB WAY.",
+    "Confirme o pagamento: «Pagamentos e dívidas» → posição atual."
+   ],
+   "efat": [
+    "Abra o e-fatura (faturas.portaldasfinancas.gov.pt) com a senha das Finanças.",
+    "Faturas → lista de faturas por completar.",
+    "Em cada despesa, indique se é da sua atividade (até 20 faturas de uma vez).",
+    "Carregue em «Guardar»."
+   ],
+   "irsDecl": [
+    "Portal das Finanças → IRS → «Entregar Declaração» (Modelo 3).",
+    "Use a declaração pré-preenchida e junte o Anexo B (e o Anexo SS, se o portal pedir).",
+    "«Validar» e depois «Simular» — vê se paga ou recebe.",
+    "«Entregar» e guarde o comprovativo."
+   ],
+   "atPay": [
+    "Portal das Finanças → «A minha área» → «Pagamentos».",
+    "Em «Pagamentos a decorrer», abra o documento — a referência está lá.",
+    "Pague com a referência: Multibanco ou homebanking."
+   ],
+   "iva": [
+    "Portal das Finanças → Entregar → Declarações → Atividade → Alterações.",
+    "Na parte do IVA, mude o regime de isenção (art. 53.º) para normal.",
+    "Submeta e guarde o comprovativo. A partir daí, as faturas levam IVA; em caso de dúvida, fale com um Contabilista Certificado."
+   ]
   }
  },
  "push": {

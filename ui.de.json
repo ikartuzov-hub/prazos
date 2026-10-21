@@ -295,6 +295,45 @@
    "d": "noch {n} Tage",
    "d1": "morgen",
    "d0": "heute"
+  },
+  "howT": "So geht's",
+  "howNote": "Menünamen im Portal können leicht abweichen. Geprüft am 21.10.2026.",
+  "say": "Vorlesen",
+  "how": {
+   "ssDecl": [
+    "Melden Sie sich bei Segurança Social Direta an (app.seg-social.pt) — Chave Móvel Digital oder NISS und Passwort.",
+    "Trabalho → Remunerações e Contribuições → Trabalhadores Independentes.",
+    "„Entregar Declaração Trimestral“: Einnahmen je Monat; keine Einnahmen — „não“ antworten.",
+    "Beitrag prüfen (±25 % möglich) → „Entregar declaração“. Die Kopie liegt unter „Consultar e substituir“."
+   ],
+   "ssPay": [
+    "Am einfachsten: débito direto — der Beitrag wird pünktlich abgebucht.",
+    "Oder in Segurança Social Direta → „Pagamentos e dívidas“ eine Zahlungsreferenz holen.",
+    "Mit der Referenz zahlen: Multibanco-Automat, Onlinebanking oder MB WAY.",
+    "Zahlung prüfen: „Pagamentos e dívidas“ → aktueller Stand."
+   ],
+   "efat": [
+    "e-fatura öffnen (faturas.portaldasfinancas.gov.pt) mit dem Finanças-Passwort.",
+    "Faturas → Liste der Rechnungen, die noch Angaben brauchen.",
+    "Bei jeder Ausgabe angeben, ob sie zur Tätigkeit gehört (bis zu 20 Rechnungen auf einmal).",
+    "„Guardar“ drücken."
+   ],
+   "irsDecl": [
+    "Portal das Finanças → IRS → „Entregar Declaração“ (Modelo 3).",
+    "Die vorausgefüllte Erklärung nehmen und Anexo B hinzufügen (und Anexo SS, falls das Portal fragt).",
+    "„Validar“, dann „Simular“ — Sie sehen Nachzahlung oder Erstattung.",
+    "„Entregar“ und die Bestätigung aufbewahren."
+   ],
+   "atPay": [
+    "Portal das Finanças → „A minha área“ → „Pagamentos“.",
+    "Unter „Pagamentos a decorrer“ das Dokument öffnen — dort steht die Referenz.",
+    "Mit der Referenz zahlen: Multibanco-Automat oder Onlinebanking."
+   ],
+   "iva": [
+    "Portal das Finanças → Entregar → Declarações → Atividade → Alterações.",
+    "Im IVA-Teil das Regime von der Befreiung (Art. 53) auf normal umstellen.",
+    "Absenden und die Bestätigung aufbewahren. Ab dann Rechnungen mit IVA; im Zweifel eine:n Contabilista Certificado fragen."
+   ]
   }
  },
  "push": {

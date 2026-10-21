@@ -295,6 +295,45 @@
    "d": "quedan {n} días",
    "d1": "mañana",
    "d0": "hoy"
+  },
+  "howT": "Cómo hacerlo",
+  "howNote": "Los nombres de los menús del portal pueden variar un poco. Comprobado el 21.10.2026.",
+  "say": "Leer en voz alta",
+  "how": {
+   "ssDecl": [
+    "Entre en Segurança Social Direta (app.seg-social.pt) — Chave Móvel Digital o NISS y contraseña.",
+    "Trabalho → Remunerações e Contribuições → Trabalhadores Independentes.",
+    "«Entregar Declaração Trimestral»: ingresos por mes; sin ingresos — responda «não».",
+    "Revise la cuota (puede moverla ±25 %) → «Entregar declaração». La copia está en «Consultar e substituir»."
+   ],
+   "ssPay": [
+    "Lo más fácil: débito direto — la cuota se cobra sola a tiempo.",
+    "O en Segurança Social Direta → «Pagamentos e dívidas», obtenga la referencia de pago.",
+    "Pague con la referencia: cajero Multibanco, banca online o MB WAY.",
+    "Compruebe el pago: «Pagamentos e dívidas» → posición actual."
+   ],
+   "efat": [
+    "Abra e-fatura (faturas.portaldasfinancas.gov.pt) con la contraseña de Finanças.",
+    "Faturas → lista de facturas pendientes de completar.",
+    "En cada gasto, indique si es de su actividad (hasta 20 facturas a la vez).",
+    "Pulse «Guardar»."
+   ],
+   "irsDecl": [
+    "Portal das Finanças → IRS → «Entregar Declaração» (Modelo 3).",
+    "Use la declaración prerrellenada y añada el Anexo B (y el Anexo SS si el portal lo pide).",
+    "«Validar» y luego «Simular»: verá si paga o le devuelven.",
+    "«Entregar» y guarde el justificante."
+   ],
+   "atPay": [
+    "Portal das Finanças → «A minha área» → «Pagamentos».",
+    "En «Pagamentos a decorrer», abra el documento: ahí está la referencia.",
+    "Pague con la referencia: cajero Multibanco o banca online."
+   ],
+   "iva": [
+    "Portal das Finanças → Entregar → Declarações → Atividade → Alterações.",
+    "En el apartado de IVA, cambie el régimen de exención (art. 53) a normal.",
+    "Envíe y guarde el justificante. Desde entonces, las facturas llevan IVA; si duda, consulte a un Contabilista Certificado."
+   ]
   }
  },
  "push": {
