@@ -76,7 +76,9 @@ for f in glob.glob("*.html") + glob.glob("*/*.html"):
     for need in ['rel="icon" href="icon.svg"', 'rel="apple-touch-icon"', 'rel="manifest"', 'property="og:image"', 'name="twitter:card"']:
         if need not in h: bad.append("%s: нет %s" % (f, need))
     for src in re.findall(r'<script[^>]+src="([^"]+)"', h) + re.findall(r'<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"', h):
-        if src.startswith("http"): bad.append("%s: внешний ресурс %s" % (f, src))
+        # свои ресурсы экосистемы (seedwave.pt) и тихий счётчик Cloudflare — разрешены (решение 23.10.2026)
+        if src.startswith("http") and not src.startswith(("https://seedwave.pt/", "https://static.cloudflareinsights.com/")):
+            bad.append("%s: внешний ресурс %s" % (f, src))
     if "fonts.googleapis" in h: bad.append("%s: внешний шрифт" % f)
 
 
