@@ -70,6 +70,8 @@ def head_fix(html, page, lang, ui):
     u = url_of(page, lang)
     esc = lambda s: s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
     html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % HTML_LANG[lang], html, count=1)
+    # подвал «Madeira» (стандарт 09.11.2026): ссылка ведёт читателя на его язык блога
+    html = re.sub(r'(seedwave\.pt/madeira/\?lang=)[a-z]{2}', r'\g<1>' + lang, html)
     html = re.sub(r"<title>.*?</title>", "<title>%s</title>" % esc(title), html, count=1, flags=re.S)
     html = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % esc(desc), html, count=1)
     html = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="%s">' % esc(title), html, count=1)
